@@ -1,12 +1,12 @@
 <div align="center">
     <picture>
-        <source srcset="https://user-images.githubusercontent.com/6267663/227311185-62d5759f-743c-488b-8b97-09eae1dac881.png" media="(prefers-color-scheme: dark)" width="250">
-        <img src="https://user-images.githubusercontent.com/6267663/227311185-62d5759f-743c-488b-8b97-09eae1dac881.png" width="250">
+        <source srcset="https://user-images.githubusercontent.com/6267663/227311185-62d5759f-743c-488b-8b97-09eae1dac881.png" media="(prefers-color-scheme: dark)" width="100">
+        <img src="https://user-images.githubusercontent.com/6267663/227311185-62d5759f-743c-488b-8b97-09eae1dac881.png" width="100">
     </picture>
-    <h1>Go SDK</h1>
+    <h1>Airplane Go SDK</h1>
    <p>Developer infrastructure for internal tools</p>
    <a href="https://docs.airplane.dev/"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=5444e4&style=for-the-badge" /></a>
-   <a href="https://github.com/speakeasy-sdks/airplane-go-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/airplane-go-sdk/speakeasy_generate.yaml?style=for-the-badge" /></a>
+   <a href="https://github.com/speakeasy-sdks/airplane-go-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/airplane-go-sdk/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
   <a href="https://github.com/speakeasy-sdks/airplane-go-sdk/releases"><img src="https://img.shields.io/github/v/release/speakeasy-sdks/airplane-go-sdk?sort=semver&style=for-the-badge" /></a>
 </div>
