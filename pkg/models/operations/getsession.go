@@ -7,13 +7,9 @@ import (
 	"net/http"
 )
 
-type GetSessionQueryParams struct {
+type GetSessionRequest struct {
 	// ID of the session to retrieve.
 	ID string `queryParam:"style=form,explode=true,name=id"`
-}
-
-type GetSessionRequest struct {
-	QueryParams GetSessionQueryParams
 }
 
 type GetSessionResponse struct {

@@ -7,15 +7,11 @@ import (
 	"net/http"
 )
 
-type ExecuteTaskQueryParams struct {
+type ExecuteTaskRequest struct {
+	// ExecuteTaskRequest
+	ApiextExecuteTaskRequest shared.ApiextExecuteTaskRequest `request:"mediaType=application/json"`
 	// Environment to execute the task in.
 	EnvSlug *string `queryParam:"style=form,explode=true,name=envSlug"`
-}
-
-type ExecuteTaskRequest struct {
-	QueryParams ExecuteTaskQueryParams
-	// ExecuteTaskRequest
-	Request shared.ApiextExecuteTaskRequest `request:"mediaType=application/json"`
 }
 
 type ExecuteTaskResponse struct {

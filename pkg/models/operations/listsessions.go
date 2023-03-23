@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-type ListSessionsQueryParams struct {
+type ListSessionsRequest struct {
 	// Number of results per call. Accepted values: 0 - 50. Default: 50.
 	Limit *int64 `queryParam:"style=form,explode=true,name=limit"`
 	// The offset used for this page of results.
@@ -18,10 +18,6 @@ type ListSessionsQueryParams struct {
 	UpdatedAfter *string `queryParam:"style=form,explode=true,name=updatedAfter"`
 	// Fetch sessions last updated before this time (RFC 3339 format).
 	UpdatedBefore *string `queryParam:"style=form,explode=true,name=updatedBefore"`
-}
-
-type ListSessionsRequest struct {
-	QueryParams ListSessionsQueryParams
 }
 
 type ListSessionsResponse struct {

@@ -3,14 +3,8 @@
 package operations
 
 import (
-	"airplane-api/pkg/models/shared"
 	"net/http"
 )
-
-type CancelRunRequest struct {
-	// CancelRunRequest
-	Request shared.ApiextCancelRunRequest `request:"mediaType=application/json"`
-}
 
 type CancelRunResponse struct {
 	ContentType string

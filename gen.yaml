@@ -10,5 +10,5 @@ generation:
   sdkFlattening: true
   singleTagPerOp: false
 go:
-  version: 1.0.0
+  version: 1.0.1
   packageName: airplane-api

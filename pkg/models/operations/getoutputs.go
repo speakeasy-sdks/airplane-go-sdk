@@ -7,13 +7,9 @@ import (
 	"net/http"
 )
 
-type GetOutputsQueryParams struct {
+type GetOutputsRequest struct {
 	// ID of the run to retrieve.
 	ID string `queryParam:"style=form,explode=true,name=id"`
-}
-
-type GetOutputsRequest struct {
-	QueryParams GetOutputsQueryParams
 }
 
 type GetOutputsResponse struct {

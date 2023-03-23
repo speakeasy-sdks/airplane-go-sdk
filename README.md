@@ -22,18 +22,14 @@ import (
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: shared.SchemeAPIKeyAuth{
-                APIKey: "YOUR_API_KEY_HERE",
-            },
+    s := airplane.New(
+        airplane.WithSecurity(shared.Security{
+            APIKeyAuth: "YOUR_API_KEY_HERE",
         }),
     )
 
-    req := operations.CancelPromptRequest{
-        Request: shared.ApiextCancelPromptRequest{
-            ID: "pmt20221122zyydx3rho2t",
-        },
+    req := shared.ApiextCancelPromptRequest{
+        ID: "pmt20221122zyydx3rho2t",
     }
 
     ctx := context.Background()

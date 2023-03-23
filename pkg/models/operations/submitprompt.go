@@ -7,11 +7,6 @@ import (
 	"net/http"
 )
 
-type SubmitPromptRequest struct {
-	// SubmitPromptRequest
-	Request shared.ApiextSubmitPromptRequest `request:"mediaType=application/json"`
-}
-
 type SubmitPromptResponse struct {
 	ContentType string
 	StatusCode  int

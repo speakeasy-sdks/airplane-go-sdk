@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-type ListRunsQueryParams struct {
+type ListRunsRequest struct {
 	// Number of results per call. Accepted values: 0 - 50. Default: 50.
 	Limit *int64 `queryParam:"style=form,explode=true,name=limit"`
 	// The offset used for this page of results.
@@ -20,10 +20,6 @@ type ListRunsQueryParams struct {
 	TaskSlug *string `queryParam:"style=form,explode=true,name=taskSlug"`
 	// Fetch runs last updated before this time (RFC 3339 format).
 	Until *string `queryParam:"style=form,explode=true,name=until"`
-}
-
-type ListRunsRequest struct {
-	QueryParams ListRunsQueryParams
 }
 
 type ListRunsResponse struct {

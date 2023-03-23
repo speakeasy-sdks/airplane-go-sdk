@@ -7,13 +7,9 @@ import (
 	"net/http"
 )
 
-type ListPromptsQueryParams struct {
+type ListPromptsRequest struct {
 	// ID of the run to retrieve prompts for.
 	RunID string `queryParam:"style=form,explode=true,name=runID"`
-}
-
-type ListPromptsRequest struct {
-	QueryParams ListPromptsQueryParams
 }
 
 type ListPromptsResponse struct {

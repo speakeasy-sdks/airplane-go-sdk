@@ -7,11 +7,6 @@ import (
 	"net/http"
 )
 
-type CancelPromptRequest struct {
-	// CancelPromptRequest
-	Request shared.ApiextCancelPromptRequest `request:"mediaType=application/json"`
-}
-
 type CancelPromptResponse struct {
 	ContentType string
 	StatusCode  int

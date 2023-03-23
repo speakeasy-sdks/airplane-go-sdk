@@ -7,15 +7,11 @@ import (
 	"net/http"
 )
 
-type ExecuteRunbookQueryParams struct {
+type ExecuteRunbookRequest struct {
+	// ExecuteRunbookRequest
+	ApiextExecuteRunbookRequest shared.ApiextExecuteRunbookRequest `request:"mediaType=application/json"`
 	// Environment to execute the runbook in.
 	EnvSlug *string `queryParam:"style=form,explode=true,name=envSlug"`
-}
-
-type ExecuteRunbookRequest struct {
-	QueryParams ExecuteRunbookQueryParams
-	// ExecuteRunbookRequest
-	Request shared.ApiextExecuteRunbookRequest `request:"mediaType=application/json"`
 }
 
 type ExecuteRunbookResponse struct {
