@@ -3,12 +3,10 @@ management:
   docChecksum: 4a42ca422209fa8fa9d651630c1e6cf7
   docVersion: 0.0.0
   speakeasyVersion: 1.16.1
-  generationVersion: 2.14.1
 generation:
   telemetryEnabled: false
   sdkClassName: airplane
   sdkFlattening: true
-  singleTagPerOp: false
 go:
-  version: 1.0.1
+  version: ""
   packageName: airplane-api
