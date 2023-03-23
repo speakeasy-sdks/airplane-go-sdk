@@ -17,17 +17,17 @@ func main() {
         }),
     )
 
-    req := shared.ApiextCancelPromptRequest{
-        ID: "pmt20221122zyydx3rho2t",
+    req := operations.ListPromptsRequest{
+        RunID: "unde",
     }
 
     ctx := context.Background()
-    res, err := s.Prompts.Cancel(ctx, req)
+    res, err := s.Prompts.List(ctx, req)
     if err != nil {
         log.Fatal(err)
     }
 
-    if res.ApiextCancelPromptResponse != nil {
+    if res.ApiextListPromptsResponse != nil {
         // handle response
     }
 }
