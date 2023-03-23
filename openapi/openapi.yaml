@@ -1,0 +1,1038 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: support@airplane.dev
+    name: Airplane Support
+  description: Airplane API
+  termsOfService: https://www.airplane.dev/terms
+  title: Airplane API
+  version: 0.0.0
+    
+servers:
+  - url: https://api.airplane.dev/v0
+    description: Airplane API
+security: 
+  -  ApiKeyAuth: []
+x-speakeasy-name-override:
+  - operationId: get*
+    methodNameOverride: get
+  - operationId: list*
+    methodNameOverride: list
+  - operationId: cancel*
+    methodNameOverride: cancel
+  - operationId: submit*
+    methodNameOverride: submit
+  - operationId: execute*
+    methodNameOverride: execute
+tags: 
+  - name: Prompts
+    description: A prompt is used to gather user input during a task's execution. See Prompts to see how prompts are used.
+  - name: Runs
+    description: A run represents an instance of a task's execution. See Tasks API for how to execute tasks.
+  - name: Runbooks
+    description: A Runbook is a multi-step, human-in-the-loop workflow. Runbooks are able to take a set of top-level parameters, run one or more functions, and generate output at each step of the way.
+  - name: Sessions
+    description: A session represents an instance of a runbook's execution. See Runbooks API for how to execute runbooks.
+  - name: Tasks
+    description: A Task is a lightweight app that represents a single business operation for people at your company to execute.
+paths:
+  /prompts/cancel:
+    post:
+      operationId: cancelPrompt
+      description: Cancel a prompt.
+      summary: Cancel Prompt
+      tags:
+        - Prompts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/apiext.CancelPromptRequest"
+        description: CancelPromptRequest
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.CancelPromptResponse"
+      
+  /prompts/get:
+    get:
+      operationId: getPrompt
+      description: Get information about an existing prompt.
+      summary: Get Prompt
+      tags:
+        - Prompts
+      parameters:
+        - description: ID of the prompt to retrieve.
+          in: query
+          name: id
+          required: true
+          example: pmt20221122zyydx3rho2t
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.GetPromptResponse"
+      
+  /prompts/list:
+    get:
+      operationId: listPrompts
+      description: List prompts from an existing run.
+      summary: List Prompts
+      tags:
+        - Prompts
+      parameters:
+        - description: ID of the run to retrieve prompts for.
+          in: query
+          name: runID
+          required: true
+          example: run20220215zv10o6s52qj
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.ListPromptsResponse"
+      
+  /prompts/submit:
+    post:
+      operationId: submitPrompt
+      description: Submit a prompt with a set of parameter values.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/apiext.SubmitPromptRequest"
+        description: SubmitPromptRequest
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.SubmitPromptResponse"
+      summary: Submit Prompt
+      tags:
+        - Prompts
+  /runbooks/execute:
+    post:
+      operationId: executeRunbook
+      x-speakeasy-name-override: execute
+      description: >-
+        Execute a runbook and receive a session ID to track the runbook's
+        execution.
+
+        Check on the status of your newly created session with [/sessions/get](/api/sessions#sessions-get).
+      summary: Execute Runbook
+      tags:
+        - Runbooks
+      parameters:
+        - description: Environment to execute the runbook in.
+          in: query
+          name: envSlug
+          example: prod
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/apiext.ExecuteRunbookRequest"
+        description: ExecuteRunbookRequest
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.ExecuteRunbookResponse"
+  /runs/cancel:
+    post:
+      operationId: cancelRun
+      description: |-
+        Cancel a run.
+        Check on the status of your run with [/runs/get](/api/runs#runs-get).
+      summary: Cancel Run
+      tags:
+        - Runs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/apiext.CancelRunRequest"
+        description: CancelRunRequest
+        required: true
+      responses: {}
+      
+  /runs/get:
+    get:
+      operationId: getRun
+      description: Get information about an existing run.
+      summary: Cancel Run
+      tags:
+        - Runs
+      parameters:
+        - description: ID of the run to retrieve.
+          in: query
+          name: id
+          required: true
+          example: run20220215zv10o6s52qj
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.GetRunResponse"
+  /runs/getOutputs:
+    get:
+      operationId: getOutputs
+      x-speakeasy-name-override: getOutputs
+      description: Get outputs from an existing run.
+      summary: Get Run Outputs
+      tags:
+        - Runs
+      parameters:
+        - description: ID of the run to retrieve.
+          in: query
+          name: id
+          required: true
+          example: run20220215zv10o6s52qj
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.GetOutputsResponse"
+  /runs/list:
+    get:
+      operationId: listRuns
+      summary: List Runs
+      tags:
+        - Runs
+      parameters:
+        - description: Unique ID of the task to fetch runs for.
+          in: query
+          name: taskID
+          example: tsk20210728zxb2vxn
+          schema:
+            type: string
+        - description: Unique slug of the task to fetch runs for.
+          in: query
+          name: taskSlug
+          example: hello_world
+          schema:
+            type: string
+        - description: Fetch runs last updated after this time (RFC 3339 format).
+          in: query
+          name: since
+          example: 2022-01-01T12:00:00-00:00
+          schema:
+            type: string
+        - description: Fetch runs last updated before this time (RFC 3339 format).
+          in: query
+          name: until
+          example: 2022-01-01T13:00:00-00:00
+          schema:
+            type: string
+        - description: "Number of results per call. Accepted values: 0 - 50. Default: 50."
+          in: query
+          name: limit
+          example: "10"
+          schema:
+            type: integer
+        - description: The offset used for this page of results.
+          in: query
+          name: page
+          example: "0"
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.ListRunsResponse"
+      
+  /sessions/get:
+    get:
+      operationId: getSession
+      description: Get information about an existing session.
+      summary: Get Session
+      tags:
+        - Sessions
+      parameters:
+        - description: ID of the session to retrieve.
+          in: query
+          name: id
+          required: true
+          example: ses20220120za1pskd
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.GetSessionResponse"
+      
+  /sessions/list:
+    get:
+      operationId: listSessions
+      summary: List Sessions
+      tags:
+        - Sessions
+      parameters:
+        - description: Only fetch sessions for this specific runbook.
+          in: query
+          name: runbookID
+          example: rbk20220120z15kl79
+          schema:
+            type: string
+        - description: Fetch sessions last updated after this time (RFC 3339 format).
+          in: query
+          name: updatedAfter
+          example: 2022-01-01T12:00:00-00:00
+          schema:
+            type: string
+        - description: Fetch sessions last updated before this time (RFC 3339 format).
+          in: query
+          name: updatedBefore
+          example: 2022-01-01T13:00:00-00:00
+          schema:
+            type: string
+        - description: "Number of results per call. Accepted values: 0 - 50. Default: 50."
+          in: query
+          name: limit
+          example: "10"
+          schema:
+            type: integer
+        - description: The offset used for this page of results.
+          in: query
+          name: page
+          example: "0"
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.ListSessionResponse"
+  /tasks/execute:
+    post:
+      operationId: executeTask
+      summary: Execute Task
+      tags:
+        - Tasks
+      description: >-
+        Execute a task with a set of parameter values and receive a run ID to
+        track the task's execution.
+
+        Check on the status of your newly created run with [/runs/get](/api/runs#runs-get).
+      parameters:
+        - description: Environment to execute the task in.
+          in: query
+          name: envSlug
+          example: prod
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/apiext.ExecuteTaskRequest"
+        description: ExecuteTaskRequest
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/apiext.ExecuteTaskResponse"
+      
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      in: header
+      name: X-Airplane-API-Key
+      type: apiKey
+  schemas:
+    apiext.AgentLabel:
+      properties:
+        key:
+          description: Agent label key.
+          example: aws-region
+          type: string
+        value:
+          description: Agent label value.
+          example: west-2
+          type: string
+      type: object
+    apiext.CancelPromptRequest:
+      properties:
+        id:
+          description: Unique ID of the prompt.
+          example: pmt20221122zyydx3rho2t
+          type: string
+      type: object
+    apiext.CancelPromptResponse:
+      properties:
+        id:
+          description: Unique ID of the prompt.
+          example: pmt20221122zyydx3rho2t
+          type: string
+      type: object
+    apiext.CancelRunRequest:
+      properties:
+        runID:
+          description: Unique ID of the run to cancel.
+          example: run20220111zlq2ig4
+          type: string
+      type: object
+    apiext.Constraints:
+      properties:
+        optional:
+          description: Determines whether this parameter must be set.
+          type: boolean
+        options:
+          description: Valid values for a given parameter.
+        regex:
+          description: Regular expression used to determine if a parameter is valid.
+          type: string
+      type: object
+    apiext.ExecuteRunbookRequest:
+      properties:
+        id:
+          description: >-
+            Unique ID of the runbook. You can find your runbook's ID by visiting
+            the runbook's page on Airplane.
+
+            The runbook ID is located at the end of the url.
+
+
+            e.g. the runbook ID for `https://app.airplane.dev/runbooks/rbk20220120z15kl79` is `rbk20220120z15kl79`
+          example: rbk20220120z15kl79
+          type: string
+        paramValues:
+          additionalProperties:
+            type: string
+          description: >-
+            Mapping of parameter slug to value. You can find your runbooks's
+            parameter slugs inside the
+
+            runbook editor on Airplane.
+          example:
+            limit: "20"
+            user: eric
+          type: object
+        slug:
+          description: >-
+            Unique slug of the runbook. You can find your runbook's slug next to
+            the runbook's name within the
+
+            runbook editor on Airplane.
+
+
+            Either an ID or a slug must be provided.
+          example: hello_world
+          type: string
+      required:
+        - id
+      type: object
+    apiext.ExecuteRunbookResponse:
+      properties:
+        sessionID:
+          description: Unique ID of the runbook's session.
+          example: ses20220120za1pskd
+          type: string
+      type: object
+    apiext.ExecuteTaskRequest:
+      properties:
+        id:
+          description: >-
+            Unique ID of the task. You can find your task's ID by visiting the
+            task's page on Airplane.
+
+            The task ID is located at the end of the url.
+
+
+            e.g. the task ID for `https://app.airplane.dev/tasks/tsk20210728zxb2vxn` is `tsk20210728zxb2vxn`
+
+
+            Either an ID or a slug must be provided.
+          example: tsk20210728zxb2vxn
+          type: string
+        paramValues:
+          additionalProperties:
+            type: string
+          description: >-
+            Mapping of parameter slug to value. You can find your task's
+            parameter slugs inside the
+
+            task editor on Airplane or by running `airplane tasks list` from the CLI.
+          example:
+            limit: "20"
+            user: eric
+          type: object
+        resources:
+          $ref: "#/components/schemas/sharedtypes.JsonMapString"
+        slug:
+          description: >-
+            Unique slug of the task. You can find your task's slug next to the
+            task's name within the
+
+            task editor on Airplane or by running `airplane tasks list` from the CLI.
+
+
+            Either an ID or a slug must be provided.
+          example: hello_world
+          type: string
+      type: object
+    apiext.ExecuteTaskResponse:
+      properties:
+        runID:
+          description: Unique ID of the task execution's run.
+          example: run20220215zv10o6s52qj
+          type: string
+      type: object
+    apiext.GetOutputsResponse:
+      properties:
+        output:
+          additionalProperties:
+            type: string
+          description: Outputs from this run.
+          example:
+            element: hydrogen
+            weight: "1.008"
+          type: object
+          x-docs-link: /tasks/outputs
+      type: object
+    apiext.GetPromptResponse:
+      properties:
+        prompt:
+          $ref: "#/components/schemas/promptsiface.Prompt"
+      type: object
+    apiext.GetRunResponse:
+      properties:
+        activeAt:
+          description: When the run became active. Empty if this run has not started yet.
+          example: 2022-01-11 22:32:45.707231+00
+          type: string
+        cancelledAt:
+          description: When the run was cancelled. Empty if this run was not cancelled.
+          example: 2022-01-11 22:33:03.78416+00
+          type: string
+        cancelledBy:
+          description: ID of the user who cancelled this run.
+          example: run20220111zlq2ig4
+          type: string
+        constraints:
+          $ref: "#/components/schemas/apiext.RunConstraints"
+        createdAt:
+          description: When this run was created.
+          example: 2022-01-11 22:32:45.601486+00
+          type: string
+        createdBy:
+          description: ID of the user that created this run.
+          example: usr20220103zlufhym
+          type: string
+        failedAt:
+          description: When the run failed. Empty if this run did not fail.
+          example: 2022-01-11 22:33:03.78416+00
+          type: string
+        id:
+          description: Unique ID of this run.
+          example: run20220111zlq2ig4
+          type: string
+        isPrivate:
+          description: Whether or not this run is private.
+          example: true
+          type: boolean
+        paramValues:
+          additionalProperties:
+            type: string
+          description: Mapping of parameter slug to value used in this run's execution.
+          example:
+            limit: "20"
+            user: eric
+          type: object
+        params:
+          description: Schema for the set of values users can provide when executing this
+            run.
+          items:
+            $ref: "#/components/schemas/apiext.Parameter"
+          type: array
+          x-docs-link: /platform/parameters
+        permissions:
+          description: Explicit permissions of this run if it is private.
+          items:
+            $ref: "#/components/schemas/apiext.Permission"
+          type: array
+          x-docs-link: /platform/permissions
+        resources:
+          $ref: "#/components/schemas/sharedtypes.JsonMapString"
+        runtime:
+          description: Runtime that this run executed on.
+          enum:
+            - standard
+            - workflow
+          example: standard
+          type: string
+          x-docs-link: /tasks/runtimes
+        sessionID:
+          description: ID of the session this run was spawned from if triggered by a
+            session.
+          type: string
+        status:
+          description: Status of this run.
+          enum:
+            - NotStarted
+            - Queued
+            - Active
+            - Succeeded
+            - Failed
+            - Cancelled
+          example: Succeeded
+          type: string
+        succeededAt:
+          description: When the run succeeded. Empty if this run did not succeed.
+          example: 2022-01-11 22:33:03.78416+00
+          type: string
+        taskID:
+          description: ID of the task this run was spawned from if triggered by a task.
+          example: tsk20210728zxb2vxn
+          type: string
+        teamID:
+          description: ID of the team that owns this run.
+          example: tea20220103zvy4auu
+          type: string
+        timeout:
+          description: Maximum amount of time in seconds the run could have executed for.
+          example: 3600
+          type: integer
+          x-docs-link: /tasks/timeouts
+        zoneID:
+          description: >-
+            ID of the storage zone that the run used for its runs and outputs.
+            Will be null if
+
+            there was no storage zone, in which case logs and outputs will be in the airplane API.
+          example: zon20230224zu6zo7yyn65
+          type: string
+      type: object
+    apiext.GetSessionResponse:
+      properties:
+        createdAt:
+          description: When this session was created.
+          example: 2022-01-11 22:32:45.601486+00
+          type: string
+        createdBy:
+          description: ID of the user that created this session.
+          example: usr20220103zlufhym
+          type: string
+        id:
+          description: Unique ID of this session.
+          example: ses20220120za1pskd
+          type: string
+        isPrivate:
+          description: Whether or not the session is private.
+          example: true
+          type: boolean
+        name:
+          description: Name of this session.
+          example: MySession
+          type: string
+        paramValues:
+          additionalProperties:
+            type: string
+          description: Mapping of parameter slug to value used in this session's execution.
+          example:
+            limit: "20"
+            user: eric
+          type: object
+        params:
+          description: Schema for the set of values users can provide when executing this
+            session.
+          items:
+            $ref: "#/components/schemas/apiext.Parameter"
+          type: array
+          x-docs-link: /platform/parameters
+        permissions:
+          description: Explicit permissions of this session if it is private.
+          items:
+            $ref: "#/components/schemas/apiext.Permission"
+          type: array
+          x-docs-link: /platform/permissions
+        runbookID:
+          description: ID of the runbook this session was spawned from if triggered from a
+            runbook.
+          example: rbk20220120z15kl79
+          type: string
+        status:
+          description: Status of this session.
+          enum:
+            - Pending
+            - Active
+            - Waiting
+            - Succeeded
+            - Failed
+            - Cancelling
+            - Cancelled
+          example: Succeeded
+          type: string
+        teamID:
+          description: ID of the team that owns this session.
+          example: tea20220103zvy4auu
+          type: string
+        updatedAt:
+          description: When this session was updated.
+          example: 2022-01-11 22:35:45.238512+00
+          type: string
+        updatedBy:
+          description: ID of the user who updated this session.
+          example: ses20220120za1pskd
+          type: string
+      type: object
+    apiext.ListPromptsResponse:
+      properties:
+        prompts:
+          description: Retrieved prompts.
+          items:
+            $ref: "#/components/schemas/promptsiface.Prompt"
+          type: array
+      type: object
+    apiext.ListRunsResponse:
+      properties:
+        runs:
+          description: Retrieved runs.
+          items:
+            $ref: "#/components/schemas/apiext.GetRunResponse"
+          type: array
+      type: object
+    apiext.ListSessionResponse:
+      properties:
+        sessions:
+          description: Retrieved sessions.
+          items:
+            $ref: "#/components/schemas/apiext.GetSessionResponse"
+          type: array
+      type: object
+    apiext.Parameter:
+      properties:
+        component:
+          description: Used to specify UI-only type modifiers
+          enum:
+            - ""
+            - editor-sql
+            - textarea
+          example: textarea
+          type: string
+        constraints:
+          $ref: "#/components/schemas/apiext.Constraints"
+        default:
+          description: Optional default value for this parameter, used if not set.
+        desc:
+          description: Description for this parameter.
+          example: Email to use for selecting which user to edit.
+          type: string
+        name:
+          description: Name for this parameter.
+          example: User Email
+          type: string
+        params:
+          description: If this parameter has an object data type, represents an ordered
+            list of key-value pairs that can be included in this object.
+          items:
+            $ref: "#/components/schemas/apiext.Parameter"
+          type: array
+        slug:
+          description: >-
+            A human-friendly identifier for the parameter that can be referenced
+            inside a task or runbook.
+
+            Airplane automatically generates a slug when provided a parameter name.
+          example: user_email
+          type: string
+          x-docs-link: /platform/parameters#parameter-slugs
+        type:
+          description: Parameter data type.
+          enum:
+            - any
+            - string
+            - boolean
+            - upload
+            - integer
+            - float
+            - date
+            - datetime
+            - configvar
+            - list
+            - map
+            - object
+          example: string
+          type: string
+          x-docs-link: /platform/parameters#parameter-types
+        values:
+          $ref: "#/components/schemas/apiext.Parameter"
+      type: object
+    apiext.Permission:
+      properties:
+        action:
+          description: Which action this permission applies to.
+          example: sessions.get
+          type: string
+        roleID:
+          description: Which role is assigned to this permission.
+          enum:
+            - team_admin
+            - team_developer
+            - task_viewer
+            - task_requester
+            - task_executer
+            - task_admin
+            - run_viewer
+            - runbook_viewer
+            - runbook_requester
+            - runbook_executer
+            - runbook_admin
+            - session_viewer
+            - session_executer
+            - session_admin
+            - resource_user
+            - deploy_creator
+            - group_admin
+          example: team_admin
+          type: string
+        subGroupID:
+          description: ID of the group  this permission applies to if assigned to a group.
+          example: grp20220222zaigy4h2bw3
+          type: string
+        subUserID:
+          description: ID of the user this permission applies to if assigned directly to a
+            user.
+          example: usr20211123zz1dv7z
+          type: string
+      type: object
+    apiext.RunConstraints:
+      properties:
+        labels:
+          description: Agent run constraints. Used to control which agents a run can be
+            scheduled on.
+          items:
+            $ref: "#/components/schemas/apiext.AgentLabel"
+          type: array
+      type: object
+    apiext.SubmitPromptRequest:
+      properties:
+        id:
+          description: Unique ID of the prompt.
+          example: pmt20221122zyydx3rho2t
+          type: string
+        values:
+          additionalProperties:
+            type: string
+          description: >-
+            Mapping of parameter slug to value. You can find your prompt's
+            parameter slugs on
+
+            the Airplane runs page or by fetching the prompt via the API.
+          example:
+            limit: "20"
+            user: eric
+          type: object
+      type: object
+    apiext.SubmitPromptResponse:
+      properties:
+        id:
+          description: Unique ID of the prompt.
+          example: pmt20221122zyydx3rho2t
+          type: string
+      type: object
+    parameters.Constraints:
+      properties:
+        allowUnknownKeys:
+          description: Applicable for TypeObject parameters only.
+          type: boolean
+        optional:
+          description: >-
+            Optional determines whether this parameter must be set. A parameter
+            is considered
+
+            not set if its value is explicitly `null` or if the parameter's slug is not included
+
+            in the enclosing object. It does _not_ validate whether the value is "empty", f.e.
+
+            `""` for a string or `0` for an integer. To validate that, use a different constraint
+
+            such as a regex (or other, future constraints).
+
+
+            In other words, `Optional` means `Nullable`.
+          type: boolean
+        options: {}
+        regex:
+          type: string
+      type: object
+    parameters.Parameter:
+      properties:
+        component:
+          description: Used to specify UI-only type modifiers
+          enum:
+            - ""
+            - editor-sql
+            - textarea
+          example: textarea
+          type: string
+        constraints:
+          $ref: "#/components/schemas/parameters.Constraints"
+        default:
+          description: Optional default value for this parameter, used if not set.
+        desc:
+          description: Description for this parameter.
+          example: Email to use for selecting which user to edit.
+          type: string
+        name:
+          description: Name for this parameter.
+          example: User Email
+          type: string
+        parameters:
+          description: If this parameter has an object data type, represents an ordered
+            list of key-value pairs that can be included in this object.
+          items:
+            $ref: "#/components/schemas/parameters.Parameter"
+          type: array
+        slug:
+          description: A human-friendly identifier for the parameter.
+          example: user_email
+          type: string
+          x-docs-link: /platform/parameters#parameter-slugs
+        type:
+          description: Parameter data type.
+          enum:
+            - any
+            - string
+            - boolean
+            - upload
+            - integer
+            - float
+            - date
+            - datetime
+            - configvar
+            - list
+            - map
+            - object
+          example: string
+          type: string
+          x-docs-link: /platform/parameters#parameter-types
+        values:
+          $ref: "#/components/schemas/parameters.Parameter"
+      type: object
+    parameters.Parameters:
+      properties:
+        parameters:
+          items:
+            $ref: "#/components/schemas/parameters.Parameter"
+          type: array
+      type: object
+    promptsiface.Prompt:
+      properties:
+        cancelText:
+          description: Custom prompt cancellation text.
+          example: Reject workflow.
+          type: string
+        cancelledAt:
+          description: When this prompt was cancelled. This value will be null if the
+            prompt has not been cancelled.
+          example: 2022-01-11 22:32:46.601486+00
+          type: string
+        cancelledBy:
+          description: Who cancelled this this prompt. This value will be null if the
+            prompt has not been cancelled.
+          example: usr20220103zlufhym
+          type: string
+        confirmText:
+          description: Custom prompt confirmation text.
+          example: Approve workflow.
+          type: string
+        createdAt:
+          description: When this prompt was created.
+          example: 2022-01-11 22:32:45.601486+00
+          type: string
+        description:
+          description: Prompt description. Supports markdown.
+          example: Prompt workflow description.
+          type: string
+        id:
+          description: Unique ID of the prompt.
+          example: pmt20221122zyydx3rho2t
+          type: string
+        reviewers:
+          $ref: "#/components/schemas/promptsiface.Reviewers"
+        runID:
+          description: Unique ID of the run the prompt belongs to.
+          example: run20220111zlq2ig4
+          type: string
+        schema:
+          $ref: "#/components/schemas/parameters.Parameters"
+        submittedAt:
+          description: When this prompt was submitted. This value will be null if the
+            prompt has not been submitted.
+          example: 2022-01-11 22:32:46.601486+00
+          type: string
+        submittedBy:
+          description: Who submitted this this prompt. This value will be null if the
+            prompt has not been submitted.
+          example: usr20220103zlufhym
+          type: string
+        values:
+          additionalProperties:
+            type: string
+          description: Mapping of parameter slug to value submitted to this prompt.
+          example:
+            limit: "20"
+            user: eric
+          type: object
+      type: object
+    promptsiface.Reviewers:
+      properties:
+        allowSelfApprovals:
+          description: Whether or not self approvals are allowed.
+          example: false
+          type: boolean
+        groups:
+          description: Groups allowed to review a given prompt indentified by their slugs.
+          items:
+            type: string
+          type: array
+        users:
+          description: Users allowed to review a given prompt indentified by their emails.
+          items:
+            type: string
+          type: array
+      type: object
+    sharedtypes.JsonMapString:
+      additionalProperties:
+        type: string
+      type: object
