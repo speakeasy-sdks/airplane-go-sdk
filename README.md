@@ -74,7 +74,7 @@ func main() {
 ### Runs
 
 * `Cancel` - Cancel Run
-* `Get` - Cancel Run
+* `Get` - Get Run
 * `GetOutputs` - Get Run Outputs
 * `List` - List Runs
 
