@@ -19,6 +19,29 @@ go get github.com/speakeasy-sdks/airplane-go-sdk
 ```
 <!-- End SDK Installation -->
 
+## Authentication
+
+The Airplane API uses API keys to authenticate your requests. API keys are prefixed with `tkn_`. Authentication to the API is performed by supplying the `X-Airplane-API-Key` header. Runs and sessions created through the API are recorded as being run by `API user`.
+You can view and manage your API keys with the [Airplane CLI](https://docs.airplane.dev/platform/airplane-cli). To generate a new token:
+
+```bash
+airplane apikeys create <token name>
+```
+
+API keys can be created by `Team admins` and `Team developers`. See [Team Roles](https://docs.airplane.dev/platform/team-roles) for details.
+
+Your API keys carry the privileges to execute every task and runbook your team owns so be sure to keep them secure! Do not share your API keys in publicly accessible areas such as GitHub, client-side code, etc.
+
+All API requests must be made over HTTPS. Any requests made over plain HTTP will fail. Requests without a valid API key will fail and return a `401` error.
+
+```bash
+# Authenticated request example
+curl https://api.airplane.dev/v0/runs/get \
+    -H 'X-Airplane-API-Key: tkn_examplekey123456789EXAMPLEKEY1234567' \
+    -d id=run20220222example \
+    -G
+```
+
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```go
