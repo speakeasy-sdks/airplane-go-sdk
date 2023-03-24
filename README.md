@@ -40,7 +40,7 @@ func main() {
     )
 
     req := operations.ListPromptsRequest{
-        RunID: "123",
+        RunID: "unde",
     }
 
     ctx := context.Background()
@@ -74,7 +74,7 @@ func main() {
 ### Runs
 
 * `Cancel` - Cancel Run
-* `Get` - Get Run
+* `Get` - Cancel Run
 * `GetOutputs` - Get Run Outputs
 * `List` - List Runs
 

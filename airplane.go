@@ -84,8 +84,8 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *Airplane {
 	sdk := &Airplane{
 		_language:   "go",
-		_sdkVersion: "0.0.1",
-		_genVersion: "2.14.1",
+		_sdkVersion: "0.1.0",
+		_genVersion: "2.15.0",
 	}
 	for _, opt := range opts {
 		opt(sdk)
