@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"airplane-api/pkg/types"
+	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/types"
 )
 
 func populateForm(paramName string, explode bool, objType reflect.Type, objValue reflect.Value, getFieldName func(reflect.StructField) string) url.Values {

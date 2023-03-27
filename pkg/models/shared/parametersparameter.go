@@ -2,6 +2,11 @@
 
 package shared
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // ParametersParameterComponentEnum - Used to specify UI-only type modifiers
 type ParametersParameterComponentEnum string
 
@@ -10,6 +15,24 @@ const (
 	ParametersParameterComponentEnumEditorSQL ParametersParameterComponentEnum = "editor-sql"
 	ParametersParameterComponentEnumTextarea  ParametersParameterComponentEnum = "textarea"
 )
+
+func (e *ParametersParameterComponentEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "":
+		fallthrough
+	case "editor-sql":
+		fallthrough
+	case "textarea":
+		*e = ParametersParameterComponentEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ParametersParameterComponentEnum: %s", s)
+	}
+}
 
 // ParametersParameterTypeEnum - Parameter data type.
 type ParametersParameterTypeEnum string
@@ -28,6 +51,42 @@ const (
 	ParametersParameterTypeEnumMap       ParametersParameterTypeEnum = "map"
 	ParametersParameterTypeEnumObject    ParametersParameterTypeEnum = "object"
 )
+
+func (e *ParametersParameterTypeEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "any":
+		fallthrough
+	case "string":
+		fallthrough
+	case "boolean":
+		fallthrough
+	case "upload":
+		fallthrough
+	case "integer":
+		fallthrough
+	case "float":
+		fallthrough
+	case "date":
+		fallthrough
+	case "datetime":
+		fallthrough
+	case "configvar":
+		fallthrough
+	case "list":
+		fallthrough
+	case "map":
+		fallthrough
+	case "object":
+		*e = ParametersParameterTypeEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ParametersParameterTypeEnum: %s", s)
+	}
+}
 
 type ParametersParameter struct {
 	// Used to specify UI-only type modifiers

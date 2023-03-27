@@ -2,6 +2,11 @@
 
 package shared
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // ApiextPermissionRoleIDEnum - Which role is assigned to this permission.
 type ApiextPermissionRoleIDEnum string
 
@@ -24,6 +29,52 @@ const (
 	ApiextPermissionRoleIDEnumDeployCreator    ApiextPermissionRoleIDEnum = "deploy_creator"
 	ApiextPermissionRoleIDEnumGroupAdmin       ApiextPermissionRoleIDEnum = "group_admin"
 )
+
+func (e *ApiextPermissionRoleIDEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "team_admin":
+		fallthrough
+	case "team_developer":
+		fallthrough
+	case "task_viewer":
+		fallthrough
+	case "task_requester":
+		fallthrough
+	case "task_executer":
+		fallthrough
+	case "task_admin":
+		fallthrough
+	case "run_viewer":
+		fallthrough
+	case "runbook_viewer":
+		fallthrough
+	case "runbook_requester":
+		fallthrough
+	case "runbook_executer":
+		fallthrough
+	case "runbook_admin":
+		fallthrough
+	case "session_viewer":
+		fallthrough
+	case "session_executer":
+		fallthrough
+	case "session_admin":
+		fallthrough
+	case "resource_user":
+		fallthrough
+	case "deploy_creator":
+		fallthrough
+	case "group_admin":
+		*e = ApiextPermissionRoleIDEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ApiextPermissionRoleIDEnum: %s", s)
+	}
+}
 
 type ApiextPermission struct {
 	// Which action this permission applies to.

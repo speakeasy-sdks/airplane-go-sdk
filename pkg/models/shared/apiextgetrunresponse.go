@@ -2,6 +2,11 @@
 
 package shared
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // ApiextGetRunResponseRuntimeEnum - Runtime that this run executed on.
 type ApiextGetRunResponseRuntimeEnum string
 
@@ -9,6 +14,22 @@ const (
 	ApiextGetRunResponseRuntimeEnumStandard ApiextGetRunResponseRuntimeEnum = "standard"
 	ApiextGetRunResponseRuntimeEnumWorkflow ApiextGetRunResponseRuntimeEnum = "workflow"
 )
+
+func (e *ApiextGetRunResponseRuntimeEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "standard":
+		fallthrough
+	case "workflow":
+		*e = ApiextGetRunResponseRuntimeEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ApiextGetRunResponseRuntimeEnum: %s", s)
+	}
+}
 
 // ApiextGetRunResponseStatusEnum - Status of this run.
 type ApiextGetRunResponseStatusEnum string
@@ -21,6 +42,30 @@ const (
 	ApiextGetRunResponseStatusEnumFailed     ApiextGetRunResponseStatusEnum = "Failed"
 	ApiextGetRunResponseStatusEnumCancelled  ApiextGetRunResponseStatusEnum = "Cancelled"
 )
+
+func (e *ApiextGetRunResponseStatusEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "NotStarted":
+		fallthrough
+	case "Queued":
+		fallthrough
+	case "Active":
+		fallthrough
+	case "Succeeded":
+		fallthrough
+	case "Failed":
+		fallthrough
+	case "Cancelled":
+		*e = ApiextGetRunResponseStatusEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ApiextGetRunResponseStatusEnum: %s", s)
+	}
+}
 
 // ApiextGetRunResponse - OK
 type ApiextGetRunResponse struct {

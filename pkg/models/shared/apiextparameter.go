@@ -2,6 +2,11 @@
 
 package shared
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // ApiextParameterComponentEnum - Used to specify UI-only type modifiers
 type ApiextParameterComponentEnum string
 
@@ -10,6 +15,24 @@ const (
 	ApiextParameterComponentEnumEditorSQL ApiextParameterComponentEnum = "editor-sql"
 	ApiextParameterComponentEnumTextarea  ApiextParameterComponentEnum = "textarea"
 )
+
+func (e *ApiextParameterComponentEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "":
+		fallthrough
+	case "editor-sql":
+		fallthrough
+	case "textarea":
+		*e = ApiextParameterComponentEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ApiextParameterComponentEnum: %s", s)
+	}
+}
 
 // ApiextParameterTypeEnum - Parameter data type.
 type ApiextParameterTypeEnum string
@@ -28,6 +51,42 @@ const (
 	ApiextParameterTypeEnumMap       ApiextParameterTypeEnum = "map"
 	ApiextParameterTypeEnumObject    ApiextParameterTypeEnum = "object"
 )
+
+func (e *ApiextParameterTypeEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "any":
+		fallthrough
+	case "string":
+		fallthrough
+	case "boolean":
+		fallthrough
+	case "upload":
+		fallthrough
+	case "integer":
+		fallthrough
+	case "float":
+		fallthrough
+	case "date":
+		fallthrough
+	case "datetime":
+		fallthrough
+	case "configvar":
+		fallthrough
+	case "list":
+		fallthrough
+	case "map":
+		fallthrough
+	case "object":
+		*e = ApiextParameterTypeEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ApiextParameterTypeEnum: %s", s)
+	}
+}
 
 type ApiextParameter struct {
 	// Used to specify UI-only type modifiers

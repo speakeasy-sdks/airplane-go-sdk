@@ -50,9 +50,9 @@ package main
 import (
     "context"
     "log"
-    "airplane-api"
-    "airplane-api/pkg/models/shared"
-    "airplane-api/pkg/models/operations"
+    "github.com/speakeasy-sdks/airplane-go-sdk"
+    "github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
+    "github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {

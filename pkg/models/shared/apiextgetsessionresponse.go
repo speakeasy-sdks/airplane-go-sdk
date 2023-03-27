@@ -2,6 +2,11 @@
 
 package shared
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 // ApiextGetSessionResponseStatusEnum - Status of this session.
 type ApiextGetSessionResponseStatusEnum string
 
@@ -14,6 +19,32 @@ const (
 	ApiextGetSessionResponseStatusEnumCancelling ApiextGetSessionResponseStatusEnum = "Cancelling"
 	ApiextGetSessionResponseStatusEnumCancelled  ApiextGetSessionResponseStatusEnum = "Cancelled"
 )
+
+func (e *ApiextGetSessionResponseStatusEnum) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	switch s {
+	case "Pending":
+		fallthrough
+	case "Active":
+		fallthrough
+	case "Waiting":
+		fallthrough
+	case "Succeeded":
+		fallthrough
+	case "Failed":
+		fallthrough
+	case "Cancelling":
+		fallthrough
+	case "Cancelled":
+		*e = ApiextGetSessionResponseStatusEnum(s)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ApiextGetSessionResponseStatusEnum: %s", s)
+	}
+}
 
 // ApiextGetSessionResponse - OK
 type ApiextGetSessionResponse struct {
