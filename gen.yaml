@@ -11,4 +11,4 @@ generation:
   singleTagPerOp: false
 go:
   version: 0.1.0
-  packageName: airplane-api
+  packageName: github.com/speakeasy-sdks/airplane-go-sdk
