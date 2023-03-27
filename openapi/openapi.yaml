@@ -6,7 +6,7 @@ info:
   description: Airplane API
   termsOfService: https://www.airplane.dev/terms
   title: Airplane API
-  version: 0.0.0
+  version: 0.0.1
     
 servers:
   - url: https://api.airplane.dev/v0
