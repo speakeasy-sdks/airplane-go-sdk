@@ -15,7 +15,7 @@
 ## SDK Installation
 
 ```bash
-go get github.com/speakeasy-sdks/airplane-go-sdk
+go get github.com/speakeasy-sdks/airplane-go-sdk@v1.0.3
 ```
 <!-- End SDK Installation -->
 
