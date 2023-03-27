@@ -128,7 +128,6 @@ paths:
   /runbooks/execute:
     post:
       operationId: executeRunbook
-      x-speakeasy-name-override: execute
       description: >-
         Execute a runbook and receive a session ID to track the runbook's
         execution.
@@ -320,7 +319,7 @@ paths:
           example: 2022-01-01T13:00:00-00:00
           schema:
             type: string
-        - description: "Number of results per call. Accepted values: 0 - 50. Default: 50."
+        - description: "Number of results per call. Accepted values: 0 - 50. The default: 50."
           in: query
           name: limit
           example: "10"
