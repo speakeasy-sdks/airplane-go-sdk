@@ -84,7 +84,7 @@ paths:
   /prompts/list:
     get:
       operationId: listPrompts
-      description: List prompts from an existing run.
+      description: List prompts from existing runs.
       summary: List Prompts
       x-speakeasy-usage-example: true
       tags:
