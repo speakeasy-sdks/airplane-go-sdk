@@ -10,5 +10,5 @@ generation:
   sdkFlattening: true
   singleTagPerOp: true
 go:
-  version: 0.2.2
+  version: 1.0.2
   packageName: github.com/speakeasy-sdks/airplane-go-sdk
