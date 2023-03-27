@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 management:
-  docChecksum: f32fdd44195bc6a14bb108eb836f80e2
+  docChecksum: 155b8047775c407438a5ef4faaf0dc64
   docVersion: 0.0.1
   speakeasyVersion: 1.18.9
   generationVersion: 2.16.4
@@ -10,5 +10,5 @@ generation:
   sdkFlattening: true
   singleTagPerOp: true
 go:
-  version: 0.2.1
+  version: 0.2.2
   packageName: github.com/speakeasy-sdks/airplane-go-sdk
