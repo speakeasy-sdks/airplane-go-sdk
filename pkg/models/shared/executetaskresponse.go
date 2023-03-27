@@ -2,8 +2,8 @@
 
 package shared
 
-// ApiextCancelRunRequest - CancelRunRequest
-type ApiextCancelRunRequest struct {
-	// Unique ID of the run to cancel.
+// ExecuteTaskResponse - OK
+type ExecuteTaskResponse struct {
+	// Unique ID of the task execution's run.
 	RunID *string `json:"runID,omitempty"`
 }

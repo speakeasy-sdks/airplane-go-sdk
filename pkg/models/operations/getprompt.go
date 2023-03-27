@@ -14,8 +14,8 @@ type GetPromptRequest struct {
 
 type GetPromptResponse struct {
 	ContentType string
-	StatusCode  int
-	RawResponse *http.Response
 	// OK
-	ApiextGetPromptResponse *shared.ApiextGetPromptResponse
+	GetPromptResponse *shared.GetPromptResponse
+	StatusCode        int
+	RawResponse       *http.Response
 }

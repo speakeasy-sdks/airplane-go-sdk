@@ -70,12 +70,12 @@ func (s *sessions) Get(ctx context.Context, request operations.GetSessionRequest
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextGetSessionResponse
+			var out *shared.GetSessionResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextGetSessionResponse = out
+			res.GetSessionResponse = out
 		}
 	}
 
@@ -118,12 +118,12 @@ func (s *sessions) List(ctx context.Context, request operations.ListSessionsRequ
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextListSessionResponse
+			var out *shared.ListSessionResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextListSessionResponse = out
+			res.ListSessionResponse = out
 		}
 	}
 

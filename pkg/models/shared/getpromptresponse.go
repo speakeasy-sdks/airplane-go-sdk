@@ -2,7 +2,7 @@
 
 package shared
 
-// ApiextGetPromptResponse - OK
-type ApiextGetPromptResponse struct {
+// GetPromptResponse - OK
+type GetPromptResponse struct {
 	Prompt *PromptsifacePrompt `json:"prompt,omitempty"`
 }

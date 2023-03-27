@@ -36,7 +36,7 @@ func newRuns(defaultClient, securityClient HTTPClient, serverURL, language, sdkV
 // Cancel - Cancel Run
 // Cancel a run.
 // Check on the status of your run with [/runs/get](/api/runs#runs-get).
-func (s *runs) Cancel(ctx context.Context, request shared.ApiextCancelRunRequest) (*operations.CancelRunResponse, error) {
+func (s *runs) Cancel(ctx context.Context, request shared.CancelRunRequest) (*operations.CancelRunResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runs/cancel"
 
@@ -114,12 +114,12 @@ func (s *runs) Get(ctx context.Context, request operations.GetRunRequest) (*oper
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextGetRunResponse
+			var out *shared.GetRunResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextGetRunResponse = out
+			res.GetRunResponse = out
 		}
 	}
 
@@ -163,12 +163,12 @@ func (s *runs) GetOutputs(ctx context.Context, request operations.GetOutputsRequ
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextGetOutputsResponse
+			var out *shared.GetOutputsResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextGetOutputsResponse = out
+			res.GetOutputsResponse = out
 		}
 	}
 
@@ -211,12 +211,12 @@ func (s *runs) List(ctx context.Context, request operations.ListRunsRequest) (*o
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextListRunsResponse
+			var out *shared.ListRunsResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextListRunsResponse = out
+			res.ListRunsResponse = out
 		}
 	}
 

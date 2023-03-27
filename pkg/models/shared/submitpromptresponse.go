@@ -2,8 +2,8 @@
 
 package shared
 
-// ApiextCancelPromptRequest - CancelPromptRequest
-type ApiextCancelPromptRequest struct {
+// SubmitPromptResponse - OK
+type SubmitPromptResponse struct {
 	// Unique ID of the prompt.
 	ID *string `json:"id,omitempty"`
 }

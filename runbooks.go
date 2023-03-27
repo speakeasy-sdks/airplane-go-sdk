@@ -40,7 +40,7 @@ func (s *runbooks) Execute(ctx context.Context, request operations.ExecuteRunboo
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runbooks/execute"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "ApiextExecuteRunbookRequest", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "ExecuteRunbookRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -81,12 +81,12 @@ func (s *runbooks) Execute(ctx context.Context, request operations.ExecuteRunboo
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextExecuteRunbookResponse
+			var out *shared.ExecuteRunbookResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextExecuteRunbookResponse = out
+			res.ExecuteRunbookResponse = out
 		}
 	}
 

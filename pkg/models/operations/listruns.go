@@ -24,8 +24,8 @@ type ListRunsRequest struct {
 
 type ListRunsResponse struct {
 	ContentType string
-	StatusCode  int
-	RawResponse *http.Response
 	// OK
-	ApiextListRunsResponse *shared.ApiextListRunsResponse
+	ListRunsResponse *shared.ListRunsResponse
+	StatusCode       int
+	RawResponse      *http.Response
 }

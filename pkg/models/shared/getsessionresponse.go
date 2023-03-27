@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-// ApiextGetSessionResponseStatusEnum - Status of this session.
-type ApiextGetSessionResponseStatusEnum string
+// GetSessionResponseStatusEnum - Status of this session.
+type GetSessionResponseStatusEnum string
 
 const (
-	ApiextGetSessionResponseStatusEnumPending    ApiextGetSessionResponseStatusEnum = "Pending"
-	ApiextGetSessionResponseStatusEnumActive     ApiextGetSessionResponseStatusEnum = "Active"
-	ApiextGetSessionResponseStatusEnumWaiting    ApiextGetSessionResponseStatusEnum = "Waiting"
-	ApiextGetSessionResponseStatusEnumSucceeded  ApiextGetSessionResponseStatusEnum = "Succeeded"
-	ApiextGetSessionResponseStatusEnumFailed     ApiextGetSessionResponseStatusEnum = "Failed"
-	ApiextGetSessionResponseStatusEnumCancelling ApiextGetSessionResponseStatusEnum = "Cancelling"
-	ApiextGetSessionResponseStatusEnumCancelled  ApiextGetSessionResponseStatusEnum = "Cancelled"
+	GetSessionResponseStatusEnumPending    GetSessionResponseStatusEnum = "Pending"
+	GetSessionResponseStatusEnumActive     GetSessionResponseStatusEnum = "Active"
+	GetSessionResponseStatusEnumWaiting    GetSessionResponseStatusEnum = "Waiting"
+	GetSessionResponseStatusEnumSucceeded  GetSessionResponseStatusEnum = "Succeeded"
+	GetSessionResponseStatusEnumFailed     GetSessionResponseStatusEnum = "Failed"
+	GetSessionResponseStatusEnumCancelling GetSessionResponseStatusEnum = "Cancelling"
+	GetSessionResponseStatusEnumCancelled  GetSessionResponseStatusEnum = "Cancelled"
 )
 
-func (e *ApiextGetSessionResponseStatusEnum) UnmarshalJSON(data []byte) error {
+func (e *GetSessionResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
 		return err
@@ -39,15 +39,15 @@ func (e *ApiextGetSessionResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	case "Cancelling":
 		fallthrough
 	case "Cancelled":
-		*e = ApiextGetSessionResponseStatusEnum(s)
+		*e = GetSessionResponseStatusEnum(s)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ApiextGetSessionResponseStatusEnum: %s", s)
+		return fmt.Errorf("invalid value for GetSessionResponseStatusEnum: %s", s)
 	}
 }
 
-// ApiextGetSessionResponse - OK
-type ApiextGetSessionResponse struct {
+// GetSessionResponse - OK
+type GetSessionResponse struct {
 	// When this session was created.
 	CreatedAt *string `json:"createdAt,omitempty"`
 	// ID of the user that created this session.
@@ -61,13 +61,13 @@ type ApiextGetSessionResponse struct {
 	// Mapping of parameter slug to value used in this session's execution.
 	ParamValues map[string]string `json:"paramValues,omitempty"`
 	// Schema for the set of values users can provide when executing this session.
-	Params []ApiextParameter `json:"params,omitempty"`
+	Params []Parameter `json:"params,omitempty"`
 	// Explicit permissions of this session if it is private.
-	Permissions []ApiextPermission `json:"permissions,omitempty"`
+	Permissions []Permission `json:"permissions,omitempty"`
 	// ID of the runbook this session was spawned from if triggered from a runbook.
 	RunbookID *string `json:"runbookID,omitempty"`
 	// Status of this session.
-	Status *ApiextGetSessionResponseStatusEnum `json:"status,omitempty"`
+	Status *GetSessionResponseStatusEnum `json:"status,omitempty"`
 	// ID of the team that owns this session.
 	TeamID *string `json:"teamID,omitempty"`
 	// When this session was updated.

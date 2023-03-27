@@ -72,7 +72,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.ApiextListPromptsResponse != nil {
+    if res.ListPromptsResponse != nil {
         // handle response
     }
 }

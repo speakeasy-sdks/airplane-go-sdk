@@ -2,7 +2,7 @@
 
 package shared
 
-type ApiextConstraints struct {
+type Constraints struct {
 	// Determines whether this parameter must be set.
 	Optional *bool `json:"optional,omitempty"`
 	// Valid values for a given parameter.

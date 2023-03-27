@@ -9,15 +9,15 @@ import (
 
 type ExecuteTaskRequest struct {
 	// ExecuteTaskRequest
-	ApiextExecuteTaskRequest shared.ApiextExecuteTaskRequest `request:"mediaType=application/json"`
+	ExecuteTaskRequest shared.ExecuteTaskRequest `request:"mediaType=application/json"`
 	// Environment to execute the task in.
 	EnvSlug *string `queryParam:"style=form,explode=true,name=envSlug"`
 }
 
 type ExecuteTaskResponse struct {
 	ContentType string
-	StatusCode  int
-	RawResponse *http.Response
 	// OK
-	ApiextExecuteTaskResponse *shared.ApiextExecuteTaskResponse
+	ExecuteTaskResponse *shared.ExecuteTaskResponse
+	StatusCode          int
+	RawResponse         *http.Response
 }

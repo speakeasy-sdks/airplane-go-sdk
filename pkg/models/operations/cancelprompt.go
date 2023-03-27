@@ -8,9 +8,9 @@ import (
 )
 
 type CancelPromptResponse struct {
-	ContentType string
-	StatusCode  int
-	RawResponse *http.Response
 	// OK
-	ApiextCancelPromptResponse *shared.ApiextCancelPromptResponse
+	CancelPromptResponse *shared.CancelPromptResponse
+	ContentType          string
+	StatusCode           int
+	RawResponse          *http.Response
 }

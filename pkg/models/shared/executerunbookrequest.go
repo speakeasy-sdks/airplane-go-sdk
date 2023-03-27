@@ -2,8 +2,8 @@
 
 package shared
 
-// ApiextExecuteRunbookRequest - ExecuteRunbookRequest
-type ApiextExecuteRunbookRequest struct {
+// ExecuteRunbookRequest - ExecuteRunbookRequest
+type ExecuteRunbookRequest struct {
 	// Unique ID of the runbook. You can find your runbook's ID by visiting the runbook's page on Airplane.
 	// The runbook ID is located at the end of the url.
 	//

@@ -2,8 +2,8 @@
 
 package shared
 
-// ApiextListPromptsResponse - OK
-type ApiextListPromptsResponse struct {
+// ListPromptsResponse - OK
+type ListPromptsResponse struct {
 	// Retrieved prompts.
 	Prompts []PromptsifacePrompt `json:"prompts,omitempty"`
 }

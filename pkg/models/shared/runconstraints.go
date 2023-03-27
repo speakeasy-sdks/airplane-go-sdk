@@ -2,7 +2,7 @@
 
 package shared
 
-type ApiextRunConstraints struct {
+type RunConstraints struct {
 	// Agent run constraints. Used to control which agents a run can be scheduled on.
-	Labels []ApiextAgentLabel `json:"labels,omitempty"`
+	Labels []AgentLabel `json:"labels,omitempty"`
 }

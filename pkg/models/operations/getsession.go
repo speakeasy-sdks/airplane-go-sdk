@@ -14,8 +14,8 @@ type GetSessionRequest struct {
 
 type GetSessionResponse struct {
 	ContentType string
-	StatusCode  int
-	RawResponse *http.Response
 	// OK
-	ApiextGetSessionResponse *shared.ApiextGetSessionResponse
+	GetSessionResponse *shared.GetSessionResponse
+	StatusCode         int
+	RawResponse        *http.Response
 }

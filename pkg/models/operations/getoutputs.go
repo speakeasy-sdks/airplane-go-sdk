@@ -14,8 +14,8 @@ type GetOutputsRequest struct {
 
 type GetOutputsResponse struct {
 	ContentType string
-	StatusCode  int
-	RawResponse *http.Response
 	// OK
-	ApiextGetOutputsResponse *shared.ApiextGetOutputsResponse
+	GetOutputsResponse *shared.GetOutputsResponse
+	StatusCode         int
+	RawResponse        *http.Response
 }

@@ -9,15 +9,15 @@ import (
 
 type ExecuteRunbookRequest struct {
 	// ExecuteRunbookRequest
-	ApiextExecuteRunbookRequest shared.ApiextExecuteRunbookRequest `request:"mediaType=application/json"`
+	ExecuteRunbookRequest shared.ExecuteRunbookRequest `request:"mediaType=application/json"`
 	// Environment to execute the runbook in.
 	EnvSlug *string `queryParam:"style=form,explode=true,name=envSlug"`
 }
 
 type ExecuteRunbookResponse struct {
 	ContentType string
-	StatusCode  int
-	RawResponse *http.Response
 	// OK
-	ApiextExecuteRunbookResponse *shared.ApiextExecuteRunbookResponse
+	ExecuteRunbookResponse *shared.ExecuteRunbookResponse
+	StatusCode             int
+	RawResponse            *http.Response
 }

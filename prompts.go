@@ -35,7 +35,7 @@ func newPrompts(defaultClient, securityClient HTTPClient, serverURL, language, s
 
 // Cancel - Cancel Prompt
 // Cancel a prompt.
-func (s *prompts) Cancel(ctx context.Context, request shared.ApiextCancelPromptRequest) (*operations.CancelPromptResponse, error) {
+func (s *prompts) Cancel(ctx context.Context, request shared.CancelPromptRequest) (*operations.CancelPromptResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/cancel"
 
@@ -76,12 +76,12 @@ func (s *prompts) Cancel(ctx context.Context, request shared.ApiextCancelPromptR
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextCancelPromptResponse
+			var out *shared.CancelPromptResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextCancelPromptResponse = out
+			res.CancelPromptResponse = out
 		}
 	}
 
@@ -125,12 +125,12 @@ func (s *prompts) Get(ctx context.Context, request operations.GetPromptRequest) 
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextGetPromptResponse
+			var out *shared.GetPromptResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextGetPromptResponse = out
+			res.GetPromptResponse = out
 		}
 	}
 
@@ -138,7 +138,7 @@ func (s *prompts) Get(ctx context.Context, request operations.GetPromptRequest) 
 }
 
 // List - List Prompts
-// List prompts from an existing run.
+// List prompts from existing runs.
 func (s *prompts) List(ctx context.Context, request operations.ListPromptsRequest) (*operations.ListPromptsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/list"
@@ -174,12 +174,12 @@ func (s *prompts) List(ctx context.Context, request operations.ListPromptsReques
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextListPromptsResponse
+			var out *shared.ListPromptsResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextListPromptsResponse = out
+			res.ListPromptsResponse = out
 		}
 	}
 
@@ -188,7 +188,7 @@ func (s *prompts) List(ctx context.Context, request operations.ListPromptsReques
 
 // Submit - Submit Prompt
 // Submit a prompt with a set of parameter values.
-func (s *prompts) Submit(ctx context.Context, request shared.ApiextSubmitPromptRequest) (*operations.SubmitPromptResponse, error) {
+func (s *prompts) Submit(ctx context.Context, request shared.SubmitPromptRequest) (*operations.SubmitPromptResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/submit"
 
@@ -229,12 +229,12 @@ func (s *prompts) Submit(ctx context.Context, request shared.ApiextSubmitPromptR
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextSubmitPromptResponse
+			var out *shared.SubmitPromptResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextSubmitPromptResponse = out
+			res.SubmitPromptResponse = out
 		}
 	}
 

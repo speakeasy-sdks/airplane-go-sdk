@@ -40,7 +40,7 @@ func (s *tasks) Execute(ctx context.Context, request operations.ExecuteTaskReque
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/tasks/execute"
 
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "ApiextExecuteTaskRequest", "json")
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "ExecuteTaskRequest", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
@@ -81,12 +81,12 @@ func (s *tasks) Execute(ctx context.Context, request operations.ExecuteTaskReque
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.ApiextExecuteTaskResponse
+			var out *shared.ExecuteTaskResponse
 			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
 				return nil, err
 			}
 
-			res.ApiextExecuteTaskResponse = out
+			res.ExecuteTaskResponse = out
 		}
 	}
 

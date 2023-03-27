@@ -2,8 +2,8 @@
 
 package shared
 
-// ApiextSubmitPromptRequest - SubmitPromptRequest
-type ApiextSubmitPromptRequest struct {
+// SubmitPromptRequest - SubmitPromptRequest
+type SubmitPromptRequest struct {
 	// Unique ID of the prompt.
 	ID *string `json:"id,omitempty"`
 	// Mapping of parameter slug to value. You can find your prompt's parameter slugs on

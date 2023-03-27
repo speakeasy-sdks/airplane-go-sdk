@@ -12,5 +12,5 @@ type SubmitPromptResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
-	ApiextSubmitPromptResponse *shared.ApiextSubmitPromptResponse
+	SubmitPromptResponse *shared.SubmitPromptResponse
 }

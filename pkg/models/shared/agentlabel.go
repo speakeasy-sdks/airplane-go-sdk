@@ -2,7 +2,7 @@
 
 package shared
 
-type ApiextAgentLabel struct {
+type AgentLabel struct {
 	// Agent label key.
 	Key *string `json:"key,omitempty"`
 	// Agent label value.

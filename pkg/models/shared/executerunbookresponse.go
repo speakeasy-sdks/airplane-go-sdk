@@ -2,8 +2,8 @@
 
 package shared
 
-// ApiextExecuteRunbookResponse - OK
-type ApiextExecuteRunbookResponse struct {
+// ExecuteRunbookResponse - OK
+type ExecuteRunbookResponse struct {
 	// Unique ID of the runbook's session.
 	SessionID *string `json:"sessionID,omitempty"`
 }
