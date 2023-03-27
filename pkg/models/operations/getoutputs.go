@@ -3,7 +3,7 @@
 package operations
 
 import (
-	"airplane-api/pkg/models/shared"
+	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"net/http"
 )
 

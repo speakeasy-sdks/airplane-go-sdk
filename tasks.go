@@ -3,11 +3,11 @@
 package airplane
 
 import (
-	"airplane-api/pkg/models/operations"
-	"airplane-api/pkg/models/shared"
-	"airplane-api/pkg/utils"
 	"context"
 	"fmt"
+	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
+	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/utils"
 	"net/http"
 	"strings"
 )

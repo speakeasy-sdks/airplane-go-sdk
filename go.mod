@@ -1,4 +1,4 @@
-module airplane-api
+module github.com/speakeasy-sdks/airplane-go-sdk
 
 go 1.14
 
