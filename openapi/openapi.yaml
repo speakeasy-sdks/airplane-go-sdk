@@ -86,6 +86,7 @@ paths:
       operationId: listPrompts
       description: List prompts from an existing run.
       summary: List Prompts
+      x-speakeasy-usage-example: true
       tags:
         - Prompts
       parameters:
