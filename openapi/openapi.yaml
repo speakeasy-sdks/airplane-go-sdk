@@ -47,7 +47,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/apiext.CancelPromptRequest"
+              $ref: "#/components/schemas/CancelPromptRequest"
         description: CancelPromptRequest
         required: true
       responses:
@@ -56,7 +56,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.CancelPromptResponse"
+                $ref: "#/components/schemas/CancelPromptResponse"
       
   /prompts/get:
     get:
@@ -79,7 +79,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.GetPromptResponse"
+                $ref: "#/components/schemas/GetPromptResponse"
       
   /prompts/list:
     get:
@@ -103,7 +103,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.ListPromptsResponse"
+                $ref: "#/components/schemas/ListPromptsResponse"
       
   /prompts/submit:
     post:
@@ -113,7 +113,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/apiext.SubmitPromptRequest"
+              $ref: "#/components/schemas/SubmitPromptRequest"
         description: SubmitPromptRequest
         required: true
       responses:
@@ -122,7 +122,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.SubmitPromptResponse"
+                $ref: "#/components/schemas/SubmitPromptResponse"
       summary: Submit Prompt
       tags:
         - Prompts
@@ -148,7 +148,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/apiext.ExecuteRunbookRequest"
+              $ref: "#/components/schemas/ExecuteRunbookRequest"
         description: ExecuteRunbookRequest
         required: true
       responses:
@@ -157,7 +157,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.ExecuteRunbookResponse"
+                $ref: "#/components/schemas/ExecuteRunbookResponse"
   /runs/cancel:
     post:
       operationId: cancelRun
@@ -171,7 +171,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/apiext.CancelRunRequest"
+              $ref: "#/components/schemas/CancelRunRequest"
         description: CancelRunRequest
         required: true
       responses: {}
@@ -197,7 +197,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.GetRunResponse"
+                $ref: "#/components/schemas/GetRunResponse"
   /runs/getOutputs:
     get:
       operationId: getOutputs
@@ -220,7 +220,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.GetOutputsResponse"
+                $ref: "#/components/schemas/GetOutputsResponse"
   /runs/list:
     get:
       operationId: listRuns
@@ -270,7 +270,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.ListRunsResponse"
+                $ref: "#/components/schemas/ListRunsResponse"
       
   /sessions/get:
     get:
@@ -293,7 +293,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.GetSessionResponse"
+                $ref: "#/components/schemas/GetSessionResponse"
       
   /sessions/list:
     get:
@@ -338,7 +338,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.ListSessionResponse"
+                $ref: "#/components/schemas/ListSessionResponse"
   /tasks/execute:
     post:
       operationId: executeTask
@@ -361,7 +361,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/apiext.ExecuteTaskRequest"
+              $ref: "#/components/schemas/ExecuteTaskRequest"
         description: ExecuteTaskRequest
         required: true
       responses:
@@ -370,7 +370,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/apiext.ExecuteTaskResponse"
+                $ref: "#/components/schemas/ExecuteTaskResponse"
       
 components:
   securitySchemes:
@@ -379,7 +379,7 @@ components:
       name: X-Airplane-API-Key
       type: apiKey
   schemas:
-    apiext.AgentLabel:
+    AgentLabel:
       properties:
         key:
           description: Agent label key.
@@ -390,28 +390,28 @@ components:
           example: west-2
           type: string
       type: object
-    apiext.CancelPromptRequest:
+    CancelPromptRequest:
       properties:
         id:
           description: Unique ID of the prompt.
           example: pmt20221122zyydx3rho2t
           type: string
       type: object
-    apiext.CancelPromptResponse:
+    CancelPromptResponse:
       properties:
         id:
           description: Unique ID of the prompt.
           example: pmt20221122zyydx3rho2t
           type: string
       type: object
-    apiext.CancelRunRequest:
+    CancelRunRequest:
       properties:
         runID:
           description: Unique ID of the run to cancel.
           example: run20220111zlq2ig4
           type: string
       type: object
-    apiext.Constraints:
+    Constraints:
       properties:
         optional:
           description: Determines whether this parameter must be set.
@@ -422,7 +422,7 @@ components:
           description: Regular expression used to determine if a parameter is valid.
           type: string
       type: object
-    apiext.ExecuteRunbookRequest:
+    ExecuteRunbookRequest:
       properties:
         id:
           description: >-
@@ -461,14 +461,14 @@ components:
       required:
         - id
       type: object
-    apiext.ExecuteRunbookResponse:
+    ExecuteRunbookResponse:
       properties:
         sessionID:
           description: Unique ID of the runbook's session.
           example: ses20220120za1pskd
           type: string
       type: object
-    apiext.ExecuteTaskRequest:
+    ExecuteTaskRequest:
       properties:
         id:
           description: >-
@@ -510,14 +510,14 @@ components:
           example: hello_world
           type: string
       type: object
-    apiext.ExecuteTaskResponse:
+    ExecuteTaskResponse:
       properties:
         runID:
           description: Unique ID of the task execution's run.
           example: run20220215zv10o6s52qj
           type: string
       type: object
-    apiext.GetOutputsResponse:
+    GetOutputsResponse:
       properties:
         output:
           additionalProperties:
@@ -529,12 +529,12 @@ components:
           type: object
           x-docs-link: /tasks/outputs
       type: object
-    apiext.GetPromptResponse:
+    GetPromptResponse:
       properties:
         prompt:
           $ref: "#/components/schemas/promptsiface.Prompt"
       type: object
-    apiext.GetRunResponse:
+    GetRunResponse:
       properties:
         activeAt:
           description: When the run became active. Empty if this run has not started yet.
@@ -549,7 +549,7 @@ components:
           example: run20220111zlq2ig4
           type: string
         constraints:
-          $ref: "#/components/schemas/apiext.RunConstraints"
+          $ref: "#/components/schemas/RunConstraints"
         createdAt:
           description: When this run was created.
           example: 2022-01-11 22:32:45.601486+00
@@ -582,13 +582,13 @@ components:
           description: Schema for the set of values users can provide when executing this
             run.
           items:
-            $ref: "#/components/schemas/apiext.Parameter"
+            $ref: "#/components/schemas/Parameter"
           type: array
           x-docs-link: /platform/parameters
         permissions:
           description: Explicit permissions of this run if it is private.
           items:
-            $ref: "#/components/schemas/apiext.Permission"
+            $ref: "#/components/schemas/Permission"
           type: array
           x-docs-link: /platform/permissions
         resources:
@@ -642,7 +642,7 @@ components:
           example: zon20230224zu6zo7yyn65
           type: string
       type: object
-    apiext.GetSessionResponse:
+    GetSessionResponse:
       properties:
         createdAt:
           description: When this session was created.
@@ -676,13 +676,13 @@ components:
           description: Schema for the set of values users can provide when executing this
             session.
           items:
-            $ref: "#/components/schemas/apiext.Parameter"
+            $ref: "#/components/schemas/Parameter"
           type: array
           x-docs-link: /platform/parameters
         permissions:
           description: Explicit permissions of this session if it is private.
           items:
-            $ref: "#/components/schemas/apiext.Permission"
+            $ref: "#/components/schemas/Permission"
           type: array
           x-docs-link: /platform/permissions
         runbookID:
@@ -715,7 +715,7 @@ components:
           example: ses20220120za1pskd
           type: string
       type: object
-    apiext.ListPromptsResponse:
+    ListPromptsResponse:
       properties:
         prompts:
           description: Retrieved prompts.
@@ -723,23 +723,23 @@ components:
             $ref: "#/components/schemas/promptsiface.Prompt"
           type: array
       type: object
-    apiext.ListRunsResponse:
+    ListRunsResponse:
       properties:
         runs:
           description: Retrieved runs.
           items:
-            $ref: "#/components/schemas/apiext.GetRunResponse"
+            $ref: "#/components/schemas/GetRunResponse"
           type: array
       type: object
-    apiext.ListSessionResponse:
+    ListSessionResponse:
       properties:
         sessions:
           description: Retrieved sessions.
           items:
-            $ref: "#/components/schemas/apiext.GetSessionResponse"
+            $ref: "#/components/schemas/GetSessionResponse"
           type: array
       type: object
-    apiext.Parameter:
+    Parameter:
       properties:
         component:
           description: Used to specify UI-only type modifiers
@@ -750,7 +750,7 @@ components:
           example: textarea
           type: string
         constraints:
-          $ref: "#/components/schemas/apiext.Constraints"
+          $ref: "#/components/schemas/Constraints"
         default:
           description: Optional default value for this parameter, used if not set.
         desc:
@@ -765,7 +765,7 @@ components:
           description: If this parameter has an object data type, represents an ordered
             list of key-value pairs that can be included in this object.
           items:
-            $ref: "#/components/schemas/apiext.Parameter"
+            $ref: "#/components/schemas/Parameter"
           type: array
         slug:
           description: >-
@@ -795,9 +795,9 @@ components:
           type: string
           x-docs-link: /platform/parameters#parameter-types
         values:
-          $ref: "#/components/schemas/apiext.Parameter"
+          $ref: "#/components/schemas/Parameter"
       type: object
-    apiext.Permission:
+    Permission:
       properties:
         action:
           description: Which action this permission applies to.
@@ -835,16 +835,16 @@ components:
           example: usr20211123zz1dv7z
           type: string
       type: object
-    apiext.RunConstraints:
+    RunConstraints:
       properties:
         labels:
           description: Agent run constraints. Used to control which agents a run can be
             scheduled on.
           items:
-            $ref: "#/components/schemas/apiext.AgentLabel"
+            $ref: "#/components/schemas/AgentLabel"
           type: array
       type: object
-    apiext.SubmitPromptRequest:
+    SubmitPromptRequest:
       properties:
         id:
           description: Unique ID of the prompt.
@@ -863,7 +863,7 @@ components:
             user: eric
           type: object
       type: object
-    apiext.SubmitPromptResponse:
+    SubmitPromptResponse:
       properties:
         id:
           description: Unique ID of the prompt.
