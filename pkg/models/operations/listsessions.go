@@ -8,7 +8,7 @@ import (
 )
 
 type ListSessionsRequest struct {
-	// Number of results per call. Accepted values: 0 - 50. Default: 50.
+	// Number of results per call. Accepted values: 0 - 50. The default: 50.
 	Limit *int64 `queryParam:"style=form,explode=true,name=limit"`
 	// The offset used for this page of results.
 	Page *int64 `queryParam:"style=form,explode=true,name=page"`
