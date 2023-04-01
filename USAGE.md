@@ -18,7 +18,7 @@ func main() {
     )
 
     req := operations.ListPromptsRequest{
-        RunID: "unde",
+        RunID: "corrupti",
     }
 
     ctx := context.Background()

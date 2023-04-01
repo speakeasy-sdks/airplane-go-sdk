@@ -15,7 +15,7 @@
 ## SDK Installation
 
 ```bash
-go get github.com/speakeasy-sdks/airplane-go-sdk@v1.0.3
+go get github.com/speakeasy-sdks/airplane-go-sdk
 ```
 <!-- End SDK Installation -->
 
@@ -63,7 +63,7 @@ func main() {
     )
 
     req := operations.ListPromptsRequest{
-        RunID: "unde",
+        RunID: "corrupti",
     }
 
     ctx := context.Background()
@@ -80,7 +80,7 @@ func main() {
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
 ### Prompts
