@@ -62,11 +62,11 @@ func main() {
         }),
     )
 
+    ctx := context.Background()    
     req := operations.ListPromptsRequest{
         RunID: "corrupti",
     }
 
-    ctx := context.Background()
     res, err := s.Prompts.List(ctx, req)
     if err != nil {
         log.Fatal(err)
