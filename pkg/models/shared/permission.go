@@ -30,6 +30,10 @@ const (
 	PermissionRoleIDEnumGroupAdmin       PermissionRoleIDEnum = "group_admin"
 )
 
+func (e PermissionRoleIDEnum) ToPointer() *PermissionRoleIDEnum {
+	return &e
+}
+
 func (e *PermissionRoleIDEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {

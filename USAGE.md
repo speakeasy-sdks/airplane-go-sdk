@@ -2,12 +2,11 @@
 ```go
 package main
 
-import (
-    "context"
-    "log"
-    "github.com/speakeasy-sdks/airplane-go-sdk"
-    "github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-    "github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
+import(
+	"context"
+	"log"
+	"github.com/speakeasy-sdks/airplane-go-sdk"
+	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {

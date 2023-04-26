@@ -7,6 +7,7 @@ airplane.go
 go.mod
 go.sum
 pkg/types/date.go
+pkg/types/datetime.go
 pkg/utils/contenttype.go
 pkg/utils/form.go
 pkg/utils/headers.go
@@ -55,4 +56,10 @@ pkg/models/shared/listsessionresponse.go
 pkg/models/shared/executetaskresponse.go
 pkg/models/shared/executetaskrequest.go
 pkg/models/shared/security.go
+docs/airplane/README.md
+docs/prompts/README.md
+docs/runbooks/README.md
+docs/runs/README.md
+docs/sessions/README.md
+docs/tasks/README.md
 USAGE.md

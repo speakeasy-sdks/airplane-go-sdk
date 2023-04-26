@@ -16,6 +16,10 @@ const (
 	ParameterComponentEnumTextarea  ParameterComponentEnum = "textarea"
 )
 
+func (e ParameterComponentEnum) ToPointer() *ParameterComponentEnum {
+	return &e
+}
+
 func (e *ParameterComponentEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -51,6 +55,10 @@ const (
 	ParameterTypeEnumMap       ParameterTypeEnum = "map"
 	ParameterTypeEnumObject    ParameterTypeEnum = "object"
 )
+
+func (e ParameterTypeEnum) ToPointer() *ParameterTypeEnum {
+	return &e
+}
 
 func (e *ParameterTypeEnum) UnmarshalJSON(data []byte) error {
 	var s string

@@ -15,6 +15,10 @@ const (
 	GetRunResponseRuntimeEnumWorkflow GetRunResponseRuntimeEnum = "workflow"
 )
 
+func (e GetRunResponseRuntimeEnum) ToPointer() *GetRunResponseRuntimeEnum {
+	return &e
+}
+
 func (e *GetRunResponseRuntimeEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
@@ -42,6 +46,10 @@ const (
 	GetRunResponseStatusEnumFailed     GetRunResponseStatusEnum = "Failed"
 	GetRunResponseStatusEnumCancelled  GetRunResponseStatusEnum = "Cancelled"
 )
+
+func (e GetRunResponseStatusEnum) ToPointer() *GetRunResponseStatusEnum {
+	return &e
+}
 
 func (e *GetRunResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	var s string

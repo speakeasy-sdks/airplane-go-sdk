@@ -23,6 +23,21 @@ type HTTPClient interface {
 // String provides a helper function to return a pointer to a string
 func String(s string) *string { return &s }
 
+// Bool provides a helper function to return a pointer to a bool
+func Bool(b bool) *bool { return &b }
+
+// Int provides a helper function to return a pointer to an int
+func Int(i int) *int { return &i }
+
+// Int64 provides a helper function to return a pointer to an int64
+func Int64(i int64) *int64 { return &i }
+
+// Float32 provides a helper function to return a pointer to a float32
+func Float32(f float32) *float32 { return &f }
+
+// Float64 provides a helper function to return a pointer to a float64
+func Float64(f float64) *float64 { return &f }
+
 // Airplane - Airplane API
 type Airplane struct {
 	// Prompts - A prompt is used to gather user input during a task's execution. See Prompts to see how prompts are used.
@@ -84,8 +99,8 @@ func WithSecurity(security shared.Security) SDKOption {
 func New(opts ...SDKOption) *Airplane {
 	sdk := &Airplane{
 		_language:   "go",
-		_sdkVersion: "1.1.0",
-		_genVersion: "2.17.9",
+		_sdkVersion: "1.2.0",
+		_genVersion: "2.21.1",
 	}
 	for _, opt := range opts {
 		opt(sdk)

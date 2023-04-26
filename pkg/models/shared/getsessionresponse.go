@@ -20,6 +20,10 @@ const (
 	GetSessionResponseStatusEnumCancelled  GetSessionResponseStatusEnum = "Cancelled"
 )
 
+func (e GetSessionResponseStatusEnum) ToPointer() *GetSessionResponseStatusEnum {
+	return &e
+}
+
 func (e *GetSessionResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	var s string
 	if err := json.Unmarshal(data, &s); err != nil {
