@@ -36,6 +36,7 @@ func newRunbooks(defaultClient, securityClient HTTPClient, serverURL, language, 
 // Execute - Execute Runbook
 // Execute a runbook and receive a session ID to track the runbook's execution.
 // Check on the status of your newly created session with [/sessions/get](/api/sessions#sessions-get).
+
 func (s *runbooks) Execute(ctx context.Context, request operations.ExecuteRunbookRequest) (*operations.ExecuteRunbookResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runbooks/execute"

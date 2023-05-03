@@ -32,12 +32,10 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.GetSessionRequest{
+    ctx := context.Background()
+    res, err := s.Sessions.Get(ctx, operations.GetSessionRequest{
         ID: "7739251a-a52c-43f5-ad01-9da1ffe78f09",
-    }
-
-    res, err := s.Sessions.Get(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -71,16 +69,14 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.ListSessionsRequest{
+    ctx := context.Background()
+    res, err := s.Sessions.List(ctx, operations.ListSessionsRequest{
         Limit: airplane.Int64(451159),
         Page: airplane.Int64(739264),
         RunbookID: airplane.String("perferendis"),
         UpdatedAfter: airplane.String("doloremque"),
         UpdatedBefore: airplane.String("reprehenderit"),
-    }
-
-    res, err := s.Sessions.List(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

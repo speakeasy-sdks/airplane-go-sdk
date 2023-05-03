@@ -34,12 +34,10 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := shared.CancelPromptRequest{
+    ctx := context.Background()
+    res, err := s.Prompts.Cancel(ctx, shared.CancelPromptRequest{
         ID: airplane.String("pmt20221122zyydx3rho2t"),
-    }
-
-    res, err := s.Prompts.Cancel(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -73,12 +71,10 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.GetPromptRequest{
+    ctx := context.Background()
+    res, err := s.Prompts.Get(ctx, operations.GetPromptRequest{
         ID: "9bd9d8d6-9a67-44e0-b467-cc8796ed151a",
-    }
-
-    res, err := s.Prompts.Get(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -112,12 +108,10 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.ListPromptsRequest{
+    ctx := context.Background()
+    res, err := s.Prompts.List(ctx, operations.ListPromptsRequest{
         RunID: "perferendis",
-    }
-
-    res, err := s.Prompts.List(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -151,16 +145,14 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := shared.SubmitPromptRequest{
+    ctx := context.Background()
+    res, err := s.Prompts.Submit(ctx, shared.SubmitPromptRequest{
         ID: airplane.String("pmt20221122zyydx3rho2t"),
         Values: map[string]string{
             "repellendus": "sapiente",
             "quo": "odit",
         },
-    }
-
-    res, err := s.Prompts.Submit(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

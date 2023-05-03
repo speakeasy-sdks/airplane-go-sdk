@@ -33,8 +33,8 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.ExecuteTaskRequest{
+    ctx := context.Background()
+    res, err := s.Tasks.Execute(ctx, operations.ExecuteTaskRequest{
         ExecuteTaskRequest: shared.ExecuteTaskRequest{
             ID: airplane.String("tsk20210728zxb2vxn"),
             ParamValues: map[string]string{
@@ -48,9 +48,7 @@ func main() {
             Slug: airplane.String("hello_world"),
         },
         EnvSlug: airplane.String("commodi"),
-    }
-
-    res, err := s.Tasks.Execute(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

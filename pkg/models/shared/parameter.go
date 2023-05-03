@@ -21,20 +21,20 @@ func (e ParameterComponentEnum) ToPointer() *ParameterComponentEnum {
 }
 
 func (e *ParameterComponentEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "":
 		fallthrough
 	case "editor-sql":
 		fallthrough
 	case "textarea":
-		*e = ParameterComponentEnum(s)
+		*e = ParameterComponentEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ParameterComponentEnum: %s", s)
+		return fmt.Errorf("invalid value for ParameterComponentEnum: %v", v)
 	}
 }
 
@@ -61,11 +61,11 @@ func (e ParameterTypeEnum) ToPointer() *ParameterTypeEnum {
 }
 
 func (e *ParameterTypeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "any":
 		fallthrough
 	case "string":
@@ -89,10 +89,10 @@ func (e *ParameterTypeEnum) UnmarshalJSON(data []byte) error {
 	case "map":
 		fallthrough
 	case "object":
-		*e = ParameterTypeEnum(s)
+		*e = ParameterTypeEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ParameterTypeEnum: %s", s)
+		return fmt.Errorf("invalid value for ParameterTypeEnum: %v", v)
 	}
 }
 

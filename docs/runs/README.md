@@ -35,12 +35,10 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := shared.CancelRunRequest{
+    ctx := context.Background()
+    res, err := s.Runs.Cancel(ctx, shared.CancelRunRequest{
         RunID: airplane.String("run20220111zlq2ig4"),
-    }
-
-    res, err := s.Runs.Cancel(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -74,12 +72,10 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.GetRunRequest{
+    ctx := context.Background()
+    res, err := s.Runs.Get(ctx, operations.GetRunRequest{
         ID: "1ba928fc-8167-442c-b739-205929396fea",
-    }
-
-    res, err := s.Runs.Get(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -113,12 +109,10 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.GetOutputsRequest{
+    ctx := context.Background()
+    res, err := s.Runs.GetOutputs(ctx, operations.GetOutputsRequest{
         ID: "7596eb10-faaa-4235-ac59-55907aff1a3a",
-    }
-
-    res, err := s.Runs.GetOutputs(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -152,17 +146,15 @@ func main() {
         }),
     )
 
-    ctx := context.Background()    
-    req := operations.ListRunsRequest{
+    ctx := context.Background()
+    res, err := s.Runs.List(ctx, operations.ListRunsRequest{
         Limit: airplane.Int64(161309),
         Page: airplane.Int64(995300),
         Since: airplane.String("mollitia"),
         TaskID: airplane.String("occaecati"),
         TaskSlug: airplane.String("numquam"),
         Until: airplane.String("commodi"),
-    }
-
-    res, err := s.Runs.List(ctx, req)
+    })
     if err != nil {
         log.Fatal(err)
     }

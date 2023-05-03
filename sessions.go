@@ -35,6 +35,7 @@ func newSessions(defaultClient, securityClient HTTPClient, serverURL, language, 
 
 // Get - Get Session
 // Get information about an existing session.
+
 func (s *sessions) Get(ctx context.Context, request operations.GetSessionRequest) (*operations.GetSessionResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/sessions/get"
@@ -83,6 +84,7 @@ func (s *sessions) Get(ctx context.Context, request operations.GetSessionRequest
 }
 
 // List - List Sessions
+
 func (s *sessions) List(ctx context.Context, request operations.ListSessionsRequest) (*operations.ListSessionsResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/sessions/list"

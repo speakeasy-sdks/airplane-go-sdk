@@ -20,18 +20,18 @@ func (e GetRunResponseRuntimeEnum) ToPointer() *GetRunResponseRuntimeEnum {
 }
 
 func (e *GetRunResponseRuntimeEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "standard":
 		fallthrough
 	case "workflow":
-		*e = GetRunResponseRuntimeEnum(s)
+		*e = GetRunResponseRuntimeEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetRunResponseRuntimeEnum: %s", s)
+		return fmt.Errorf("invalid value for GetRunResponseRuntimeEnum: %v", v)
 	}
 }
 
@@ -52,11 +52,11 @@ func (e GetRunResponseStatusEnum) ToPointer() *GetRunResponseStatusEnum {
 }
 
 func (e *GetRunResponseStatusEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "NotStarted":
 		fallthrough
 	case "Queued":
@@ -68,10 +68,10 @@ func (e *GetRunResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	case "Failed":
 		fallthrough
 	case "Cancelled":
-		*e = GetRunResponseStatusEnum(s)
+		*e = GetRunResponseStatusEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetRunResponseStatusEnum: %s", s)
+		return fmt.Errorf("invalid value for GetRunResponseStatusEnum: %v", v)
 	}
 }
 

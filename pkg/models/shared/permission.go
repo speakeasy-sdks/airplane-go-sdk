@@ -35,11 +35,11 @@ func (e PermissionRoleIDEnum) ToPointer() *PermissionRoleIDEnum {
 }
 
 func (e *PermissionRoleIDEnum) UnmarshalJSON(data []byte) error {
-	var s string
-	if err := json.Unmarshal(data, &s); err != nil {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	switch s {
+	switch v {
 	case "team_admin":
 		fallthrough
 	case "team_developer":
@@ -73,10 +73,10 @@ func (e *PermissionRoleIDEnum) UnmarshalJSON(data []byte) error {
 	case "deploy_creator":
 		fallthrough
 	case "group_admin":
-		*e = PermissionRoleIDEnum(s)
+		*e = PermissionRoleIDEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PermissionRoleIDEnum: %s", s)
+		return fmt.Errorf("invalid value for PermissionRoleIDEnum: %v", v)
 	}
 }
 
