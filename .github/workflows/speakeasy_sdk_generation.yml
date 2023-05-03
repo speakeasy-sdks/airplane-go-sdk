@@ -16,7 +16,8 @@ jobs:
     with:
       force: ${{ github.event.inputs.force }}
       speakeasy_version: latest
-      openapi_doc_location: ./openapi/openapi.yaml
+      openapi_docs: |
+        - ./openapi/openapi.yaml
       openapi_doc_auth_header: x-api-key
       languages: |-
         - go
