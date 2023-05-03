@@ -73,9 +73,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Runs.Get(ctx, operations.GetRunRequest{
-        ID: "1ba928fc-8167-442c-b739-205929396fea",
-    })
+    res, err := s.Runs.Get(ctx, "suscipit")
     if err != nil {
         log.Fatal(err)
     }
@@ -110,9 +108,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Runs.GetOutputs(ctx, operations.GetOutputsRequest{
-        ID: "7596eb10-faaa-4235-ac59-55907aff1a3a",
-    })
+    res, err := s.Runs.GetOutputs(ctx, "molestiae")
     if err != nil {
         log.Fatal(err)
     }
@@ -148,12 +144,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Runs.List(ctx, operations.ListRunsRequest{
-        Limit: airplane.Int64(161309),
-        Page: airplane.Int64(995300),
-        Since: airplane.String("mollitia"),
-        TaskID: airplane.String("occaecati"),
-        TaskSlug: airplane.String("numquam"),
-        Until: airplane.String("commodi"),
+        Limit: airplane.Int64(791725),
+        Page: airplane.Int64(812169),
+        Since: airplane.String("voluptatum"),
+        TaskID: airplane.String("iusto"),
+        TaskSlug: airplane.String("excepturi"),
+        Until: airplane.String("nisi"),
     })
     if err != nil {
         log.Fatal(err)

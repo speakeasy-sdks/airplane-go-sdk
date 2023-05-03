@@ -34,21 +34,19 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Tasks.Execute(ctx, operations.ExecuteTaskRequest{
-        ExecuteTaskRequest: shared.ExecuteTaskRequest{
-            ID: airplane.String("tsk20210728zxb2vxn"),
-            ParamValues: map[string]string{
-                "maiores": "dicta",
-                "corporis": "dolore",
-            },
-            Resources: map[string]string{
-                "dicta": "harum",
-                "enim": "accusamus",
-            },
-            Slug: airplane.String("hello_world"),
+    res, err := s.Tasks.Execute(ctx, shared.ExecuteTaskRequest{
+        ID: airplane.String("tsk20210728zxb2vxn"),
+        ParamValues: map[string]string{
+            "ipsam": "repellendus",
         },
-        EnvSlug: airplane.String("commodi"),
-    })
+        Resources: map[string]string{
+            "quo": "odit",
+            "at": "at",
+            "maiores": "molestiae",
+            "quod": "quod",
+        },
+        Slug: airplane.String("hello_world"),
+    }, "esse")
     if err != nil {
         log.Fatal(err)
     }

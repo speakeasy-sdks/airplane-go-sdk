@@ -92,7 +92,11 @@ func (s *prompts) Cancel(ctx context.Context, request shared.CancelPromptRequest
 // Get - Get Prompt
 // Get information about an existing prompt.
 
-func (s *prompts) Get(ctx context.Context, request operations.GetPromptRequest) (*operations.GetPromptResponse, error) {
+func (s *prompts) Get(ctx context.Context, id string) (*operations.GetPromptResponse, error) {
+	request := operations.GetPromptRequest{
+		ID: id,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/get"
 
@@ -142,7 +146,11 @@ func (s *prompts) Get(ctx context.Context, request operations.GetPromptRequest) 
 // List - List Prompts
 // List prompts from existing runs.
 
-func (s *prompts) List(ctx context.Context, request operations.ListPromptsRequest) (*operations.ListPromptsResponse, error) {
+func (s *prompts) List(ctx context.Context, runID string) (*operations.ListPromptsResponse, error) {
+	request := operations.ListPromptsRequest{
+		RunID: runID,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/list"
 

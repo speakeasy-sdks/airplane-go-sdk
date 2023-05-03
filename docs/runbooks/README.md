@@ -34,19 +34,14 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Runbooks.Execute(ctx, operations.ExecuteRunbookRequest{
-        ExecuteRunbookRequest: shared.ExecuteRunbookRequest{
-            ID: "rbk20220120z15kl79",
-            ParamValues: map[string]string{
-                "at": "maiores",
-                "molestiae": "quod",
-                "quod": "esse",
-                "totam": "porro",
-            },
-            Slug: airplane.String("hello_world"),
+    res, err := s.Runbooks.Execute(ctx, shared.ExecuteRunbookRequest{
+        ID: "rbk20220120z15kl79",
+        ParamValues: map[string]string{
+            "magnam": "debitis",
+            "ipsa": "delectus",
         },
-        EnvSlug: airplane.String("dolorum"),
-    })
+        Slug: airplane.String("hello_world"),
+    }, "tempora")
     if err != nil {
         log.Fatal(err)
     }

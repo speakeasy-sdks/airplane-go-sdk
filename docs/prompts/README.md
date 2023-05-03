@@ -72,9 +72,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Prompts.Get(ctx, operations.GetPromptRequest{
-        ID: "9bd9d8d6-9a67-44e0-b467-cc8796ed151a",
-    })
+    res, err := s.Prompts.Get(ctx, "provident")
     if err != nil {
         log.Fatal(err)
     }
@@ -109,9 +107,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Prompts.List(ctx, operations.ListPromptsRequest{
-        RunID: "perferendis",
-    })
+    res, err := s.Prompts.List(ctx, "distinctio")
     if err != nil {
         log.Fatal(err)
     }
@@ -149,8 +145,10 @@ func main() {
     res, err := s.Prompts.Submit(ctx, shared.SubmitPromptRequest{
         ID: airplane.String("pmt20221122zyydx3rho2t"),
         Values: map[string]string{
-            "repellendus": "sapiente",
-            "quo": "odit",
+            "unde": "nulla",
+            "corrupti": "illum",
+            "vel": "error",
+            "deserunt": "suscipit",
         },
     })
     if err != nil {

@@ -81,7 +81,11 @@ func (s *runs) Cancel(ctx context.Context, request shared.CancelRunRequest) (*op
 // Get - Cancel Run
 // Get information about an existing run.
 
-func (s *runs) Get(ctx context.Context, request operations.GetRunRequest) (*operations.GetRunResponse, error) {
+func (s *runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, error) {
+	request := operations.GetRunRequest{
+		ID: id,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runs/get"
 
@@ -131,7 +135,11 @@ func (s *runs) Get(ctx context.Context, request operations.GetRunRequest) (*oper
 // GetOutputs - Get Run Outputs
 // Get outputs from an existing run.
 
-func (s *runs) GetOutputs(ctx context.Context, request operations.GetOutputsRequest) (*operations.GetOutputsResponse, error) {
+func (s *runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutputsResponse, error) {
+	request := operations.GetOutputsRequest{
+		ID: id,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runs/getOutputs"
 
@@ -180,7 +188,16 @@ func (s *runs) GetOutputs(ctx context.Context, request operations.GetOutputsRequ
 
 // List - List Runs
 
-func (s *runs) List(ctx context.Context, request operations.ListRunsRequest) (*operations.ListRunsResponse, error) {
+func (s *runs) List(ctx context.Context, limit *int64, page *int64, since *string, taskID *string, taskSlug *string, until *string) (*operations.ListRunsResponse, error) {
+	request := operations.ListRunsRequest{
+		Limit:    limit,
+		Page:     page,
+		Since:    since,
+		TaskID:   taskID,
+		TaskSlug: taskSlug,
+		Until:    until,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runs/list"
 
