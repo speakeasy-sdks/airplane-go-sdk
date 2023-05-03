@@ -62,7 +62,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Prompts.List(ctx, "corrupti")
+    res, err := s.Prompts.List(ctx, "run20220215zv10o6s52qj")
     if err != nil {
         log.Fatal(err)
     }
