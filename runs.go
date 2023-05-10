@@ -36,7 +36,6 @@ func newRuns(defaultClient, securityClient HTTPClient, serverURL, language, sdkV
 // Cancel - Cancel Run
 // Cancel a run.
 // Check on the status of your run with [/runs/get](/api/runs#runs-get).
-
 func (s *runs) Cancel(ctx context.Context, request shared.CancelRunRequest) (*operations.CancelRunResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/runs/cancel"
@@ -80,7 +79,6 @@ func (s *runs) Cancel(ctx context.Context, request shared.CancelRunRequest) (*op
 
 // Get - Cancel Run
 // Get information about an existing run.
-
 func (s *runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, error) {
 	request := operations.GetRunRequest{
 		ID: id,
@@ -134,7 +132,6 @@ func (s *runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, 
 
 // GetOutputs - Get Run Outputs
 // Get outputs from an existing run.
-
 func (s *runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutputsResponse, error) {
 	request := operations.GetOutputsRequest{
 		ID: id,
@@ -187,7 +184,6 @@ func (s *runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutput
 }
 
 // List - List Runs
-
 func (s *runs) List(ctx context.Context, limit *int64, page *int64, since *string, taskID *string, taskSlug *string, until *string) (*operations.ListRunsResponse, error) {
 	request := operations.ListRunsRequest{
 		Limit:    limit,

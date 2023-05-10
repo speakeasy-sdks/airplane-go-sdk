@@ -36,7 +36,6 @@ func newTasks(defaultClient, securityClient HTTPClient, serverURL, language, sdk
 // Execute - Execute Task
 // Execute a task with a set of parameter values and receive a run ID to track the task's execution.
 // Check on the status of your newly created run with [/runs/get](/api/runs#runs-get).
-
 func (s *tasks) Execute(ctx context.Context, executeTaskRequest shared.ExecuteTaskRequest, envSlug *string) (*operations.ExecuteTaskResponse, error) {
 	request := operations.ExecuteTaskRequest{
 		ExecuteTaskRequest: executeTaskRequest,

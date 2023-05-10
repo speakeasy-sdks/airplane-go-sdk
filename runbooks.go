@@ -36,7 +36,6 @@ func newRunbooks(defaultClient, securityClient HTTPClient, serverURL, language, 
 // Execute - Execute Runbook
 // Execute a runbook and receive a session ID to track the runbook's execution.
 // Check on the status of your newly created session with [/sessions/get](/api/sessions#sessions-get).
-
 func (s *runbooks) Execute(ctx context.Context, executeRunbookRequest shared.ExecuteRunbookRequest, envSlug *string) (*operations.ExecuteRunbookResponse, error) {
 	request := operations.ExecuteRunbookRequest{
 		ExecuteRunbookRequest: executeRunbookRequest,

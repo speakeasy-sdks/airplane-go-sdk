@@ -143,14 +143,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Runs.List(ctx, operations.ListRunsRequest{
-        Limit: airplane.Int64(791725),
-        Page: airplane.Int64(812169),
-        Since: airplane.String("voluptatum"),
-        TaskID: airplane.String("iusto"),
-        TaskSlug: airplane.String("excepturi"),
-        Until: airplane.String("nisi"),
-    })
+    res, err := s.Runs.List(ctx, 791725, 812169, "voluptatum", "iusto", "excepturi", "nisi")
     if err != nil {
         log.Fatal(err)
     }

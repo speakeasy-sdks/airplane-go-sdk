@@ -35,7 +35,6 @@ func newPrompts(defaultClient, securityClient HTTPClient, serverURL, language, s
 
 // Cancel - Cancel Prompt
 // Cancel a prompt.
-
 func (s *prompts) Cancel(ctx context.Context, request shared.CancelPromptRequest) (*operations.CancelPromptResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/cancel"
@@ -91,7 +90,6 @@ func (s *prompts) Cancel(ctx context.Context, request shared.CancelPromptRequest
 
 // Get - Get Prompt
 // Get information about an existing prompt.
-
 func (s *prompts) Get(ctx context.Context, id string) (*operations.GetPromptResponse, error) {
 	request := operations.GetPromptRequest{
 		ID: id,
@@ -145,7 +143,6 @@ func (s *prompts) Get(ctx context.Context, id string) (*operations.GetPromptResp
 
 // List - List Prompts
 // List prompts from existing runs.
-
 func (s *prompts) List(ctx context.Context, runID string) (*operations.ListPromptsResponse, error) {
 	request := operations.ListPromptsRequest{
 		RunID: runID,
@@ -199,7 +196,6 @@ func (s *prompts) List(ctx context.Context, runID string) (*operations.ListPromp
 
 // Submit - Submit Prompt
 // Submit a prompt with a set of parameter values.
-
 func (s *prompts) Submit(ctx context.Context, request shared.SubmitPromptRequest) (*operations.SubmitPromptResponse, error) {
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/submit"
