@@ -2,13 +2,13 @@ configVersion: 1.0.0
 management:
   docChecksum: aefe366f938fd4afe067d76da52e0b47
   docVersion: 0.0.1
-  speakeasyVersion: 1.29.2
-  generationVersion: 2.26.2
+  speakeasyVersion: 1.32.0
+  generationVersion: 2.28.0
 generation:
-  telemetryEnabled: false
   sdkClassName: airplane
   singleTagPerOp: true
+  telemetryEnabled: false
 go:
-  version: 1.4.1
+  version: 1.5.0
   maxMethodParams: 6
   packageName: github.com/speakeasy-sdks/airplane-go-sdk
