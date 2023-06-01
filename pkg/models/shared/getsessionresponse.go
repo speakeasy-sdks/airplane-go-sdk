@@ -7,24 +7,24 @@ import (
 	"fmt"
 )
 
-// GetSessionResponseStatusEnum - Status of this session.
-type GetSessionResponseStatusEnum string
+// GetSessionResponseStatus - Status of this session.
+type GetSessionResponseStatus string
 
 const (
-	GetSessionResponseStatusEnumPending    GetSessionResponseStatusEnum = "Pending"
-	GetSessionResponseStatusEnumActive     GetSessionResponseStatusEnum = "Active"
-	GetSessionResponseStatusEnumWaiting    GetSessionResponseStatusEnum = "Waiting"
-	GetSessionResponseStatusEnumSucceeded  GetSessionResponseStatusEnum = "Succeeded"
-	GetSessionResponseStatusEnumFailed     GetSessionResponseStatusEnum = "Failed"
-	GetSessionResponseStatusEnumCancelling GetSessionResponseStatusEnum = "Cancelling"
-	GetSessionResponseStatusEnumCancelled  GetSessionResponseStatusEnum = "Cancelled"
+	GetSessionResponseStatusPending    GetSessionResponseStatus = "Pending"
+	GetSessionResponseStatusActive     GetSessionResponseStatus = "Active"
+	GetSessionResponseStatusWaiting    GetSessionResponseStatus = "Waiting"
+	GetSessionResponseStatusSucceeded  GetSessionResponseStatus = "Succeeded"
+	GetSessionResponseStatusFailed     GetSessionResponseStatus = "Failed"
+	GetSessionResponseStatusCancelling GetSessionResponseStatus = "Cancelling"
+	GetSessionResponseStatusCancelled  GetSessionResponseStatus = "Cancelled"
 )
 
-func (e GetSessionResponseStatusEnum) ToPointer() *GetSessionResponseStatusEnum {
+func (e GetSessionResponseStatus) ToPointer() *GetSessionResponseStatus {
 	return &e
 }
 
-func (e *GetSessionResponseStatusEnum) UnmarshalJSON(data []byte) error {
+func (e *GetSessionResponseStatus) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -43,10 +43,10 @@ func (e *GetSessionResponseStatusEnum) UnmarshalJSON(data []byte) error {
 	case "Cancelling":
 		fallthrough
 	case "Cancelled":
-		*e = GetSessionResponseStatusEnum(v)
+		*e = GetSessionResponseStatus(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetSessionResponseStatusEnum: %v", v)
+		return fmt.Errorf("invalid value for GetSessionResponseStatus: %v", v)
 	}
 }
 
@@ -71,7 +71,7 @@ type GetSessionResponse struct {
 	// ID of the runbook this session was spawned from if triggered from a runbook.
 	RunbookID *string `json:"runbookID,omitempty"`
 	// Status of this session.
-	Status *GetSessionResponseStatusEnum `json:"status,omitempty"`
+	Status *GetSessionResponseStatus `json:"status,omitempty"`
 	// ID of the team that owns this session.
 	TeamID *string `json:"teamID,omitempty"`
 	// When this session was updated.

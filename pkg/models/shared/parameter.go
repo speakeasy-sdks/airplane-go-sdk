@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-// ParameterComponentEnum - Used to specify UI-only type modifiers
-type ParameterComponentEnum string
+// ParameterComponent - Used to specify UI-only type modifiers
+type ParameterComponent string
 
 const (
-	ParameterComponentEnumUnknown   ParameterComponentEnum = ""
-	ParameterComponentEnumEditorSQL ParameterComponentEnum = "editor-sql"
-	ParameterComponentEnumTextarea  ParameterComponentEnum = "textarea"
+	ParameterComponentUnknown   ParameterComponent = ""
+	ParameterComponentEditorSQL ParameterComponent = "editor-sql"
+	ParameterComponentTextarea  ParameterComponent = "textarea"
 )
 
-func (e ParameterComponentEnum) ToPointer() *ParameterComponentEnum {
+func (e ParameterComponent) ToPointer() *ParameterComponent {
 	return &e
 }
 
-func (e *ParameterComponentEnum) UnmarshalJSON(data []byte) error {
+func (e *ParameterComponent) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,36 +31,36 @@ func (e *ParameterComponentEnum) UnmarshalJSON(data []byte) error {
 	case "editor-sql":
 		fallthrough
 	case "textarea":
-		*e = ParameterComponentEnum(v)
+		*e = ParameterComponent(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ParameterComponentEnum: %v", v)
+		return fmt.Errorf("invalid value for ParameterComponent: %v", v)
 	}
 }
 
-// ParameterTypeEnum - Parameter data type.
-type ParameterTypeEnum string
+// ParameterType - Parameter data type.
+type ParameterType string
 
 const (
-	ParameterTypeEnumAny       ParameterTypeEnum = "any"
-	ParameterTypeEnumString    ParameterTypeEnum = "string"
-	ParameterTypeEnumBoolean   ParameterTypeEnum = "boolean"
-	ParameterTypeEnumUpload    ParameterTypeEnum = "upload"
-	ParameterTypeEnumInteger   ParameterTypeEnum = "integer"
-	ParameterTypeEnumFloat     ParameterTypeEnum = "float"
-	ParameterTypeEnumDate      ParameterTypeEnum = "date"
-	ParameterTypeEnumDatetime  ParameterTypeEnum = "datetime"
-	ParameterTypeEnumConfigvar ParameterTypeEnum = "configvar"
-	ParameterTypeEnumList      ParameterTypeEnum = "list"
-	ParameterTypeEnumMap       ParameterTypeEnum = "map"
-	ParameterTypeEnumObject    ParameterTypeEnum = "object"
+	ParameterTypeAny       ParameterType = "any"
+	ParameterTypeString    ParameterType = "string"
+	ParameterTypeBoolean   ParameterType = "boolean"
+	ParameterTypeUpload    ParameterType = "upload"
+	ParameterTypeInteger   ParameterType = "integer"
+	ParameterTypeFloat     ParameterType = "float"
+	ParameterTypeDate      ParameterType = "date"
+	ParameterTypeDatetime  ParameterType = "datetime"
+	ParameterTypeConfigvar ParameterType = "configvar"
+	ParameterTypeList      ParameterType = "list"
+	ParameterTypeMap       ParameterType = "map"
+	ParameterTypeObject    ParameterType = "object"
 )
 
-func (e ParameterTypeEnum) ToPointer() *ParameterTypeEnum {
+func (e ParameterType) ToPointer() *ParameterType {
 	return &e
 }
 
-func (e *ParameterTypeEnum) UnmarshalJSON(data []byte) error {
+func (e *ParameterType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -89,17 +89,17 @@ func (e *ParameterTypeEnum) UnmarshalJSON(data []byte) error {
 	case "map":
 		fallthrough
 	case "object":
-		*e = ParameterTypeEnum(v)
+		*e = ParameterType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ParameterTypeEnum: %v", v)
+		return fmt.Errorf("invalid value for ParameterType: %v", v)
 	}
 }
 
 type Parameter struct {
 	// Used to specify UI-only type modifiers
-	Component   *ParameterComponentEnum `json:"component,omitempty"`
-	Constraints *Constraints            `json:"constraints,omitempty"`
+	Component   *ParameterComponent `json:"component,omitempty"`
+	Constraints *Constraints        `json:"constraints,omitempty"`
 	// Optional default value for this parameter, used if not set.
 	Default interface{} `json:"default,omitempty"`
 	// Description for this parameter.
@@ -112,6 +112,6 @@ type Parameter struct {
 	// Airplane automatically generates a slug when provided a parameter name.
 	Slug *string `json:"slug,omitempty"`
 	// Parameter data type.
-	Type   *ParameterTypeEnum `json:"type,omitempty"`
-	Values *Parameter         `json:"values,omitempty"`
+	Type   *ParameterType `json:"type,omitempty"`
+	Values *Parameter     `json:"values,omitempty"`
 }

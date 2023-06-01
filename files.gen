@@ -4,6 +4,7 @@ runs.go
 sessions.go
 tasks.go
 airplane.go
+.gitignore
 go.mod
 go.sum
 pkg/types/bigint.go

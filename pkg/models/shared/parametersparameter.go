@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-// ParametersParameterComponentEnum - Used to specify UI-only type modifiers
-type ParametersParameterComponentEnum string
+// ParametersParameterComponent - Used to specify UI-only type modifiers
+type ParametersParameterComponent string
 
 const (
-	ParametersParameterComponentEnumUnknown   ParametersParameterComponentEnum = ""
-	ParametersParameterComponentEnumEditorSQL ParametersParameterComponentEnum = "editor-sql"
-	ParametersParameterComponentEnumTextarea  ParametersParameterComponentEnum = "textarea"
+	ParametersParameterComponentUnknown   ParametersParameterComponent = ""
+	ParametersParameterComponentEditorSQL ParametersParameterComponent = "editor-sql"
+	ParametersParameterComponentTextarea  ParametersParameterComponent = "textarea"
 )
 
-func (e ParametersParameterComponentEnum) ToPointer() *ParametersParameterComponentEnum {
+func (e ParametersParameterComponent) ToPointer() *ParametersParameterComponent {
 	return &e
 }
 
-func (e *ParametersParameterComponentEnum) UnmarshalJSON(data []byte) error {
+func (e *ParametersParameterComponent) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,36 +31,36 @@ func (e *ParametersParameterComponentEnum) UnmarshalJSON(data []byte) error {
 	case "editor-sql":
 		fallthrough
 	case "textarea":
-		*e = ParametersParameterComponentEnum(v)
+		*e = ParametersParameterComponent(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ParametersParameterComponentEnum: %v", v)
+		return fmt.Errorf("invalid value for ParametersParameterComponent: %v", v)
 	}
 }
 
-// ParametersParameterTypeEnum - Parameter data type.
-type ParametersParameterTypeEnum string
+// ParametersParameterType - Parameter data type.
+type ParametersParameterType string
 
 const (
-	ParametersParameterTypeEnumAny       ParametersParameterTypeEnum = "any"
-	ParametersParameterTypeEnumString    ParametersParameterTypeEnum = "string"
-	ParametersParameterTypeEnumBoolean   ParametersParameterTypeEnum = "boolean"
-	ParametersParameterTypeEnumUpload    ParametersParameterTypeEnum = "upload"
-	ParametersParameterTypeEnumInteger   ParametersParameterTypeEnum = "integer"
-	ParametersParameterTypeEnumFloat     ParametersParameterTypeEnum = "float"
-	ParametersParameterTypeEnumDate      ParametersParameterTypeEnum = "date"
-	ParametersParameterTypeEnumDatetime  ParametersParameterTypeEnum = "datetime"
-	ParametersParameterTypeEnumConfigvar ParametersParameterTypeEnum = "configvar"
-	ParametersParameterTypeEnumList      ParametersParameterTypeEnum = "list"
-	ParametersParameterTypeEnumMap       ParametersParameterTypeEnum = "map"
-	ParametersParameterTypeEnumObject    ParametersParameterTypeEnum = "object"
+	ParametersParameterTypeAny       ParametersParameterType = "any"
+	ParametersParameterTypeString    ParametersParameterType = "string"
+	ParametersParameterTypeBoolean   ParametersParameterType = "boolean"
+	ParametersParameterTypeUpload    ParametersParameterType = "upload"
+	ParametersParameterTypeInteger   ParametersParameterType = "integer"
+	ParametersParameterTypeFloat     ParametersParameterType = "float"
+	ParametersParameterTypeDate      ParametersParameterType = "date"
+	ParametersParameterTypeDatetime  ParametersParameterType = "datetime"
+	ParametersParameterTypeConfigvar ParametersParameterType = "configvar"
+	ParametersParameterTypeList      ParametersParameterType = "list"
+	ParametersParameterTypeMap       ParametersParameterType = "map"
+	ParametersParameterTypeObject    ParametersParameterType = "object"
 )
 
-func (e ParametersParameterTypeEnum) ToPointer() *ParametersParameterTypeEnum {
+func (e ParametersParameterType) ToPointer() *ParametersParameterType {
 	return &e
 }
 
-func (e *ParametersParameterTypeEnum) UnmarshalJSON(data []byte) error {
+func (e *ParametersParameterType) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -89,17 +89,17 @@ func (e *ParametersParameterTypeEnum) UnmarshalJSON(data []byte) error {
 	case "map":
 		fallthrough
 	case "object":
-		*e = ParametersParameterTypeEnum(v)
+		*e = ParametersParameterType(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ParametersParameterTypeEnum: %v", v)
+		return fmt.Errorf("invalid value for ParametersParameterType: %v", v)
 	}
 }
 
 type ParametersParameter struct {
 	// Used to specify UI-only type modifiers
-	Component   *ParametersParameterComponentEnum `json:"component,omitempty"`
-	Constraints *ParametersConstraints            `json:"constraints,omitempty"`
+	Component   *ParametersParameterComponent `json:"component,omitempty"`
+	Constraints *ParametersConstraints        `json:"constraints,omitempty"`
 	// Optional default value for this parameter, used if not set.
 	Default interface{} `json:"default,omitempty"`
 	// Description for this parameter.
@@ -111,6 +111,6 @@ type ParametersParameter struct {
 	// A human-friendly identifier for the parameter.
 	Slug *string `json:"slug,omitempty"`
 	// Parameter data type.
-	Type   *ParametersParameterTypeEnum `json:"type,omitempty"`
-	Values *ParametersParameter         `json:"values,omitempty"`
+	Type   *ParametersParameterType `json:"type,omitempty"`
+	Values *ParametersParameter     `json:"values,omitempty"`
 }
