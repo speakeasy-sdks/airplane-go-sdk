@@ -30,7 +30,7 @@ import(
 func main() {
     s := airplane.New(
         airplane.WithSecurity(shared.Security{
-            APIKeyAuth: "YOUR_API_KEY_HERE",
+            APIKeyAuth: "",
         }),
     )
 
@@ -67,7 +67,7 @@ import(
 func main() {
     s := airplane.New(
         airplane.WithSecurity(shared.Security{
-            APIKeyAuth: "YOUR_API_KEY_HERE",
+            APIKeyAuth: "",
         }),
     )
 
@@ -102,7 +102,7 @@ import(
 func main() {
     s := airplane.New(
         airplane.WithSecurity(shared.Security{
-            APIKeyAuth: "YOUR_API_KEY_HERE",
+            APIKeyAuth: "",
         }),
     )
 
@@ -137,7 +137,7 @@ import(
 func main() {
     s := airplane.New(
         airplane.WithSecurity(shared.Security{
-            APIKeyAuth: "YOUR_API_KEY_HERE",
+            APIKeyAuth: "",
         }),
     )
 

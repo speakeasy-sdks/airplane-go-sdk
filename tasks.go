@@ -16,22 +16,12 @@ import (
 
 // tasks - A Task is a lightweight app that represents a single business operation for people at your company to execute.
 type tasks struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
+	sdkConfiguration sdkConfiguration
 }
 
-func newTasks(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string) *tasks {
+func newTasks(sdkConfig sdkConfiguration) *tasks {
 	return &tasks{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
@@ -44,7 +34,7 @@ func (s *tasks) Execute(ctx context.Context, executeTaskRequest shared.ExecuteTa
 		EnvSlug:            envSlug,
 	}
 
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/tasks/execute"
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "ExecuteTaskRequest", "json")
@@ -60,7 +50,7 @@ func (s *tasks) Execute(ctx context.Context, executeTaskRequest shared.ExecuteTa
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
@@ -68,7 +58,7 @@ func (s *tasks) Execute(ctx context.Context, executeTaskRequest shared.ExecuteTa
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
