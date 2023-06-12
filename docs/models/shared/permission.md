@@ -1,0 +1,11 @@
+# Permission
+
+
+## Fields
+
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `Action`                                                                  | **string*                                                                 | :heavy_minus_sign:                                                        | Which action this permission applies to.                                  | sessions.get                                                              |
+| `RoleID`                                                                  | [*PermissionRoleID](../../models/shared/permissionroleid.md)              | :heavy_minus_sign:                                                        | Which role is assigned to this permission.                                | team_admin                                                                |
+| `SubGroupID`                                                              | **string*                                                                 | :heavy_minus_sign:                                                        | ID of the group  this permission applies to if assigned to a group.       | grp20220222zaigy4h2bw3                                                    |
+| `SubUserID`                                                               | **string*                                                                 | :heavy_minus_sign:                                                        | ID of the user this permission applies to if assigned directly to a user. | usr20211123zz1dv7z                                                        |
