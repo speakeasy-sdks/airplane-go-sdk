@@ -158,23 +158,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ExecuteRunbookResponse"
-  /runs/cancel:
-    post:
-      operationId: cancelRun
-      description: |-
-        Cancel a run.
-        Check on the status of your run with [/runs/get](/api/runs#runs-get).
-      summary: Cancel Run
-      tags:
-        - Runs
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CancelRunRequest"
-        description: CancelRunRequest
-        required: true
-      responses: {}
       
   /runs/get:
     get:
