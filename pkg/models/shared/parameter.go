@@ -115,3 +115,66 @@ type Parameter struct {
 	Type   *ParameterType `json:"type,omitempty"`
 	Values *Parameter     `json:"values,omitempty"`
 }
+
+func (o *Parameter) GetComponent() *ParameterComponent {
+	if o == nil {
+		return nil
+	}
+	return o.Component
+}
+
+func (o *Parameter) GetConstraints() *Constraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *Parameter) GetDefault() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
+func (o *Parameter) GetDesc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Desc
+}
+
+func (o *Parameter) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *Parameter) GetParams() []Parameter {
+	if o == nil {
+		return nil
+	}
+	return o.Params
+}
+
+func (o *Parameter) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *Parameter) GetType() *ParameterType {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *Parameter) GetValues() *Parameter {
+	if o == nil {
+		return nil
+	}
+	return o.Values
+}

@@ -10,3 +10,24 @@ type PromptsifaceReviewers struct {
 	// Users allowed to review a given prompt indentified by their emails.
 	Users []string `json:"users,omitempty"`
 }
+
+func (o *PromptsifaceReviewers) GetAllowSelfApprovals() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AllowSelfApprovals
+}
+
+func (o *PromptsifaceReviewers) GetGroups() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Groups
+}
+
+func (o *PromptsifaceReviewers) GetUsers() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Users
+}

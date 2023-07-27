@@ -12,10 +12,45 @@ type GetOutputsRequest struct {
 	ID string `queryParam:"style=form,explode=true,name=id"`
 }
 
+func (o *GetOutputsRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type GetOutputsResponse struct {
 	ContentType string
 	// OK
 	GetOutputsResponse *shared.GetOutputsResponse
 	StatusCode         int
 	RawResponse        *http.Response
+}
+
+func (o *GetOutputsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetOutputsResponse) GetGetOutputsResponse() *shared.GetOutputsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetOutputsResponse
+}
+
+func (o *GetOutputsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetOutputsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

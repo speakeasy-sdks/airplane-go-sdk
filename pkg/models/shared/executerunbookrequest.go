@@ -18,3 +18,24 @@ type ExecuteRunbookRequest struct {
 	// Either an ID or a slug must be provided.
 	Slug *string `json:"slug,omitempty"`
 }
+
+func (o *ExecuteRunbookRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
+func (o *ExecuteRunbookRequest) GetParamValues() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.ParamValues
+}
+
+func (o *ExecuteRunbookRequest) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}

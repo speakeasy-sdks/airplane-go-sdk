@@ -12,10 +12,45 @@ type GetPromptRequest struct {
 	ID string `queryParam:"style=form,explode=true,name=id"`
 }
 
+func (o *GetPromptRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type GetPromptResponse struct {
 	ContentType string
 	// OK
 	GetPromptResponse *shared.GetPromptResponse
 	StatusCode        int
 	RawResponse       *http.Response
+}
+
+func (o *GetPromptResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetPromptResponse) GetGetPromptResponse() *shared.GetPromptResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetPromptResponse
+}
+
+func (o *GetPromptResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetPromptResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

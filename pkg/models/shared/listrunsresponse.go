@@ -7,3 +7,10 @@ type ListRunsResponse struct {
 	// Retrieved runs.
 	Runs []GetRunResponse `json:"runs,omitempty"`
 }
+
+func (o *ListRunsResponse) GetRuns() []GetRunResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Runs
+}

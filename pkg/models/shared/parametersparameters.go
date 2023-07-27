@@ -5,3 +5,10 @@ package shared
 type ParametersParameters struct {
 	Parameters []ParametersParameter `json:"parameters,omitempty"`
 }
+
+func (o *ParametersParameters) GetParameters() []ParametersParameter {
+	if o == nil {
+		return nil
+	}
+	return o.Parameters
+}

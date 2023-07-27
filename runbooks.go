@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/utils"
 	"io"
@@ -92,6 +93,8 @@ func (s *runbooks) Execute(ctx context.Context, executeRunbookRequest shared.Exe
 			}
 
 			res.ExecuteRunbookResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

@@ -22,10 +22,80 @@ type ListRunsRequest struct {
 	Until *string `queryParam:"style=form,explode=true,name=until"`
 }
 
+func (o *ListRunsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *ListRunsRequest) GetPage() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Page
+}
+
+func (o *ListRunsRequest) GetSince() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Since
+}
+
+func (o *ListRunsRequest) GetTaskID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TaskID
+}
+
+func (o *ListRunsRequest) GetTaskSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TaskSlug
+}
+
+func (o *ListRunsRequest) GetUntil() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Until
+}
+
 type ListRunsResponse struct {
 	ContentType string
 	// OK
 	ListRunsResponse *shared.ListRunsResponse
 	StatusCode       int
 	RawResponse      *http.Response
+}
+
+func (o *ListRunsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListRunsResponse) GetListRunsResponse() *shared.ListRunsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ListRunsResponse
+}
+
+func (o *ListRunsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListRunsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

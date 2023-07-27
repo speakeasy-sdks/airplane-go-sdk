@@ -119,3 +119,150 @@ type GetRunResponse struct {
 	// there was no storage zone, in which case logs and outputs will be in the airplane API.
 	ZoneID *string `json:"zoneID,omitempty"`
 }
+
+func (o *GetRunResponse) GetActiveAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ActiveAt
+}
+
+func (o *GetRunResponse) GetCancelledAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CancelledAt
+}
+
+func (o *GetRunResponse) GetCancelledBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CancelledBy
+}
+
+func (o *GetRunResponse) GetConstraints() *RunConstraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *GetRunResponse) GetCreatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetRunResponse) GetCreatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedBy
+}
+
+func (o *GetRunResponse) GetFailedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FailedAt
+}
+
+func (o *GetRunResponse) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetRunResponse) GetIsPrivate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsPrivate
+}
+
+func (o *GetRunResponse) GetParamValues() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.ParamValues
+}
+
+func (o *GetRunResponse) GetParams() []Parameter {
+	if o == nil {
+		return nil
+	}
+	return o.Params
+}
+
+func (o *GetRunResponse) GetPermissions() []Permission {
+	if o == nil {
+		return nil
+	}
+	return o.Permissions
+}
+
+func (o *GetRunResponse) GetResources() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Resources
+}
+
+func (o *GetRunResponse) GetRuntime() *GetRunResponseRuntime {
+	if o == nil {
+		return nil
+	}
+	return o.Runtime
+}
+
+func (o *GetRunResponse) GetSessionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SessionID
+}
+
+func (o *GetRunResponse) GetStatus() *GetRunResponseStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetRunResponse) GetSucceededAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SucceededAt
+}
+
+func (o *GetRunResponse) GetTaskID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TaskID
+}
+
+func (o *GetRunResponse) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *GetRunResponse) GetTimeout() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Timeout
+}
+
+func (o *GetRunResponse) GetZoneID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ZoneID
+}

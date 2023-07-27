@@ -14,10 +14,52 @@ type ExecuteRunbookRequest struct {
 	EnvSlug *string `queryParam:"style=form,explode=true,name=envSlug"`
 }
 
+func (o *ExecuteRunbookRequest) GetExecuteRunbookRequest() shared.ExecuteRunbookRequest {
+	if o == nil {
+		return shared.ExecuteRunbookRequest{}
+	}
+	return o.ExecuteRunbookRequest
+}
+
+func (o *ExecuteRunbookRequest) GetEnvSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.EnvSlug
+}
+
 type ExecuteRunbookResponse struct {
 	ContentType string
 	// OK
 	ExecuteRunbookResponse *shared.ExecuteRunbookResponse
 	StatusCode             int
 	RawResponse            *http.Response
+}
+
+func (o *ExecuteRunbookResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ExecuteRunbookResponse) GetExecuteRunbookResponse() *shared.ExecuteRunbookResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ExecuteRunbookResponse
+}
+
+func (o *ExecuteRunbookResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ExecuteRunbookResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

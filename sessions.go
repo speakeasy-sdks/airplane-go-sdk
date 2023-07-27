@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/utils"
 	"io"
@@ -80,6 +81,8 @@ func (s *sessions) Get(ctx context.Context, id string) (*operations.GetSessionRe
 			}
 
 			res.GetSessionResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -144,6 +147,8 @@ func (s *sessions) List(ctx context.Context, limit *int64, page *int64, runbookI
 			}
 
 			res.ListSessionResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

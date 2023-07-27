@@ -12,10 +12,45 @@ type GetSessionRequest struct {
 	ID string `queryParam:"style=form,explode=true,name=id"`
 }
 
+func (o *GetSessionRequest) GetID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ID
+}
+
 type GetSessionResponse struct {
 	ContentType string
 	// OK
 	GetSessionResponse *shared.GetSessionResponse
 	StatusCode         int
 	RawResponse        *http.Response
+}
+
+func (o *GetSessionResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetSessionResponse) GetGetSessionResponse() *shared.GetSessionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.GetSessionResponse
+}
+
+func (o *GetSessionResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetSessionResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

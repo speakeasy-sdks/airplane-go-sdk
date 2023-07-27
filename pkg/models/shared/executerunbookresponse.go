@@ -7,3 +7,10 @@ type ExecuteRunbookResponse struct {
 	// Unique ID of the runbook's session.
 	SessionID *string `json:"sessionID,omitempty"`
 }
+
+func (o *ExecuteRunbookResponse) GetSessionID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SessionID
+}

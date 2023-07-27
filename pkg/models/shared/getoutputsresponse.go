@@ -7,3 +7,10 @@ type GetOutputsResponse struct {
 	// Outputs from this run.
 	Output map[string]string `json:"output,omitempty"`
 }
+
+func (o *GetOutputsResponse) GetOutput() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Output
+}

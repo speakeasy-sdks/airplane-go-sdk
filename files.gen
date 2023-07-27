@@ -4,9 +4,9 @@ runs.go
 sessions.go
 tasks.go
 airplane.go
-.gitignore
 go.mod
 go.sum
+pkg/models/sdkerrors/sdkerror.go
 pkg/types/bigint.go
 pkg/types/date.go
 pkg/types/datetime.go
@@ -24,7 +24,6 @@ pkg/models/operations/getprompt.go
 pkg/models/operations/listprompts.go
 pkg/models/operations/submitprompt.go
 pkg/models/operations/executerunbook.go
-pkg/models/operations/cancelrun.go
 pkg/models/operations/getrun.go
 pkg/models/operations/getoutputs.go
 pkg/models/operations/listruns.go
@@ -44,7 +43,6 @@ pkg/models/shared/submitpromptresponse.go
 pkg/models/shared/submitpromptrequest.go
 pkg/models/shared/executerunbookresponse.go
 pkg/models/shared/executerunbookrequest.go
-pkg/models/shared/cancelrunrequest.go
 pkg/models/shared/getrunresponse.go
 pkg/models/shared/permission.go
 pkg/models/shared/parameter.go
@@ -73,7 +71,6 @@ docs/models/operations/listpromptsresponse.md
 docs/models/operations/submitpromptresponse.md
 docs/models/operations/executerunbookrequest.md
 docs/models/operations/executerunbookresponse.md
-docs/models/operations/cancelrunresponse.md
 docs/models/operations/getrunrequest.md
 docs/models/operations/getrunresponse.md
 docs/models/operations/getoutputsrequest.md
@@ -101,7 +98,6 @@ docs/models/shared/submitpromptresponse.md
 docs/models/shared/submitpromptrequest.md
 docs/models/shared/executerunbookresponse.md
 docs/models/shared/executerunbookrequest.md
-docs/models/shared/cancelrunrequest.md
 docs/models/shared/getrunresponseruntime.md
 docs/models/shared/getrunresponsestatus.md
 docs/models/shared/getrunresponse.md

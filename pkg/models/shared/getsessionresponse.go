@@ -79,3 +79,94 @@ type GetSessionResponse struct {
 	// ID of the user who updated this session.
 	UpdatedBy *string `json:"updatedBy,omitempty"`
 }
+
+func (o *GetSessionResponse) GetCreatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *GetSessionResponse) GetCreatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedBy
+}
+
+func (o *GetSessionResponse) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *GetSessionResponse) GetIsPrivate() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.IsPrivate
+}
+
+func (o *GetSessionResponse) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *GetSessionResponse) GetParamValues() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.ParamValues
+}
+
+func (o *GetSessionResponse) GetParams() []Parameter {
+	if o == nil {
+		return nil
+	}
+	return o.Params
+}
+
+func (o *GetSessionResponse) GetPermissions() []Permission {
+	if o == nil {
+		return nil
+	}
+	return o.Permissions
+}
+
+func (o *GetSessionResponse) GetRunbookID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RunbookID
+}
+
+func (o *GetSessionResponse) GetStatus() *GetSessionResponseStatus {
+	if o == nil {
+		return nil
+	}
+	return o.Status
+}
+
+func (o *GetSessionResponse) GetTeamID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TeamID
+}
+
+func (o *GetSessionResponse) GetUpdatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAt
+}
+
+func (o *GetSessionResponse) GetUpdatedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedBy
+}

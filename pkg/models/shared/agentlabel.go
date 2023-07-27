@@ -8,3 +8,17 @@ type AgentLabel struct {
 	// Agent label value.
 	Value *string `json:"value,omitempty"`
 }
+
+func (o *AgentLabel) GetKey() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Key
+}
+
+func (o *AgentLabel) GetValue() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Value
+}

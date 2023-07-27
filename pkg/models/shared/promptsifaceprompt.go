@@ -28,3 +28,94 @@ type PromptsifacePrompt struct {
 	// Mapping of parameter slug to value submitted to this prompt.
 	Values map[string]string `json:"values,omitempty"`
 }
+
+func (o *PromptsifacePrompt) GetCancelText() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CancelText
+}
+
+func (o *PromptsifacePrompt) GetCancelledAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CancelledAt
+}
+
+func (o *PromptsifacePrompt) GetCancelledBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CancelledBy
+}
+
+func (o *PromptsifacePrompt) GetConfirmText() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ConfirmText
+}
+
+func (o *PromptsifacePrompt) GetCreatedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *PromptsifacePrompt) GetDescription() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Description
+}
+
+func (o *PromptsifacePrompt) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *PromptsifacePrompt) GetReviewers() *PromptsifaceReviewers {
+	if o == nil {
+		return nil
+	}
+	return o.Reviewers
+}
+
+func (o *PromptsifacePrompt) GetRunID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RunID
+}
+
+func (o *PromptsifacePrompt) GetSchema() *ParametersParameters {
+	if o == nil {
+		return nil
+	}
+	return o.Schema
+}
+
+func (o *PromptsifacePrompt) GetSubmittedAt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SubmittedAt
+}
+
+func (o *PromptsifacePrompt) GetSubmittedBy() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SubmittedBy
+}
+
+func (o *PromptsifacePrompt) GetValues() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Values
+}

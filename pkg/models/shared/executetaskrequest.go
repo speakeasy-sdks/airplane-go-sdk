@@ -21,3 +21,31 @@ type ExecuteTaskRequest struct {
 	// Either an ID or a slug must be provided.
 	Slug *string `json:"slug,omitempty"`
 }
+
+func (o *ExecuteTaskRequest) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *ExecuteTaskRequest) GetParamValues() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.ParamValues
+}
+
+func (o *ExecuteTaskRequest) GetResources() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Resources
+}
+
+func (o *ExecuteTaskRequest) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}

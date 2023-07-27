@@ -10,3 +10,17 @@ type SubmitPromptRequest struct {
 	// the Airplane runs page or by fetching the prompt via the API.
 	Values map[string]string `json:"values,omitempty"`
 }
+
+func (o *SubmitPromptRequest) GetID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ID
+}
+
+func (o *SubmitPromptRequest) GetValues() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Values
+}

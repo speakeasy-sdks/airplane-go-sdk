@@ -20,10 +20,73 @@ type ListSessionsRequest struct {
 	UpdatedBefore *string `queryParam:"style=form,explode=true,name=updatedBefore"`
 }
 
+func (o *ListSessionsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *ListSessionsRequest) GetPage() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Page
+}
+
+func (o *ListSessionsRequest) GetRunbookID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RunbookID
+}
+
+func (o *ListSessionsRequest) GetUpdatedAfter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedAfter
+}
+
+func (o *ListSessionsRequest) GetUpdatedBefore() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UpdatedBefore
+}
+
 type ListSessionsResponse struct {
 	ContentType string
 	// OK
 	ListSessionResponse *shared.ListSessionResponse
 	StatusCode          int
 	RawResponse         *http.Response
+}
+
+func (o *ListSessionsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListSessionsResponse) GetListSessionResponse() *shared.ListSessionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ListSessionResponse
+}
+
+func (o *ListSessionsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListSessionsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

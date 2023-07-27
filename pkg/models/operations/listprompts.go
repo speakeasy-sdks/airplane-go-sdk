@@ -12,10 +12,45 @@ type ListPromptsRequest struct {
 	RunID string `queryParam:"style=form,explode=true,name=runID"`
 }
 
+func (o *ListPromptsRequest) GetRunID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RunID
+}
+
 type ListPromptsResponse struct {
 	ContentType string
 	// OK
 	ListPromptsResponse *shared.ListPromptsResponse
 	StatusCode          int
 	RawResponse         *http.Response
+}
+
+func (o *ListPromptsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ListPromptsResponse) GetListPromptsResponse() *shared.ListPromptsResponse {
+	if o == nil {
+		return nil
+	}
+	return o.ListPromptsResponse
+}
+
+func (o *ListPromptsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ListPromptsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

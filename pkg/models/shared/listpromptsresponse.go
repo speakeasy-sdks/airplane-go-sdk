@@ -7,3 +7,10 @@ type ListPromptsResponse struct {
 	// Retrieved prompts.
 	Prompts []PromptsifacePrompt `json:"prompts,omitempty"`
 }
+
+func (o *ListPromptsResponse) GetPrompts() []PromptsifacePrompt {
+	if o == nil {
+		return nil
+	}
+	return o.Prompts
+}

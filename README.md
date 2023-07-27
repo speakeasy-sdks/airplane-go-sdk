@@ -44,6 +44,8 @@ curl https://api.airplane.dev/v0/runs/get \
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```go
 package main
 
@@ -51,6 +53,7 @@ import(
 	"context"
 	"log"
 	"github.com/speakeasy-sdks/airplane-go-sdk"
+	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
@@ -91,7 +94,6 @@ func main() {
 
 ### [Runs](docs/sdks/runs/README.md)
 
-* [Cancel](docs/sdks/runs/README.md#cancel) - Cancel Run
 * [Get](docs/sdks/runs/README.md#get) - Cancel Run
 * [GetOutputs](docs/sdks/runs/README.md#getoutputs) - Get Run Outputs
 * [List](docs/sdks/runs/README.md#list) - List Runs

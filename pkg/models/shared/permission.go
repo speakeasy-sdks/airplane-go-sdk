@@ -90,3 +90,31 @@ type Permission struct {
 	// ID of the user this permission applies to if assigned directly to a user.
 	SubUserID *string `json:"subUserID,omitempty"`
 }
+
+func (o *Permission) GetAction() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Action
+}
+
+func (o *Permission) GetRoleID() *PermissionRoleID {
+	if o == nil {
+		return nil
+	}
+	return o.RoleID
+}
+
+func (o *Permission) GetSubGroupID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SubGroupID
+}
+
+func (o *Permission) GetSubUserID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SubUserID
+}

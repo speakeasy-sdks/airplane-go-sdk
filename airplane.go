@@ -126,8 +126,8 @@ func New(opts ...SDKOption) *Airplane {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "1.8.0",
-			GenVersion:        "2.39.2",
+			SDKVersion:        "1.9.0",
+			GenVersion:        "2.73.1",
 		},
 	}
 	for _, opt := range opts {

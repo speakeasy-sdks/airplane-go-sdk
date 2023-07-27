@@ -6,3 +6,10 @@ type RunConstraints struct {
 	// Agent run constraints. Used to control which agents a run can be scheduled on.
 	Labels []AgentLabel `json:"labels,omitempty"`
 }
+
+func (o *RunConstraints) GetLabels() []AgentLabel {
+	if o == nil {
+		return nil
+	}
+	return o.Labels
+}

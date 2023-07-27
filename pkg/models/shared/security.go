@@ -5,3 +5,10 @@ package shared
 type Security struct {
 	APIKeyAuth string `security:"scheme,type=apiKey,subtype=header,name=X-Airplane-API-Key"`
 }
+
+func (o *Security) GetAPIKeyAuth() string {
+	if o == nil {
+		return ""
+	}
+	return o.APIKeyAuth
+}

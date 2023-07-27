@@ -10,3 +10,24 @@ type Constraints struct {
 	// Regular expression used to determine if a parameter is valid.
 	Regex *string `json:"regex,omitempty"`
 }
+
+func (o *Constraints) GetOptional() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Optional
+}
+
+func (o *Constraints) GetOptions() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}
+
+func (o *Constraints) GetRegex() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Regex
+}

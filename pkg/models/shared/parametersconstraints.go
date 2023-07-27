@@ -16,3 +16,31 @@ type ParametersConstraints struct {
 	Options  interface{} `json:"options,omitempty"`
 	Regex    *string     `json:"regex,omitempty"`
 }
+
+func (o *ParametersConstraints) GetAllowUnknownKeys() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.AllowUnknownKeys
+}
+
+func (o *ParametersConstraints) GetOptional() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.Optional
+}
+
+func (o *ParametersConstraints) GetOptions() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Options
+}
+
+func (o *ParametersConstraints) GetRegex() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Regex
+}

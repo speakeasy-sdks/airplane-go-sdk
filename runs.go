@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
+	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/utils"
 	"io"
@@ -23,58 +24,6 @@ func newRuns(sdkConfig sdkConfiguration) *runs {
 	return &runs{
 		sdkConfiguration: sdkConfig,
 	}
-}
-
-// Cancel - Cancel Run
-// Cancel a run.
-// Check on the status of your run with [/runs/get](/api/runs#runs-get).
-func (s *runs) Cancel(ctx context.Context, request shared.CancelRunRequest) (*operations.CancelRunResponse, error) {
-	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/runs/cancel"
-
-	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
-	if err != nil {
-		return nil, fmt.Errorf("error serializing request body: %w", err)
-	}
-	if bodyReader == nil {
-		return nil, fmt.Errorf("request body is required")
-	}
-
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
-	if err != nil {
-		return nil, fmt.Errorf("error creating request: %w", err)
-	}
-	req.Header.Set("Accept", "*/*")
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
-
-	req.Header.Set("Content-Type", reqContentType)
-
-	client := s.sdkConfiguration.SecurityClient
-
-	httpRes, err := client.Do(req)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %w", err)
-	}
-	if httpRes == nil {
-		return nil, fmt.Errorf("error sending request: no response")
-	}
-
-	rawBody, err := io.ReadAll(httpRes.Body)
-	if err != nil {
-		return nil, fmt.Errorf("error reading response body: %w", err)
-	}
-	httpRes.Body.Close()
-	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
-
-	contentType := httpRes.Header.Get("Content-Type")
-
-	res := &operations.CancelRunResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-	}
-
-	return res, nil
 }
 
 // Get - Cancel Run
@@ -132,6 +81,8 @@ func (s *runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, 
 			}
 
 			res.GetRunResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -193,6 +144,8 @@ func (s *runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutput
 			}
 
 			res.GetOutputsResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -258,6 +211,8 @@ func (s *runs) List(ctx context.Context, limit *int64, page *int64, since *strin
 			}
 
 			res.ListRunsResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

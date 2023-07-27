@@ -14,3 +14,31 @@ type SubmitPromptResponse struct {
 	// OK
 	SubmitPromptResponse *shared.SubmitPromptResponse
 }
+
+func (o *SubmitPromptResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SubmitPromptResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SubmitPromptResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *SubmitPromptResponse) GetSubmitPromptResponse() *shared.SubmitPromptResponse {
+	if o == nil {
+		return nil
+	}
+	return o.SubmitPromptResponse
+}

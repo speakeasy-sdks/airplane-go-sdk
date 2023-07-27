@@ -7,3 +7,10 @@ type ListSessionResponse struct {
 	// Retrieved sessions.
 	Sessions []GetSessionResponse `json:"sessions,omitempty"`
 }
+
+func (o *ListSessionResponse) GetSessions() []GetSessionResponse {
+	if o == nil {
+		return nil
+	}
+	return o.Sessions
+}

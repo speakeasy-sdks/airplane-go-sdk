@@ -7,3 +7,10 @@ type ExecuteTaskResponse struct {
 	// Unique ID of the task execution's run.
 	RunID *string `json:"runID,omitempty"`
 }
+
+func (o *ExecuteTaskResponse) GetRunID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.RunID
+}
