@@ -32,9 +32,10 @@ func main() {
             APIKeyAuth: "",
         }),
     )
+    id := "recusandae"
 
     ctx := context.Background()
-    res, err := s.Sessions.Get(ctx, "recusandae")
+    res, err := s.Sessions.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -81,9 +82,14 @@ func main() {
             APIKeyAuth: "",
         }),
     )
+    limit := 836079
+    page := 71036
+    runbookID := "quis"
+    updatedAfter := "veritatis"
+    updatedBefore := "deserunt"
 
     ctx := context.Background()
-    res, err := s.Sessions.List(ctx, 836079, 71036, "quis", "veritatis", "deserunt")
+    res, err := s.Sessions.List(ctx, limit, page, runbookID, updatedAfter, updatedBefore)
     if err != nil {
         log.Fatal(err)
     }

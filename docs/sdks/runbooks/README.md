@@ -32,16 +32,18 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.Runbooks.Execute(ctx, shared.ExecuteRunbookRequest{
+    executeRunbookRequest := shared.ExecuteRunbookRequest{
         ID: "rbk20220120z15kl79",
         ParamValues: map[string]string{
             "magnam": "debitis",
             "ipsa": "delectus",
         },
         Slug: airplane.String("hello_world"),
-    }, "tempora")
+    }
+    envSlug := "tempora"
+
+    ctx := context.Background()
+    res, err := s.Runbooks.Execute(ctx, executeRunbookRequest, envSlug)
     if err != nil {
         log.Fatal(err)
     }

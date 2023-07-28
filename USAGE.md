@@ -18,9 +18,10 @@ func main() {
             APIKeyAuth: "",
         }),
     )
+    runID := "corrupti"
 
     ctx := context.Background()
-    res, err := s.Prompts.List(ctx, "corrupti")
+    res, err := s.Prompts.List(ctx, runID)
     if err != nil {
         log.Fatal(err)
     }

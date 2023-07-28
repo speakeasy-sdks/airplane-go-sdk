@@ -84,9 +84,10 @@ func main() {
             APIKeyAuth: "",
         }),
     )
+    id := "provident"
 
     ctx := context.Background()
-    res, err := s.Prompts.Get(ctx, "provident")
+    res, err := s.Prompts.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -133,9 +134,10 @@ func main() {
             APIKeyAuth: "",
         }),
     )
+    runID := "distinctio"
 
     ctx := context.Background()
-    res, err := s.Prompts.List(ctx, "distinctio")
+    res, err := s.Prompts.List(ctx, runID)
     if err != nil {
         log.Fatal(err)
     }

@@ -33,9 +33,10 @@ func main() {
             APIKeyAuth: "",
         }),
     )
+    id := "suscipit"
 
     ctx := context.Background()
-    res, err := s.Runs.Get(ctx, "suscipit")
+    res, err := s.Runs.Get(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -82,9 +83,10 @@ func main() {
             APIKeyAuth: "",
         }),
     )
+    id := "molestiae"
 
     ctx := context.Background()
-    res, err := s.Runs.GetOutputs(ctx, "molestiae")
+    res, err := s.Runs.GetOutputs(ctx, id)
     if err != nil {
         log.Fatal(err)
     }
@@ -131,9 +133,15 @@ func main() {
             APIKeyAuth: "",
         }),
     )
+    limit := 791725
+    page := 812169
+    since := "voluptatum"
+    taskID := "iusto"
+    taskSlug := "excepturi"
+    until := "nisi"
 
     ctx := context.Background()
-    res, err := s.Runs.List(ctx, 791725, 812169, "voluptatum", "iusto", "excepturi", "nisi")
+    res, err := s.Runs.List(ctx, limit, page, since, taskID, taskSlug, until)
     if err != nil {
         log.Fatal(err)
     }

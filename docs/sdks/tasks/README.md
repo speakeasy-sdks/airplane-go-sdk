@@ -32,9 +32,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-
-    ctx := context.Background()
-    res, err := s.Tasks.Execute(ctx, shared.ExecuteTaskRequest{
+    executeTaskRequest := shared.ExecuteTaskRequest{
         ID: airplane.String("tsk20210728zxb2vxn"),
         ParamValues: map[string]string{
             "ipsam": "repellendus",
@@ -46,7 +44,11 @@ func main() {
             "quod": "quod",
         },
         Slug: airplane.String("hello_world"),
-    }, "esse")
+    }
+    envSlug := "esse"
+
+    ctx := context.Background()
+    res, err := s.Tasks.Execute(ctx, executeTaskRequest, envSlug)
     if err != nil {
         log.Fatal(err)
     }
