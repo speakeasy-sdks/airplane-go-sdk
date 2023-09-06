@@ -7,34 +7,39 @@ info:
   termsOfService: https://www.airplane.dev/terms
   title: Airplane API
   version: 0.0.1
-    
 servers:
-  - url: https://api.airplane.dev/v0
-    description: Airplane API
-security: 
-  -  ApiKeyAuth: []
+- url: https://api.airplane.dev/v0
+  description: Airplane API
+security:
+- ApiKeyAuth: []
 x-speakeasy-name-override:
-  - operationId: get*
-    methodNameOverride: get
-  - operationId: list*
-    methodNameOverride: list
-  - operationId: cancel*
-    methodNameOverride: cancel
-  - operationId: submit*
-    methodNameOverride: submit
-  - operationId: execute*
-    methodNameOverride: execute
-tags: 
-  - name: Prompts
-    description: A prompt is used to gather user input during a task's execution. See Prompts to see how prompts are used.
-  - name: Runs
-    description: A run represents an instance of a task's execution. See Tasks API for how to execute tasks.
-  - name: Runbooks
-    description: A Runbook is a multi-step, human-in-the-loop workflow. Runbooks are able to take a set of top-level parameters, run one or more functions, and generate output at each step of the way.
-  - name: Sessions
-    description: A session represents an instance of a runbook's execution. See Runbooks API for how to execute runbooks.
-  - name: Tasks
-    description: A Task is a lightweight app that represents a single business operation for people at your company to execute.
+- operationId: get*
+  methodNameOverride: get
+- operationId: list*
+  methodNameOverride: list
+- operationId: cancel*
+  methodNameOverride: cancel
+- operationId: submit*
+  methodNameOverride: submit
+- operationId: execute*
+  methodNameOverride: execute
+tags:
+- name: Prompts
+  description: A prompt is used to gather user input during a task's execution. See
+    Prompts to see how prompts are used.
+- name: Runs
+  description: A run represents an instance of a task's execution. See Tasks API for
+    how to execute tasks.
+- name: Runbooks
+  description: A Runbook is a multi-step, human-in-the-loop workflow. Runbooks are
+    able to take a set of top-level parameters, run one or more functions, and generate
+    output at each step of the way.
+- name: Sessions
+  description: A session represents an instance of a runbook's execution. See Runbooks
+    API for how to execute runbooks.
+- name: Tasks
+  description: A Task is a lightweight app that represents a single business operation
+    for people at your company to execute.
 paths:
   /prompts/cancel:
     post:
@@ -42,12 +47,14 @@ paths:
       description: Cancel a prompt.
       summary: Cancel Prompt
       tags:
-        - Prompts
+      - Prompts
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CancelPromptRequest"
+              $ref: '#/components/schemas/CancelPromptRequest'
+            example:
+              id: pmt20221122zyydx3rho2t
         description: CancelPromptRequest
         required: true
       responses:
@@ -56,31 +63,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/CancelPromptResponse"
-      
+                $ref: '#/components/schemas/CancelPromptResponse'
+              example:
+                id: pmt20221122zyydx3rho2t
   /prompts/get:
     get:
       operationId: getPrompt
       description: Get information about an existing prompt.
       summary: Get Prompt
       tags:
-        - Prompts
+      - Prompts
       parameters:
-        - description: ID of the prompt to retrieve.
-          in: query
-          name: id
-          required: true
-          example: pmt20221122zyydx3rho2t
-          schema:
-            type: string
+      - description: ID of the prompt to retrieve.
+        in: query
+        name: id
+        required: true
+        example: pmt20221122zyydx3rho2t
+        schema:
+          type: string
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetPromptResponse"
-      
+                $ref: '#/components/schemas/GetPromptResponse'
   /prompts/list:
     get:
       operationId: listPrompts
@@ -88,23 +95,22 @@ paths:
       summary: List Prompts
       x-speakeasy-usage-example: true
       tags:
-        - Prompts
+      - Prompts
       parameters:
-        - description: ID of the run to retrieve prompts for.
-          in: query
-          name: runID
-          required: true
-          example: run20220215zv10o6s52qj
-          schema:
-            type: string
+      - description: ID of the run to retrieve prompts for.
+        in: query
+        name: runID
+        required: true
+        example: run20220215zv10o6s52qj
+        schema:
+          type: string
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPromptsResponse"
-      
+                $ref: '#/components/schemas/ListPromptsResponse'
   /prompts/submit:
     post:
       operationId: submitPrompt
@@ -113,7 +119,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/SubmitPromptRequest"
+              $ref: '#/components/schemas/SubmitPromptRequest'
         description: SubmitPromptRequest
         required: true
       responses:
@@ -122,33 +128,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SubmitPromptResponse"
+                $ref: '#/components/schemas/SubmitPromptResponse'
       summary: Submit Prompt
       tags:
-        - Prompts
+      - Prompts
   /runbooks/execute:
     post:
       operationId: executeRunbook
-      description: >-
-        Execute a runbook and receive a session ID to track the runbook's
-        execution.
-
+      description: |-
+        Execute a runbook and receive a session ID to track the runbook's execution.
         Check on the status of your newly created session with [/sessions/get](/api/sessions#sessions-get).
       summary: Execute Runbook
       tags:
-        - Runbooks
+      - Runbooks
       parameters:
-        - description: Environment to execute the runbook in.
-          in: query
-          name: envSlug
-          example: prod
-          schema:
-            type: string
+      - description: Environment to execute the runbook in.
+        in: query
+        name: envSlug
+        example: prod
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ExecuteRunbookRequest"
+              $ref: '#/components/schemas/ExecuteRunbookRequest'
         description: ExecuteRunbookRequest
         required: true
       responses:
@@ -157,30 +161,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ExecuteRunbookResponse"
-      
+                $ref: '#/components/schemas/ExecuteRunbookResponse'
   /runs/get:
     get:
       operationId: getRun
       description: Get information about an existing run.
       summary: Cancel Run
       tags:
-        - Runs
+      - Runs
       parameters:
-        - description: ID of the run to retrieve.
-          in: query
-          name: id
-          required: true
-          example: run20220215zv10o6s52qj
-          schema:
-            type: string
+      - description: ID of the run to retrieve.
+        in: query
+        name: id
+        required: true
+        example: run20220215zv10o6s52qj
+        schema:
+          type: string
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetRunResponse"
+                $ref: '#/components/schemas/GetRunResponse'
   /runs/getOutputs:
     get:
       operationId: getOutputs
@@ -188,163 +191,161 @@ paths:
       description: Get outputs from an existing run.
       summary: Get Run Outputs
       tags:
-        - Runs
+      - Runs
       parameters:
-        - description: ID of the run to retrieve.
-          in: query
-          name: id
-          required: true
-          example: run20220215zv10o6s52qj
-          schema:
-            type: string
+      - description: ID of the run to retrieve.
+        in: query
+        name: id
+        required: true
+        example: run20220215zv10o6s52qj
+        schema:
+          type: string
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetOutputsResponse"
+                $ref: '#/components/schemas/GetOutputsResponse'
   /runs/list:
     get:
       operationId: listRuns
       summary: List Runs
       tags:
-        - Runs
+      - Runs
       parameters:
-        - description: Unique ID of the task to fetch runs for.
-          in: query
-          name: taskID
-          example: tsk20210728zxb2vxn
-          schema:
-            type: string
-        - description: Unique slug of the task to fetch runs for.
-          in: query
-          name: taskSlug
-          example: hello_world
-          schema:
-            type: string
-        - description: Fetch runs last updated after this time (RFC 3339 format).
-          in: query
-          name: since
-          example: 2022-01-01T12:00:00-00:00
-          schema:
-            type: string
-        - description: Fetch runs last updated before this time (RFC 3339 format).
-          in: query
-          name: until
-          example: 2022-01-01T13:00:00-00:00
-          schema:
-            type: string
-        - description: "Number of results per call. Accepted values: 0 - 50. Default: 50."
-          in: query
-          name: limit
-          example: "10"
-          schema:
-            type: integer
-        - description: The offset used for this page of results.
-          in: query
-          name: page
-          example: "0"
-          schema:
-            type: integer
+      - description: Unique ID of the task to fetch runs for.
+        in: query
+        name: taskID
+        example: tsk20210728zxb2vxn
+        schema:
+          type: string
+      - description: Unique slug of the task to fetch runs for.
+        in: query
+        name: taskSlug
+        example: hello_world
+        schema:
+          type: string
+      - description: Fetch runs last updated after this time (RFC 3339 format).
+        in: query
+        name: since
+        example: "2022-01-01T12:00:00-00:00"
+        schema:
+          type: string
+      - description: Fetch runs last updated before this time (RFC 3339 format).
+        in: query
+        name: until
+        example: "2022-01-01T13:00:00-00:00"
+        schema:
+          type: string
+      - description: 'Number of results per call. Accepted values: 0 - 50. Default:
+          50.'
+        in: query
+        name: limit
+        example: "10"
+        schema:
+          type: integer
+      - description: The offset used for this page of results.
+        in: query
+        name: page
+        example: "0"
+        schema:
+          type: integer
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListRunsResponse"
-      
+                $ref: '#/components/schemas/ListRunsResponse'
   /sessions/get:
     get:
       operationId: getSession
       description: Get information about an existing session.
       summary: Get Session
       tags:
-        - Sessions
+      - Sessions
       parameters:
-        - description: ID of the session to retrieve.
-          in: query
-          name: id
-          required: true
-          example: ses20220120za1pskd
-          schema:
-            type: string
+      - description: ID of the session to retrieve.
+        in: query
+        name: id
+        required: true
+        example: ses20220120za1pskd
+        schema:
+          type: string
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetSessionResponse"
-      
+                $ref: '#/components/schemas/GetSessionResponse'
   /sessions/list:
     get:
       operationId: listSessions
       summary: List Sessions
       tags:
-        - Sessions
+      - Sessions
       parameters:
-        - description: Only fetch sessions for this specific runbook.
-          in: query
-          name: runbookID
-          example: rbk20220120z15kl79
-          schema:
-            type: string
-        - description: Fetch sessions last updated after this time (RFC 3339 format).
-          in: query
-          name: updatedAfter
-          example: 2022-01-01T12:00:00-00:00
-          schema:
-            type: string
-        - description: Fetch sessions last updated before this time (RFC 3339 format).
-          in: query
-          name: updatedBefore
-          example: 2022-01-01T13:00:00-00:00
-          schema:
-            type: string
-        - description: "Number of results per call. Accepted values: 0 - 50. The default: 50."
-          in: query
-          name: limit
-          example: "10"
-          schema:
-            type: integer
-        - description: The offset used for this page of results.
-          in: query
-          name: page
-          example: "0"
-          schema:
-            type: integer
+      - description: Only fetch sessions for this specific runbook.
+        in: query
+        name: runbookID
+        example: rbk20220120z15kl79
+        schema:
+          type: string
+      - description: Fetch sessions last updated after this time (RFC 3339 format).
+        in: query
+        name: updatedAfter
+        example: "2022-01-01T12:00:00-00:00"
+        schema:
+          type: string
+      - description: Fetch sessions last updated before this time (RFC 3339 format).
+        in: query
+        name: updatedBefore
+        example: "2022-01-01T13:00:00-00:00"
+        schema:
+          type: string
+      - description: 'Number of results per call. Accepted values: 0 - 50. The default:
+          50.'
+        in: query
+        name: limit
+        example: "10"
+        schema:
+          type: integer
+      - description: The offset used for this page of results.
+        in: query
+        name: page
+        example: "0"
+        schema:
+          type: integer
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSessionResponse"
+                $ref: '#/components/schemas/ListSessionResponse'
   /tasks/execute:
     post:
       operationId: executeTask
       summary: Execute Task
       tags:
-        - Tasks
-      description: >-
-        Execute a task with a set of parameter values and receive a run ID to
-        track the task's execution.
-
+      - Tasks
+      description: |-
+        Execute a task with a set of parameter values and receive a run ID to track the task's execution.
         Check on the status of your newly created run with [/runs/get](/api/runs#runs-get).
       parameters:
-        - description: Environment to execute the task in.
-          in: query
-          name: envSlug
-          example: prod
-          schema:
-            type: string
+      - description: Environment to execute the task in.
+        in: query
+        name: envSlug
+        example: prod
+        schema:
+          type: string
       requestBody:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/ExecuteTaskRequest"
+              $ref: '#/components/schemas/ExecuteTaskRequest'
         description: ExecuteTaskRequest
         required: true
       responses:
@@ -353,8 +354,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ExecuteTaskResponse"
-      
+                $ref: '#/components/schemas/ExecuteTaskResponse'
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -387,13 +387,6 @@ components:
           example: pmt20221122zyydx3rho2t
           type: string
       type: object
-    CancelRunRequest:
-      properties:
-        runID:
-          description: Unique ID of the run to cancel.
-          example: run20220111zlq2ig4
-          type: string
-      type: object
     Constraints:
       properties:
         optional:
@@ -408,12 +401,9 @@ components:
     ExecuteRunbookRequest:
       properties:
         id:
-          description: >-
-            Unique ID of the runbook. You can find your runbook's ID by visiting
-            the runbook's page on Airplane.
-
+          description: |-
+            Unique ID of the runbook. You can find your runbook's ID by visiting the runbook's page on Airplane.
             The runbook ID is located at the end of the url.
-
 
             e.g. the runbook ID for `https://app.airplane.dev/runbooks/rbk20220120z15kl79` is `rbk20220120z15kl79`
           example: rbk20220120z15kl79
@@ -421,28 +411,23 @@ components:
         paramValues:
           additionalProperties:
             type: string
-          description: >-
-            Mapping of parameter slug to value. You can find your runbooks's
-            parameter slugs inside the
-
+          description: |-
+            Mapping of parameter slug to value. You can find your runbooks's parameter slugs inside the
             runbook editor on Airplane.
           example:
             limit: "20"
             user: eric
           type: object
         slug:
-          description: >-
-            Unique slug of the runbook. You can find your runbook's slug next to
-            the runbook's name within the
-
+          description: |-
+            Unique slug of the runbook. You can find your runbook's slug next to the runbook's name within the
             runbook editor on Airplane.
-
 
             Either an ID or a slug must be provided.
           example: hello_world
           type: string
       required:
-        - id
+      - id
       type: object
     ExecuteRunbookResponse:
       properties:
@@ -454,15 +439,11 @@ components:
     ExecuteTaskRequest:
       properties:
         id:
-          description: >-
-            Unique ID of the task. You can find your task's ID by visiting the
-            task's page on Airplane.
-
+          description: |-
+            Unique ID of the task. You can find your task's ID by visiting the task's page on Airplane.
             The task ID is located at the end of the url.
 
-
             e.g. the task ID for `https://app.airplane.dev/tasks/tsk20210728zxb2vxn` is `tsk20210728zxb2vxn`
-
 
             Either an ID or a slug must be provided.
           example: tsk20210728zxb2vxn
@@ -470,24 +451,19 @@ components:
         paramValues:
           additionalProperties:
             type: string
-          description: >-
-            Mapping of parameter slug to value. You can find your task's
-            parameter slugs inside the
-
+          description: |-
+            Mapping of parameter slug to value. You can find your task's parameter slugs inside the
             task editor on Airplane or by running `airplane tasks list` from the CLI.
           example:
             limit: "20"
             user: eric
           type: object
         resources:
-          $ref: "#/components/schemas/sharedtypes.JsonMapString"
+          $ref: '#/components/schemas/sharedtypes.JsonMapString'
         slug:
-          description: >-
-            Unique slug of the task. You can find your task's slug next to the
-            task's name within the
-
+          description: |-
+            Unique slug of the task. You can find your task's slug next to the task's name within the
             task editor on Airplane or by running `airplane tasks list` from the CLI.
-
 
             Either an ID or a slug must be provided.
           example: hello_world
@@ -515,12 +491,13 @@ components:
     GetPromptResponse:
       properties:
         prompt:
-          $ref: "#/components/schemas/promptsiface.Prompt"
+          $ref: '#/components/schemas/promptsiface.Prompt'
       type: object
     GetRunResponse:
       properties:
         activeAt:
-          description: When the run became active. Empty if this run has not started yet.
+          description: When the run became active. Empty if this run has not started
+            yet.
           example: 2022-01-11 22:32:45.707231+00
           type: string
         cancelledAt:
@@ -532,7 +509,7 @@ components:
           example: run20220111zlq2ig4
           type: string
         constraints:
-          $ref: "#/components/schemas/RunConstraints"
+          $ref: '#/components/schemas/RunConstraints'
         createdAt:
           description: When this run was created.
           example: 2022-01-11 22:32:45.601486+00
@@ -562,41 +539,41 @@ components:
             user: eric
           type: object
         params:
-          description: Schema for the set of values users can provide when executing this
-            run.
+          description: Schema for the set of values users can provide when executing
+            this run.
           items:
-            $ref: "#/components/schemas/Parameter"
+            $ref: '#/components/schemas/Parameter'
           type: array
           x-docs-link: /platform/parameters
         permissions:
           description: Explicit permissions of this run if it is private.
           items:
-            $ref: "#/components/schemas/Permission"
+            $ref: '#/components/schemas/Permission'
           type: array
           x-docs-link: /platform/permissions
         resources:
-          $ref: "#/components/schemas/sharedtypes.JsonMapString"
+          $ref: '#/components/schemas/sharedtypes.JsonMapString'
         runtime:
           description: Runtime that this run executed on.
           enum:
-            - standard
-            - workflow
+          - standard
+          - workflow
           example: standard
           type: string
           x-docs-link: /tasks/runtimes
         sessionID:
-          description: ID of the session this run was spawned from if triggered by a
-            session.
+          description: ID of the session this run was spawned from if triggered by
+            a session.
           type: string
         status:
           description: Status of this run.
           enum:
-            - NotStarted
-            - Queued
-            - Active
-            - Succeeded
-            - Failed
-            - Cancelled
+          - NotStarted
+          - Queued
+          - Active
+          - Succeeded
+          - Failed
+          - Cancelled
           example: Succeeded
           type: string
         succeededAt:
@@ -604,7 +581,8 @@ components:
           example: 2022-01-11 22:33:03.78416+00
           type: string
         taskID:
-          description: ID of the task this run was spawned from if triggered by a task.
+          description: ID of the task this run was spawned from if triggered by a
+            task.
           example: tsk20210728zxb2vxn
           type: string
         teamID:
@@ -612,15 +590,14 @@ components:
           example: tea20220103zvy4auu
           type: string
         timeout:
-          description: Maximum amount of time in seconds the run could have executed for.
+          description: Maximum amount of time in seconds the run could have executed
+            for.
           example: 3600
           type: integer
           x-docs-link: /tasks/timeouts
         zoneID:
-          description: >-
-            ID of the storage zone that the run used for its runs and outputs.
-            Will be null if
-
+          description: |-
+            ID of the storage zone that the run used for its runs and outputs. Will be null if
             there was no storage zone, in which case logs and outputs will be in the airplane API.
           example: zon20230224zu6zo7yyn65
           type: string
@@ -656,33 +633,33 @@ components:
             user: eric
           type: object
         params:
-          description: Schema for the set of values users can provide when executing this
-            session.
+          description: Schema for the set of values users can provide when executing
+            this session.
           items:
-            $ref: "#/components/schemas/Parameter"
+            $ref: '#/components/schemas/Parameter'
           type: array
           x-docs-link: /platform/parameters
         permissions:
           description: Explicit permissions of this session if it is private.
           items:
-            $ref: "#/components/schemas/Permission"
+            $ref: '#/components/schemas/Permission'
           type: array
           x-docs-link: /platform/permissions
         runbookID:
-          description: ID of the runbook this session was spawned from if triggered from a
-            runbook.
+          description: ID of the runbook this session was spawned from if triggered
+            from a runbook.
           example: rbk20220120z15kl79
           type: string
         status:
           description: Status of this session.
           enum:
-            - Pending
-            - Active
-            - Waiting
-            - Succeeded
-            - Failed
-            - Cancelling
-            - Cancelled
+          - Pending
+          - Active
+          - Waiting
+          - Succeeded
+          - Failed
+          - Cancelling
+          - Cancelled
           example: Succeeded
           type: string
         teamID:
@@ -703,7 +680,7 @@ components:
         prompts:
           description: Retrieved prompts.
           items:
-            $ref: "#/components/schemas/promptsiface.Prompt"
+            $ref: '#/components/schemas/promptsiface.Prompt'
           type: array
       type: object
     ListRunsResponse:
@@ -711,7 +688,7 @@ components:
         runs:
           description: Retrieved runs.
           items:
-            $ref: "#/components/schemas/GetRunResponse"
+            $ref: '#/components/schemas/GetRunResponse'
           type: array
       type: object
     ListSessionResponse:
@@ -719,7 +696,7 @@ components:
         sessions:
           description: Retrieved sessions.
           items:
-            $ref: "#/components/schemas/GetSessionResponse"
+            $ref: '#/components/schemas/GetSessionResponse'
           type: array
       type: object
     Parameter:
@@ -727,13 +704,13 @@ components:
         component:
           description: Used to specify UI-only type modifiers
           enum:
-            - ""
-            - editor-sql
-            - textarea
+          - ""
+          - editor-sql
+          - textarea
           example: textarea
           type: string
         constraints:
-          $ref: "#/components/schemas/Constraints"
+          $ref: '#/components/schemas/Constraints'
         default:
           description: Optional default value for this parameter, used if not set.
         desc:
@@ -748,13 +725,11 @@ components:
           description: If this parameter has an object data type, represents an ordered
             list of key-value pairs that can be included in this object.
           items:
-            $ref: "#/components/schemas/Parameter"
+            $ref: '#/components/schemas/Parameter'
           type: array
         slug:
-          description: >-
-            A human-friendly identifier for the parameter that can be referenced
-            inside a task or runbook.
-
+          description: |-
+            A human-friendly identifier for the parameter that can be referenced inside a task or runbook.
             Airplane automatically generates a slug when provided a parameter name.
           example: user_email
           type: string
@@ -762,23 +737,23 @@ components:
         type:
           description: Parameter data type.
           enum:
-            - any
-            - string
-            - boolean
-            - upload
-            - integer
-            - float
-            - date
-            - datetime
-            - configvar
-            - list
-            - map
-            - object
+          - any
+          - string
+          - boolean
+          - upload
+          - integer
+          - float
+          - date
+          - datetime
+          - configvar
+          - list
+          - map
+          - object
           example: string
           type: string
           x-docs-link: /platform/parameters#parameter-types
         values:
-          $ref: "#/components/schemas/Parameter"
+          $ref: '#/components/schemas/Parameter'
       type: object
     Permission:
       properties:
@@ -789,42 +764,43 @@ components:
         roleID:
           description: Which role is assigned to this permission.
           enum:
-            - team_admin
-            - team_developer
-            - task_viewer
-            - task_requester
-            - task_executer
-            - task_admin
-            - run_viewer
-            - runbook_viewer
-            - runbook_requester
-            - runbook_executer
-            - runbook_admin
-            - session_viewer
-            - session_executer
-            - session_admin
-            - resource_user
-            - deploy_creator
-            - group_admin
+          - team_admin
+          - team_developer
+          - task_viewer
+          - task_requester
+          - task_executer
+          - task_admin
+          - run_viewer
+          - runbook_viewer
+          - runbook_requester
+          - runbook_executer
+          - runbook_admin
+          - session_viewer
+          - session_executer
+          - session_admin
+          - resource_user
+          - deploy_creator
+          - group_admin
           example: team_admin
           type: string
         subGroupID:
-          description: ID of the group  this permission applies to if assigned to a group.
+          description: ID of the group  this permission applies to if assigned to
+            a group.
           example: grp20220222zaigy4h2bw3
           type: string
         subUserID:
-          description: ID of the user this permission applies to if assigned directly to a
-            user.
+          description: ID of the user this permission applies to if assigned directly
+            to a user.
           example: usr20211123zz1dv7z
           type: string
       type: object
     RunConstraints:
       properties:
         labels:
-          description: Agent run constraints. Used to control which agents a run can be
-            scheduled on.
+          description: Agent run constraints. Used to control which agents a run can
+            be scheduled on.
           items:
-            $ref: "#/components/schemas/AgentLabel"
+            $ref: '#/components/schemas/AgentLabel'
           type: array
       type: object
     SubmitPromptRequest:
@@ -836,10 +812,8 @@ components:
         values:
           additionalProperties:
             type: string
-          description: >-
-            Mapping of parameter slug to value. You can find your prompt's
-            parameter slugs on
-
+          description: |-
+            Mapping of parameter slug to value. You can find your prompt's parameter slugs on
             the Airplane runs page or by fetching the prompt via the API.
           example:
             limit: "20"
@@ -859,18 +833,12 @@ components:
           description: Applicable for TypeObject parameters only.
           type: boolean
         optional:
-          description: >-
-            Optional determines whether this parameter must be set. A parameter
-            is considered
-
+          description: |-
+            Optional determines whether this parameter must be set. A parameter is considered
             not set if its value is explicitly `null` or if the parameter's slug is not included
-
             in the enclosing object. It does _not_ validate whether the value is "empty", f.e.
-
             `""` for a string or `0` for an integer. To validate that, use a different constraint
-
             such as a regex (or other, future constraints).
-
 
             In other words, `Optional` means `Nullable`.
           type: boolean
@@ -883,13 +851,13 @@ components:
         component:
           description: Used to specify UI-only type modifiers
           enum:
-            - ""
-            - editor-sql
-            - textarea
+          - ""
+          - editor-sql
+          - textarea
           example: textarea
           type: string
         constraints:
-          $ref: "#/components/schemas/parameters.Constraints"
+          $ref: '#/components/schemas/parameters.Constraints'
         default:
           description: Optional default value for this parameter, used if not set.
         desc:
@@ -904,7 +872,7 @@ components:
           description: If this parameter has an object data type, represents an ordered
             list of key-value pairs that can be included in this object.
           items:
-            $ref: "#/components/schemas/parameters.Parameter"
+            $ref: '#/components/schemas/parameters.Parameter'
           type: array
         slug:
           description: A human-friendly identifier for the parameter.
@@ -914,29 +882,29 @@ components:
         type:
           description: Parameter data type.
           enum:
-            - any
-            - string
-            - boolean
-            - upload
-            - integer
-            - float
-            - date
-            - datetime
-            - configvar
-            - list
-            - map
-            - object
+          - any
+          - string
+          - boolean
+          - upload
+          - integer
+          - float
+          - date
+          - datetime
+          - configvar
+          - list
+          - map
+          - object
           example: string
           type: string
           x-docs-link: /platform/parameters#parameter-types
         values:
-          $ref: "#/components/schemas/parameters.Parameter"
+          $ref: '#/components/schemas/parameters.Parameter'
       type: object
     parameters.Parameters:
       properties:
         parameters:
           items:
-            $ref: "#/components/schemas/parameters.Parameter"
+            $ref: '#/components/schemas/parameters.Parameter'
           type: array
       type: object
     promptsiface.Prompt:
@@ -946,13 +914,13 @@ components:
           example: Reject workflow.
           type: string
         cancelledAt:
-          description: When this prompt was cancelled. This value will be null if the
-            prompt has not been cancelled.
+          description: When this prompt was cancelled. This value will be null if
+            the prompt has not been cancelled.
           example: 2022-01-11 22:32:46.601486+00
           type: string
         cancelledBy:
-          description: Who cancelled this this prompt. This value will be null if the
-            prompt has not been cancelled.
+          description: Who cancelled this this prompt. This value will be null if
+            the prompt has not been cancelled.
           example: usr20220103zlufhym
           type: string
         confirmText:
@@ -972,21 +940,21 @@ components:
           example: pmt20221122zyydx3rho2t
           type: string
         reviewers:
-          $ref: "#/components/schemas/promptsiface.Reviewers"
+          $ref: '#/components/schemas/promptsiface.Reviewers'
         runID:
           description: Unique ID of the run the prompt belongs to.
           example: run20220111zlq2ig4
           type: string
         schema:
-          $ref: "#/components/schemas/parameters.Parameters"
+          $ref: '#/components/schemas/parameters.Parameters'
         submittedAt:
-          description: When this prompt was submitted. This value will be null if the
-            prompt has not been submitted.
+          description: When this prompt was submitted. This value will be null if
+            the prompt has not been submitted.
           example: 2022-01-11 22:32:46.601486+00
           type: string
         submittedBy:
-          description: Who submitted this this prompt. This value will be null if the
-            prompt has not been submitted.
+          description: Who submitted this this prompt. This value will be null if
+            the prompt has not been submitted.
           example: usr20220103zlufhym
           type: string
         values:
@@ -1005,12 +973,14 @@ components:
           example: false
           type: boolean
         groups:
-          description: Groups allowed to review a given prompt indentified by their slugs.
+          description: Groups allowed to review a given prompt indentified by their
+            slugs.
           items:
             type: string
           type: array
         users:
-          description: Users allowed to review a given prompt indentified by their emails.
+          description: Users allowed to review a given prompt indentified by their
+            emails.
           items:
             type: string
           type: array
