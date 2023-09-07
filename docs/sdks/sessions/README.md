@@ -32,7 +32,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    id := "recusandae"
+    id := "delectus"
 
     ctx := context.Background()
     res, err := s.Sessions.Get(ctx, id)
@@ -82,11 +82,11 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    limit := 836079
-    page := 71036
-    runbookID := "quis"
-    updatedAfter := "veritatis"
-    updatedBefore := "deserunt"
+    limit := 272656
+    page := 383441
+    runbookID := "molestiae"
+    updatedAfter := "minus"
+    updatedBefore := "placeat"
 
     ctx := context.Background()
     res, err := s.Sessions.List(ctx, limit, page, runbookID, updatedAfter, updatedBefore)

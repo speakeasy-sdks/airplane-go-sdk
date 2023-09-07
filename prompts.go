@@ -26,7 +26,7 @@ func newPrompts(sdkConfig sdkConfiguration) *prompts {
 	}
 }
 
-// Cancel - Cancel Prompt
+// Cancel Prompt
 // Cancel a prompt.
 func (s *prompts) Cancel(ctx context.Context, request shared.CancelPromptRequest) (*operations.CancelPromptResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
@@ -91,7 +91,7 @@ func (s *prompts) Cancel(ctx context.Context, request shared.CancelPromptRequest
 	return res, nil
 }
 
-// Get - Get Prompt
+// Get Prompt
 // Get information about an existing prompt.
 func (s *prompts) Get(ctx context.Context, id string) (*operations.GetPromptResponse, error) {
 	request := operations.GetPromptRequest{
@@ -154,7 +154,7 @@ func (s *prompts) Get(ctx context.Context, id string) (*operations.GetPromptResp
 	return res, nil
 }
 
-// List - List Prompts
+// List Prompts
 // List prompts from existing runs.
 func (s *prompts) List(ctx context.Context, runID string) (*operations.ListPromptsResponse, error) {
 	request := operations.ListPromptsRequest{
@@ -217,7 +217,7 @@ func (s *prompts) List(ctx context.Context, runID string) (*operations.ListPromp
 	return res, nil
 }
 
-// Submit - Submit Prompt
+// Submit Prompt
 // Submit a prompt with a set of parameter values.
 func (s *prompts) Submit(ctx context.Context, request shared.SubmitPromptRequest) (*operations.SubmitPromptResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())

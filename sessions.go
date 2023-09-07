@@ -26,7 +26,7 @@ func newSessions(sdkConfig sdkConfiguration) *sessions {
 	}
 }
 
-// Get - Get Session
+// Get Session
 // Get information about an existing session.
 func (s *sessions) Get(ctx context.Context, id string) (*operations.GetSessionResponse, error) {
 	request := operations.GetSessionRequest{
@@ -89,7 +89,7 @@ func (s *sessions) Get(ctx context.Context, id string) (*operations.GetSessionRe
 	return res, nil
 }
 
-// List - List Sessions
+// List Sessions
 func (s *sessions) List(ctx context.Context, limit *int64, page *int64, runbookID *string, updatedAfter *string, updatedBefore *string) (*operations.ListSessionsResponse, error) {
 	request := operations.ListSessionsRequest{
 		Limit:         limit,

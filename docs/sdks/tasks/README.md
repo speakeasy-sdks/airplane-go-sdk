@@ -35,17 +35,14 @@ func main() {
     executeTaskRequest := shared.ExecuteTaskRequest{
         ID: airplane.String("tsk20210728zxb2vxn"),
         ParamValues: map[string]string{
-            "ipsam": "repellendus",
+            "voluptatum": "iusto",
         },
         Resources: map[string]string{
-            "quo": "odit",
-            "at": "at",
-            "maiores": "molestiae",
-            "quod": "quod",
+            "excepturi": "nisi",
         },
         Slug: airplane.String("hello_world"),
     }
-    envSlug := "esse"
+    envSlug := "recusandae"
 
     ctx := context.Background()
     res, err := s.Tasks.Execute(ctx, executeTaskRequest, envSlug)

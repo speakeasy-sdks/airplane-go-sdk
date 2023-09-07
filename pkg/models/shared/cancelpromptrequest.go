@@ -2,7 +2,7 @@
 
 package shared
 
-// CancelPromptRequest - CancelPromptRequest
+// CancelPromptRequest
 type CancelPromptRequest struct {
 	// Unique ID of the prompt.
 	ID *string `json:"id,omitempty"`

@@ -152,7 +152,7 @@ func (s *runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutput
 	return res, nil
 }
 
-// List - List Runs
+// List Runs
 func (s *runs) List(ctx context.Context, limit *int64, page *int64, since *string, taskID *string, taskSlug *string, until *string) (*operations.ListRunsResponse, error) {
 	request := operations.ListRunsRequest{
 		Limit:    limit,

@@ -59,17 +59,17 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.ServerIndex], nil
 }
 
-// Airplane - Airplane API: Airplane API
+// Airplane API: Airplane API
 type Airplane struct {
-	// Prompts - A prompt is used to gather user input during a task's execution. See Prompts to see how prompts are used.
+	// A prompt is used to gather user input during a task's execution. See Prompts to see how prompts are used.
 	Prompts *prompts
-	// Runbooks - A Runbook is a multi-step, human-in-the-loop workflow. Runbooks are able to take a set of top-level parameters, run one or more functions, and generate output at each step of the way.
+	// A Runbook is a multi-step, human-in-the-loop workflow. Runbooks are able to take a set of top-level parameters, run one or more functions, and generate output at each step of the way.
 	Runbooks *runbooks
-	// Runs - A run represents an instance of a task's execution. See Tasks API for how to execute tasks.
+	// A run represents an instance of a task's execution. See Tasks API for how to execute tasks.
 	Runs *runs
-	// Sessions - A session represents an instance of a runbook's execution. See Runbooks API for how to execute runbooks.
+	// A session represents an instance of a runbook's execution. See Runbooks API for how to execute runbooks.
 	Sessions *sessions
-	// Tasks - A Task is a lightweight app that represents a single business operation for people at your company to execute.
+	// A Task is a lightweight app that represents a single business operation for people at your company to execute.
 	Tasks *tasks
 
 	sdkConfiguration sdkConfiguration
@@ -126,8 +126,8 @@ func New(opts ...SDKOption) *Airplane {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "1.11.0",
-			GenVersion:        "2.89.1",
+			SDKVersion:        "1.12.0",
+			GenVersion:        "2.101.0",
 		},
 	}
 	for _, opt := range opts {

@@ -188,10 +188,7 @@ func main() {
     res, err := s.Prompts.Submit(ctx, shared.SubmitPromptRequest{
         ID: airplane.String("pmt20221122zyydx3rho2t"),
         Values: map[string]string{
-            "unde": "nulla",
-            "corrupti": "illum",
-            "vel": "error",
-            "deserunt": "suscipit",
+            "quibusdam": "unde",
         },
     })
     if err != nil {

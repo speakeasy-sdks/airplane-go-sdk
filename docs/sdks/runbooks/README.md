@@ -35,12 +35,11 @@ func main() {
     executeRunbookRequest := shared.ExecuteRunbookRequest{
         ID: "rbk20220120z15kl79",
         ParamValues: map[string]string{
-            "magnam": "debitis",
-            "ipsa": "delectus",
+            "nulla": "corrupti",
         },
         Slug: airplane.String("hello_world"),
     }
-    envSlug := "tempora"
+    envSlug := "illum"
 
     ctx := context.Background()
     res, err := s.Runbooks.Execute(ctx, executeRunbookRequest, envSlug)

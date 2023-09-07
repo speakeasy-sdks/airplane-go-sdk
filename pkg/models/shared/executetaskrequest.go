@@ -2,7 +2,7 @@
 
 package shared
 
-// ExecuteTaskRequest - ExecuteTaskRequest
+// ExecuteTaskRequest
 type ExecuteTaskRequest struct {
 	// Unique ID of the task. You can find your task's ID by visiting the task's page on Airplane.
 	// The task ID is located at the end of the url.
