@@ -2,7 +2,6 @@
 
 package shared
 
-// ExecuteRunbookResponse - OK
 type ExecuteRunbookResponse struct {
 	// Unique ID of the runbook's session.
 	SessionID *string `json:"sessionID,omitempty"`

@@ -2,7 +2,6 @@
 
 package shared
 
-// ListRunsResponse - OK
 type ListRunsResponse struct {
 	// Retrieved runs.
 	Runs []GetRunResponse `json:"runs,omitempty"`

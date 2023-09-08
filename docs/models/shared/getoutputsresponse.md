@@ -1,7 +1,5 @@
 # GetOutputsResponse
 
-OK
-
 
 ## Fields
 

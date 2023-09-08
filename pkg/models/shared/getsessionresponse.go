@@ -50,7 +50,6 @@ func (e *GetSessionResponseStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetSessionResponse - OK
 type GetSessionResponse struct {
 	// When this session was created.
 	CreatedAt *string `json:"createdAt,omitempty"`

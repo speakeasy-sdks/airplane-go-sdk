@@ -2,7 +2,6 @@
 
 package shared
 
-// GetOutputsResponse - OK
 type GetOutputsResponse struct {
 	// Outputs from this run.
 	Output map[string]string `json:"output,omitempty"`

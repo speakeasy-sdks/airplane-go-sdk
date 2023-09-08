@@ -2,7 +2,6 @@
 
 package shared
 
-// ListSessionResponse - OK
 type ListSessionResponse struct {
 	// Retrieved sessions.
 	Sessions []GetSessionResponse `json:"sessions,omitempty"`

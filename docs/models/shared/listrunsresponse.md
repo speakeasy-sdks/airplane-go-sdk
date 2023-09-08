@@ -1,7 +1,5 @@
 # ListRunsResponse
 
-OK
-
 
 ## Fields
 

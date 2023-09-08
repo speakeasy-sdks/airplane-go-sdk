@@ -2,7 +2,6 @@
 
 package shared
 
-// GetPromptResponse - OK
 type GetPromptResponse struct {
 	Prompt *PromptsifacePrompt `json:"prompt,omitempty"`
 }

@@ -1,7 +1,5 @@
 # GetSessionResponse
 
-OK
-
 
 ## Fields
 

@@ -2,7 +2,6 @@
 
 package shared
 
-// ExecuteTaskResponse - OK
 type ExecuteTaskResponse struct {
 	// Unique ID of the task execution's run.
 	RunID *string `json:"runID,omitempty"`

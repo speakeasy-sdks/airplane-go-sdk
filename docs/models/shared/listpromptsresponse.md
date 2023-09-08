@@ -1,7 +1,5 @@
 # ListPromptsResponse
 
-OK
-
 
 ## Fields
 

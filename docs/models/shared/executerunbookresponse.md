@@ -1,7 +1,5 @@
 # ExecuteRunbookResponse
 
-OK
-
 
 ## Fields
 
