@@ -195,3 +195,13 @@ Based on:
 - [go v1.12.0] .
 ### Releases
 - [Go v1.12.0] https://github.com/speakeasy-sdks/airplane-go-sdk/releases/tag/v1.12.0 - .
+
+## 2023-09-09 00:36:14
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.82.3 (2.107.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v1.13.0] .
+### Releases
+- [Go v1.13.0] https://github.com/speakeasy-sdks/airplane-go-sdk/releases/tag/v1.13.0 - .

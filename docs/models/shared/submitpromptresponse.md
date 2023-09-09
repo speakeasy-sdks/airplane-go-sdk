@@ -1,7 +1,5 @@
 # SubmitPromptResponse
 
-OK
-
 
 ## Fields
 

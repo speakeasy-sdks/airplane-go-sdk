@@ -2,7 +2,6 @@
 
 package shared
 
-// SubmitPromptRequest
 type SubmitPromptRequest struct {
 	// Unique ID of the prompt.
 	ID *string `json:"id,omitempty"`

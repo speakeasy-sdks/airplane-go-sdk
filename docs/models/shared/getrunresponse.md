@@ -1,7 +1,5 @@
 # GetRunResponse
 
-OK
-
 
 ## Fields
 

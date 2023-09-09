@@ -2,7 +2,6 @@
 
 package shared
 
-// ListPromptsResponse - OK
 type ListPromptsResponse struct {
 	// Retrieved prompts.
 	Prompts []PromptsifacePrompt `json:"prompts,omitempty"`

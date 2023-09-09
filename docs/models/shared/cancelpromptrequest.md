@@ -1,7 +1,5 @@
 # CancelPromptRequest
 
-CancelPromptRequest
-
 
 ## Fields
 

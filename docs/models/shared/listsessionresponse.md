@@ -1,7 +1,5 @@
 # ListSessionResponse
 
-OK
-
 
 ## Fields
 

@@ -1,7 +1,5 @@
 # SubmitPromptRequest
 
-SubmitPromptRequest
-
 
 ## Fields
 

@@ -1,7 +1,5 @@
 # ExecuteTaskResponse
 
-OK
-
 
 ## Fields
 

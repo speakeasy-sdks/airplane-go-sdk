@@ -1,7 +1,5 @@
 # GetPromptResponse
 
-OK
-
 
 ## Fields
 

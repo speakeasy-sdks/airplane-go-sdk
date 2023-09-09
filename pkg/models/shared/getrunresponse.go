@@ -75,7 +75,6 @@ func (e *GetRunResponseStatus) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// GetRunResponse - OK
 type GetRunResponse struct {
 	// When the run became active. Empty if this run has not started yet.
 	ActiveAt *string `json:"activeAt,omitempty"`

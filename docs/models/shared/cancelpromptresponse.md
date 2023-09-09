@@ -1,7 +1,5 @@
 # CancelPromptResponse
 
-OK
-
 
 ## Fields
 
