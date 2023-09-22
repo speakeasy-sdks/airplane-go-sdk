@@ -7,14 +7,14 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/airplane-go-sdk"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := airplane.New(
-        airplane.WithSecurity(shared.Security{
+    s := airplanegosdk.New(
+        airplanegosdk.WithSecurity(shared.Security{
             APIKeyAuth: "",
         }),
     )

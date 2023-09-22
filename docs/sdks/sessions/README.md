@@ -21,18 +21,18 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/airplane-go-sdk"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := airplane.New(
-        airplane.WithSecurity(shared.Security{
+    s := airplanegosdk.New(
+        airplanegosdk.WithSecurity(shared.Security{
             APIKeyAuth: "",
         }),
     )
-    id := "delectus"
+    id := "tempora"
 
     ctx := context.Background()
     res, err := s.Sessions.Get(ctx, id)
@@ -71,22 +71,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/airplane-go-sdk"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := airplane.New(
-        airplane.WithSecurity(shared.Security{
+    s := airplanegosdk.New(
+        airplanegosdk.WithSecurity(shared.Security{
             APIKeyAuth: "",
         }),
     )
-    limit := 272656
-    page := 383441
-    runbookID := "molestiae"
-    updatedAfter := "minus"
-    updatedBefore := "placeat"
+    limit := 383441
+    page := 477665
+    runbookID := "minus"
+    updatedAfter := "placeat"
+    updatedBefore := "voluptatum"
 
     ctx := context.Background()
     res, err := s.Sessions.List(ctx, limit, page, runbookID, updatedAfter, updatedBefore)

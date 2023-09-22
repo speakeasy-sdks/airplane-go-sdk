@@ -21,28 +21,28 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/airplane-go-sdk"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := airplane.New(
-        airplane.WithSecurity(shared.Security{
+    s := airplanegosdk.New(
+        airplanegosdk.WithSecurity(shared.Security{
             APIKeyAuth: "",
         }),
     )
     executeTaskRequest := shared.ExecuteTaskRequest{
-        ID: airplane.String("tsk20210728zxb2vxn"),
+        ID: airplanegosdk.String("tsk20210728zxb2vxn"),
         ParamValues: map[string]string{
-            "voluptatum": "iusto",
+            "iusto": "excepturi",
         },
         Resources: map[string]string{
-            "excepturi": "nisi",
+            "nisi": "recusandae",
         },
-        Slug: airplane.String("hello_world"),
+        Slug: airplanegosdk.String("hello_world"),
     }
-    envSlug := "recusandae"
+    envSlug := "temporibus"
 
     ctx := context.Background()
     res, err := s.Tasks.Execute(ctx, executeTaskRequest, envSlug)

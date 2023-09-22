@@ -23,20 +23,20 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/airplane-go-sdk"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := airplane.New(
-        airplane.WithSecurity(shared.Security{
+    s := airplanegosdk.New(
+        airplanegosdk.WithSecurity(shared.Security{
             APIKeyAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Prompts.Cancel(ctx, shared.CancelPromptRequest{
-        ID: airplane.String("pmt20221122zyydx3rho2t"),
+        ID: airplanegosdk.String("pmt20221122zyydx3rho2t"),
     })
     if err != nil {
         log.Fatal(err)
@@ -73,18 +73,18 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/airplane-go-sdk"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := airplane.New(
-        airplane.WithSecurity(shared.Security{
+    s := airplanegosdk.New(
+        airplanegosdk.WithSecurity(shared.Security{
             APIKeyAuth: "",
         }),
     )
-    id := "provident"
+    id := "distinctio"
 
     ctx := context.Background()
     res, err := s.Prompts.Get(ctx, id)
@@ -123,18 +123,18 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/airplane-go-sdk"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
-    s := airplane.New(
-        airplane.WithSecurity(shared.Security{
+    s := airplanegosdk.New(
+        airplanegosdk.WithSecurity(shared.Security{
             APIKeyAuth: "",
         }),
     )
-    runID := "distinctio"
+    runID := "quibusdam"
 
     ctx := context.Background()
     res, err := s.Prompts.List(ctx, runID)
@@ -173,22 +173,22 @@ package main
 import(
 	"context"
 	"log"
-	"github.com/speakeasy-sdks/airplane-go-sdk"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
 )
 
 func main() {
-    s := airplane.New(
-        airplane.WithSecurity(shared.Security{
+    s := airplanegosdk.New(
+        airplanegosdk.WithSecurity(shared.Security{
             APIKeyAuth: "",
         }),
     )
 
     ctx := context.Background()
     res, err := s.Prompts.Submit(ctx, shared.SubmitPromptRequest{
-        ID: airplane.String("pmt20221122zyydx3rho2t"),
+        ID: airplanegosdk.String("pmt20221122zyydx3rho2t"),
         Values: map[string]string{
-            "quibusdam": "unde",
+            "unde": "nulla",
         },
     })
     if err != nil {
