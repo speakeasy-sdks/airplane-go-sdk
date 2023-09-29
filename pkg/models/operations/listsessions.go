@@ -56,11 +56,14 @@ func (o *ListSessionsRequest) GetUpdatedBefore() *string {
 }
 
 type ListSessionsResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// OK
 	ListSessionResponse *shared.ListSessionResponse
-	StatusCode          int
-	RawResponse         *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *ListSessionsResponse) GetContentType() string {

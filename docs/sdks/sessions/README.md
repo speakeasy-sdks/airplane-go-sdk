@@ -1,4 +1,5 @@
 # Sessions
+(*Sessions*)
 
 ## Overview
 
@@ -32,7 +33,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    id := "tempora"
+    id := "female"
 
     ctx := context.Background()
     res, err := s.Sessions.Get(ctx, id)
@@ -82,11 +83,11 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    limit := 383441
-    page := 477665
-    runbookID := "minus"
-    updatedAfter := "placeat"
-    updatedBefore := "voluptatum"
+    limit := 768578
+    page := 99895
+    runbookID := "compress"
+    updatedAfter := "Product"
+    updatedBefore := "Canada"
 
     ctx := context.Background()
     res, err := s.Sessions.List(ctx, limit, page, runbookID, updatedAfter, updatedBefore)

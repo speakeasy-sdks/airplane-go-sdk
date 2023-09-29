@@ -1,4 +1,5 @@
 # Prompts
+(*Prompts*)
 
 ## Overview
 
@@ -84,7 +85,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    id := "distinctio"
+    id := "female"
 
     ctx := context.Background()
     res, err := s.Prompts.Get(ctx, id)
@@ -134,7 +135,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    runID := "quibusdam"
+    runID := "Bicycle"
 
     ctx := context.Background()
     res, err := s.Prompts.List(ctx, runID)
@@ -188,7 +189,7 @@ func main() {
     res, err := s.Prompts.Submit(ctx, shared.SubmitPromptRequest{
         ID: airplanegosdk.String("pmt20221122zyydx3rho2t"),
         Values: map[string]string{
-            "unde": "nulla",
+            "at": "female",
         },
     })
     if err != nil {

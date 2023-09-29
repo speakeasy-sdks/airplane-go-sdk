@@ -18,7 +18,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    runID := "corrupti"
+    runID := "Bicycle"
 
     ctx := context.Background()
     res, err := s.Prompts.List(ctx, runID)

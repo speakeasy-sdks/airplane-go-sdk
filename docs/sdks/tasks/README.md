@@ -1,4 +1,5 @@
 # Tasks
+(*Tasks*)
 
 ## Overview
 
@@ -35,14 +36,14 @@ func main() {
     executeTaskRequest := shared.ExecuteTaskRequest{
         ID: airplanegosdk.String("tsk20210728zxb2vxn"),
         ParamValues: map[string]string{
-            "iusto": "excepturi",
+            "velit": "compress",
         },
         Resources: map[string]string{
-            "nisi": "recusandae",
+            "fuga": "Hicksville",
         },
         Slug: airplanegosdk.String("hello_world"),
     }
-    envSlug := "temporibus"
+    envSlug := "whether"
 
     ctx := context.Background()
     res, err := s.Tasks.Execute(ctx, executeTaskRequest, envSlug)
