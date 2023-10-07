@@ -24,7 +24,6 @@ import(
 	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -36,14 +35,15 @@ func main() {
     executeTaskRequest := shared.ExecuteTaskRequest{
         ID: airplanegosdk.String("tsk20210728zxb2vxn"),
         ParamValues: map[string]string{
-            "velit": "compress",
+            "user": "eric",
+            "limit": "20",
         },
         Resources: map[string]string{
-            "fuga": "Hicksville",
+            "Granite": "Metal",
         },
         Slug: airplanegosdk.String("hello_world"),
     }
-    envSlug := "whether"
+    var envSlug *string = "Hicksville"
 
     ctx := context.Background()
     res, err := s.Tasks.Execute(ctx, executeTaskRequest, envSlug)

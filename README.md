@@ -52,7 +52,6 @@ import(
 	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -61,7 +60,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    runID := "Bicycle"
+    var runID string = "Bicycle"
 
     ctx := context.Background()
     res, err := s.Prompts.List(ctx, runID)

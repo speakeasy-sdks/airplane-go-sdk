@@ -76,7 +76,6 @@ import(
 	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -85,7 +84,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    id := "female"
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.Prompts.Get(ctx, id)
@@ -126,7 +125,6 @@ import(
 	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -135,7 +133,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    runID := "Bicycle"
+    var runID string = "Bicycle"
 
     ctx := context.Background()
     res, err := s.Prompts.List(ctx, runID)
@@ -189,7 +187,8 @@ func main() {
     res, err := s.Prompts.Submit(ctx, shared.SubmitPromptRequest{
         ID: airplanegosdk.String("pmt20221122zyydx3rho2t"),
         Values: map[string]string{
-            "at": "female",
+            "limit": "20",
+            "user": "eric",
         },
     })
     if err != nil {

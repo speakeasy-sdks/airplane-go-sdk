@@ -25,7 +25,6 @@ import(
 	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -34,7 +33,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    id := "female"
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.Runs.Get(ctx, id)
@@ -75,7 +74,6 @@ import(
 	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -84,7 +82,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    id := "circuit"
+    var id string = "circuit"
 
     ctx := context.Background()
     res, err := s.Runs.GetOutputs(ctx, id)
@@ -125,7 +123,6 @@ import(
 	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -134,12 +131,12 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    limit := 768578
-    page := 99895
-    since := "compress"
-    taskID := "Product"
-    taskSlug := "Canada"
-    until := "that"
+    var limit *int64 = 768578
+    var page *int64 = 99895
+    var since *string = "compress"
+    var taskID *string = "Product"
+    var taskSlug *string = "Canada"
+    var until *string = "that"
 
     ctx := context.Background()
     res, err := s.Runs.List(ctx, limit, page, since, taskID, taskSlug, until)

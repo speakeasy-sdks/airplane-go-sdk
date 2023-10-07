@@ -24,7 +24,6 @@ import(
 	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -33,7 +32,7 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    id := "female"
+    var id string = "female"
 
     ctx := context.Background()
     res, err := s.Sessions.Get(ctx, id)
@@ -74,7 +73,6 @@ import(
 	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -83,11 +81,11 @@ func main() {
             APIKeyAuth: "",
         }),
     )
-    limit := 768578
-    page := 99895
-    runbookID := "compress"
-    updatedAfter := "Product"
-    updatedBefore := "Canada"
+    var limit *int64 = 768578
+    var page *int64 = 99895
+    var runbookID *string = "compress"
+    var updatedAfter *string = "Product"
+    var updatedBefore *string = "Canada"
 
     ctx := context.Background()
     res, err := s.Sessions.List(ctx, limit, page, runbookID, updatedAfter, updatedBefore)

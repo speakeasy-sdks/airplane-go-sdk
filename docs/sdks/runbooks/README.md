@@ -24,7 +24,6 @@ import(
 	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
 )
 
 func main() {
@@ -36,11 +35,12 @@ func main() {
     executeRunbookRequest := shared.ExecuteRunbookRequest{
         ID: "rbk20220120z15kl79",
         ParamValues: map[string]string{
-            "velit": "compress",
+            "limit": "20",
+            "user": "eric",
         },
         Slug: airplanegosdk.String("hello_world"),
     }
-    envSlug := "Supervisor"
+    var envSlug *string = "Granite"
 
     ctx := context.Background()
     res, err := s.Runbooks.Execute(ctx, executeRunbookRequest, envSlug)
