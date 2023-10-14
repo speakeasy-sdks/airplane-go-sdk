@@ -47,31 +47,31 @@ curl https://api.airplane.dev/v0/runs/get \
 ```go
 package main
 
-import(
+import (
 	"context"
-	"log"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
 	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
+	"log"
 )
 
 func main() {
-    s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(shared.Security{
-            APIKeyAuth: "",
-        }),
-    )
-    var runID string = "Bicycle"
+	s := airplanegosdk.New(
+		airplanegosdk.WithSecurity(""),
+	)
 
-    ctx := context.Background()
-    res, err := s.Prompts.List(ctx, runID)
-    if err != nil {
-        log.Fatal(err)
-    }
+	var runID string = "Bicycle"
 
-    if res.ListPromptsResponse != nil {
-        // handle response
-    }
+	ctx := context.Background()
+	res, err := s.Prompts.List(ctx, runID)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.ListPromptsResponse != nil {
+		// handle response
+	}
 }
+
 ```
 <!-- End SDK Example Usage -->
 

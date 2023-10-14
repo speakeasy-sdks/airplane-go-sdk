@@ -28,21 +28,22 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(shared.Security{
-            APIKeyAuth: "",
-        }),
+        airplanegosdk.WithSecurity(""),
     )
+
+
     executeTaskRequest := shared.ExecuteTaskRequest{
         ID: airplanegosdk.String("tsk20210728zxb2vxn"),
         ParamValues: map[string]string{
-            "user": "eric",
             "limit": "20",
+            "user": "eric",
         },
         Resources: map[string]string{
             "Granite": "Metal",
         },
         Slug: airplanegosdk.String("hello_world"),
     }
+
     var envSlug *string = "Hicksville"
 
     ctx := context.Background()

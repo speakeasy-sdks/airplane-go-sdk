@@ -28,10 +28,10 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(shared.Security{
-            APIKeyAuth: "",
-        }),
+        airplanegosdk.WithSecurity(""),
     )
+
+
     executeRunbookRequest := shared.ExecuteRunbookRequest{
         ID: "rbk20220120z15kl79",
         ParamValues: map[string]string{
@@ -40,6 +40,7 @@ func main() {
         },
         Slug: airplanegosdk.String("hello_world"),
     }
+
     var envSlug *string = "Granite"
 
     ctx := context.Background()

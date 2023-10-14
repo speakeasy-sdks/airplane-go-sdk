@@ -30,9 +30,7 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(shared.Security{
-            APIKeyAuth: "",
-        }),
+        airplanegosdk.WithSecurity(""),
     )
 
     ctx := context.Background()
@@ -80,10 +78,10 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(shared.Security{
-            APIKeyAuth: "",
-        }),
+        airplanegosdk.WithSecurity(""),
     )
+
+
     var id string = "female"
 
     ctx := context.Background()
@@ -129,10 +127,10 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(shared.Security{
-            APIKeyAuth: "",
-        }),
+        airplanegosdk.WithSecurity(""),
     )
+
+
     var runID string = "Bicycle"
 
     ctx := context.Background()
@@ -178,9 +176,7 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(shared.Security{
-            APIKeyAuth: "",
-        }),
+        airplanegosdk.WithSecurity(""),
     )
 
     ctx := context.Background()

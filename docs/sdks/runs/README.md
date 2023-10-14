@@ -29,10 +29,10 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(shared.Security{
-            APIKeyAuth: "",
-        }),
+        airplanegosdk.WithSecurity(""),
     )
+
+
     var id string = "female"
 
     ctx := context.Background()
@@ -78,10 +78,10 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(shared.Security{
-            APIKeyAuth: "",
-        }),
+        airplanegosdk.WithSecurity(""),
     )
+
+
     var id string = "circuit"
 
     ctx := context.Background()
@@ -127,15 +127,20 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(shared.Security{
-            APIKeyAuth: "",
-        }),
+        airplanegosdk.WithSecurity(""),
     )
+
+
     var limit *int64 = 768578
+
     var page *int64 = 99895
+
     var since *string = "compress"
+
     var taskID *string = "Product"
+
     var taskSlug *string = "Canada"
+
     var until *string = "that"
 
     ctx := context.Background()
