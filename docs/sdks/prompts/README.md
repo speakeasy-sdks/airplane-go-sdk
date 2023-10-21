@@ -82,7 +82,7 @@ func main() {
     )
 
 
-    var id string = "female"
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Prompts.Get(ctx, id)
@@ -131,7 +131,7 @@ func main() {
     )
 
 
-    var runID string = "Bicycle"
+    var runID string = "string"
 
     ctx := context.Background()
     res, err := s.Prompts.List(ctx, runID)

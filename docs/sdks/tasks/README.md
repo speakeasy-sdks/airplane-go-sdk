@@ -35,16 +35,16 @@ func main() {
     executeTaskRequest := shared.ExecuteTaskRequest{
         ID: airplanegosdk.String("tsk20210728zxb2vxn"),
         ParamValues: map[string]string{
-            "limit": "20",
             "user": "eric",
+            "limit": "20",
         },
         Resources: map[string]string{
-            "Granite": "Metal",
+            "key": "string",
         },
         Slug: airplanegosdk.String("hello_world"),
     }
 
-    var envSlug *string = "Hicksville"
+    var envSlug *string = "string"
 
     ctx := context.Background()
     res, err := s.Tasks.Execute(ctx, executeTaskRequest, envSlug)

@@ -16,7 +16,7 @@ func main() {
 		airplanegosdk.WithSecurity(""),
 	)
 
-	var runID string = "Bicycle"
+	var runID string = "string"
 
 	ctx := context.Background()
 	res, err := s.Prompts.List(ctx, runID)

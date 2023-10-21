@@ -33,7 +33,7 @@ func main() {
     )
 
 
-    var id string = "female"
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Runs.Get(ctx, id)
@@ -82,7 +82,7 @@ func main() {
     )
 
 
-    var id string = "circuit"
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Runs.GetOutputs(ctx, id)
@@ -135,13 +135,13 @@ func main() {
 
     var page *int64 = 99895
 
-    var since *string = "compress"
+    var since *string = "string"
 
-    var taskID *string = "Product"
+    var taskID *string = "string"
 
-    var taskSlug *string = "Canada"
+    var taskSlug *string = "string"
 
-    var until *string = "that"
+    var until *string = "string"
 
     ctx := context.Background()
     res, err := s.Runs.List(ctx, limit, page, since, taskID, taskSlug, until)

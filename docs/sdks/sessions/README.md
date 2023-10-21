@@ -32,7 +32,7 @@ func main() {
     )
 
 
-    var id string = "female"
+    var id string = "string"
 
     ctx := context.Background()
     res, err := s.Sessions.Get(ctx, id)
@@ -85,11 +85,11 @@ func main() {
 
     var page *int64 = 99895
 
-    var runbookID *string = "compress"
+    var runbookID *string = "string"
 
-    var updatedAfter *string = "Product"
+    var updatedAfter *string = "string"
 
-    var updatedBefore *string = "Canada"
+    var updatedBefore *string = "string"
 
     ctx := context.Background()
     res, err := s.Sessions.List(ctx, limit, page, runbookID, updatedAfter, updatedBefore)
