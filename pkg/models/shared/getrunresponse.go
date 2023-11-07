@@ -7,19 +7,19 @@ import (
 	"fmt"
 )
 
-// GetRunResponseRuntime - Runtime that this run executed on.
-type GetRunResponseRuntime string
+// Runtime that this run executed on.
+type Runtime string
 
 const (
-	GetRunResponseRuntimeStandard GetRunResponseRuntime = "standard"
-	GetRunResponseRuntimeWorkflow GetRunResponseRuntime = "workflow"
+	RuntimeStandard Runtime = "standard"
+	RuntimeWorkflow Runtime = "workflow"
 )
 
-func (e GetRunResponseRuntime) ToPointer() *GetRunResponseRuntime {
+func (e Runtime) ToPointer() *Runtime {
 	return &e
 }
 
-func (e *GetRunResponseRuntime) UnmarshalJSON(data []byte) error {
+func (e *Runtime) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -28,30 +28,30 @@ func (e *GetRunResponseRuntime) UnmarshalJSON(data []byte) error {
 	case "standard":
 		fallthrough
 	case "workflow":
-		*e = GetRunResponseRuntime(v)
+		*e = Runtime(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetRunResponseRuntime: %v", v)
+		return fmt.Errorf("invalid value for Runtime: %v", v)
 	}
 }
 
-// GetRunResponseStatus - Status of this run.
-type GetRunResponseStatus string
+// Status of this run.
+type Status string
 
 const (
-	GetRunResponseStatusNotStarted GetRunResponseStatus = "NotStarted"
-	GetRunResponseStatusQueued     GetRunResponseStatus = "Queued"
-	GetRunResponseStatusActive     GetRunResponseStatus = "Active"
-	GetRunResponseStatusSucceeded  GetRunResponseStatus = "Succeeded"
-	GetRunResponseStatusFailed     GetRunResponseStatus = "Failed"
-	GetRunResponseStatusCancelled  GetRunResponseStatus = "Cancelled"
+	StatusNotStarted Status = "NotStarted"
+	StatusQueued     Status = "Queued"
+	StatusActive     Status = "Active"
+	StatusSucceeded  Status = "Succeeded"
+	StatusFailed     Status = "Failed"
+	StatusCancelled  Status = "Cancelled"
 )
 
-func (e GetRunResponseStatus) ToPointer() *GetRunResponseStatus {
+func (e Status) ToPointer() *Status {
 	return &e
 }
 
-func (e *GetRunResponseStatus) UnmarshalJSON(data []byte) error {
+func (e *Status) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -68,10 +68,10 @@ func (e *GetRunResponseStatus) UnmarshalJSON(data []byte) error {
 	case "Failed":
 		fallthrough
 	case "Cancelled":
-		*e = GetRunResponseStatus(v)
+		*e = Status(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for GetRunResponseStatus: %v", v)
+		return fmt.Errorf("invalid value for Status: %v", v)
 	}
 }
 
@@ -101,11 +101,11 @@ type GetRunResponse struct {
 	Permissions []Permission      `json:"permissions,omitempty"`
 	Resources   map[string]string `json:"resources,omitempty"`
 	// Runtime that this run executed on.
-	Runtime *GetRunResponseRuntime `json:"runtime,omitempty"`
+	Runtime *Runtime `json:"runtime,omitempty"`
 	// ID of the session this run was spawned from if triggered by a session.
 	SessionID *string `json:"sessionID,omitempty"`
 	// Status of this run.
-	Status *GetRunResponseStatus `json:"status,omitempty"`
+	Status *Status `json:"status,omitempty"`
 	// When the run succeeded. Empty if this run did not succeed.
 	SucceededAt *string `json:"succeededAt,omitempty"`
 	// ID of the task this run was spawned from if triggered by a task.
@@ -210,7 +210,7 @@ func (o *GetRunResponse) GetResources() map[string]string {
 	return o.Resources
 }
 
-func (o *GetRunResponse) GetRuntime() *GetRunResponseRuntime {
+func (o *GetRunResponse) GetRuntime() *Runtime {
 	if o == nil {
 		return nil
 	}
@@ -224,7 +224,7 @@ func (o *GetRunResponse) GetSessionID() *string {
 	return o.SessionID
 }
 
-func (o *GetRunResponse) GetStatus() *GetRunResponseStatus {
+func (o *GetRunResponse) GetStatus() *Status {
 	if o == nil {
 		return nil
 	}

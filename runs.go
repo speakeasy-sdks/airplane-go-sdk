@@ -6,29 +6,29 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-// runs - A run represents an instance of a task's execution. See Tasks API for how to execute tasks.
-type runs struct {
+// Runs - A run represents an instance of a task's execution. See Tasks API for how to execute tasks.
+type Runs struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newRuns(sdkConfig sdkConfiguration) *runs {
-	return &runs{
+func newRuns(sdkConfig sdkConfiguration) *Runs {
+	return &Runs{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Get - Cancel Run
 // Get information about an existing run.
-func (s *runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, error) {
+func (s *Runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, error) {
 	request := operations.GetRunRequest{
 		ID: id,
 	}
@@ -84,6 +84,10 @@ func (s *runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, 
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -91,7 +95,7 @@ func (s *runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, 
 
 // GetOutputs - Get Run Outputs
 // Get outputs from an existing run.
-func (s *runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutputsResponse, error) {
+func (s *Runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutputsResponse, error) {
 	request := operations.GetOutputsRequest{
 		ID: id,
 	}
@@ -147,13 +151,17 @@ func (s *runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutput
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
 }
 
 // List Runs
-func (s *runs) List(ctx context.Context, limit *int64, page *int64, since *string, taskID *string, taskSlug *string, until *string) (*operations.ListRunsResponse, error) {
+func (s *Runs) List(ctx context.Context, limit *int64, page *int64, since *string, taskID *string, taskSlug *string, until *string) (*operations.ListRunsResponse, error) {
 	request := operations.ListRunsRequest{
 		Limit:    limit,
 		Page:     page,
@@ -214,6 +222,10 @@ func (s *runs) List(ctx context.Context, limit *int64, page *int64, since *strin
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

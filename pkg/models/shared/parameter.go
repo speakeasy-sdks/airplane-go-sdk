@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-// ParameterComponent - Used to specify UI-only type modifiers
-type ParameterComponent string
+// Component - Used to specify UI-only type modifiers
+type Component string
 
 const (
-	ParameterComponentUnknown   ParameterComponent = ""
-	ParameterComponentEditorSQL ParameterComponent = "editor-sql"
-	ParameterComponentTextarea  ParameterComponent = "textarea"
+	ComponentUnknown   Component = ""
+	ComponentEditorSQL Component = "editor-sql"
+	ComponentTextarea  Component = "textarea"
 )
 
-func (e ParameterComponent) ToPointer() *ParameterComponent {
+func (e Component) ToPointer() *Component {
 	return &e
 }
 
-func (e *ParameterComponent) UnmarshalJSON(data []byte) error {
+func (e *Component) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,36 +31,36 @@ func (e *ParameterComponent) UnmarshalJSON(data []byte) error {
 	case "editor-sql":
 		fallthrough
 	case "textarea":
-		*e = ParameterComponent(v)
+		*e = Component(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ParameterComponent: %v", v)
+		return fmt.Errorf("invalid value for Component: %v", v)
 	}
 }
 
-// ParameterType - Parameter data type.
-type ParameterType string
+// Type - Parameter data type.
+type Type string
 
 const (
-	ParameterTypeAny       ParameterType = "any"
-	ParameterTypeString    ParameterType = "string"
-	ParameterTypeBoolean   ParameterType = "boolean"
-	ParameterTypeUpload    ParameterType = "upload"
-	ParameterTypeInteger   ParameterType = "integer"
-	ParameterTypeFloat     ParameterType = "float"
-	ParameterTypeDate      ParameterType = "date"
-	ParameterTypeDatetime  ParameterType = "datetime"
-	ParameterTypeConfigvar ParameterType = "configvar"
-	ParameterTypeList      ParameterType = "list"
-	ParameterTypeMap       ParameterType = "map"
-	ParameterTypeObject    ParameterType = "object"
+	TypeAny       Type = "any"
+	TypeString    Type = "string"
+	TypeBoolean   Type = "boolean"
+	TypeUpload    Type = "upload"
+	TypeInteger   Type = "integer"
+	TypeFloat     Type = "float"
+	TypeDate      Type = "date"
+	TypeDatetime  Type = "datetime"
+	TypeConfigvar Type = "configvar"
+	TypeList      Type = "list"
+	TypeMap       Type = "map"
+	TypeObject    Type = "object"
 )
 
-func (e ParameterType) ToPointer() *ParameterType {
+func (e Type) ToPointer() *Type {
 	return &e
 }
 
-func (e *ParameterType) UnmarshalJSON(data []byte) error {
+func (e *Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -89,17 +89,17 @@ func (e *ParameterType) UnmarshalJSON(data []byte) error {
 	case "map":
 		fallthrough
 	case "object":
-		*e = ParameterType(v)
+		*e = Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for ParameterType: %v", v)
+		return fmt.Errorf("invalid value for Type: %v", v)
 	}
 }
 
 type Parameter struct {
 	// Used to specify UI-only type modifiers
-	Component   *ParameterComponent `json:"component,omitempty"`
-	Constraints *Constraints        `json:"constraints,omitempty"`
+	Component   *Component   `json:"component,omitempty"`
+	Constraints *Constraints `json:"constraints,omitempty"`
 	// Optional default value for this parameter, used if not set.
 	Default interface{} `json:"default,omitempty"`
 	// Description for this parameter.
@@ -112,11 +112,11 @@ type Parameter struct {
 	// Airplane automatically generates a slug when provided a parameter name.
 	Slug *string `json:"slug,omitempty"`
 	// Parameter data type.
-	Type   *ParameterType `json:"type,omitempty"`
-	Values *Parameter     `json:"values,omitempty"`
+	Type   *Type      `json:"type,omitempty"`
+	Values *Parameter `json:"values,omitempty"`
 }
 
-func (o *Parameter) GetComponent() *ParameterComponent {
+func (o *Parameter) GetComponent() *Component {
 	if o == nil {
 		return nil
 	}
@@ -165,7 +165,7 @@ func (o *Parameter) GetSlug() *string {
 	return o.Slug
 }
 
-func (o *Parameter) GetType() *ParameterType {
+func (o *Parameter) GetType() *Type {
 	if o == nil {
 		return nil
 	}
@@ -173,6 +173,89 @@ func (o *Parameter) GetType() *ParameterType {
 }
 
 func (o *Parameter) GetValues() *Parameter {
+	if o == nil {
+		return nil
+	}
+	return o.Values
+}
+
+type ParameterInput struct {
+	// Used to specify UI-only type modifiers
+	Component   *Component   `json:"component,omitempty"`
+	Constraints *Constraints `json:"constraints,omitempty"`
+	// Optional default value for this parameter, used if not set.
+	Default interface{} `json:"default,omitempty"`
+	// Description for this parameter.
+	Desc *string `json:"desc,omitempty"`
+	// Name for this parameter.
+	Name *string `json:"name,omitempty"`
+	// If this parameter has an object data type, represents an ordered list of key-value pairs that can be included in this object.
+	Params []Parameter `json:"params,omitempty"`
+	// A human-friendly identifier for the parameter that can be referenced inside a task or runbook.
+	// Airplane automatically generates a slug when provided a parameter name.
+	Slug *string `json:"slug,omitempty"`
+	// Parameter data type.
+	Type   *Type      `json:"type,omitempty"`
+	Values *Parameter `json:"values,omitempty"`
+}
+
+func (o *ParameterInput) GetComponent() *Component {
+	if o == nil {
+		return nil
+	}
+	return o.Component
+}
+
+func (o *ParameterInput) GetConstraints() *Constraints {
+	if o == nil {
+		return nil
+	}
+	return o.Constraints
+}
+
+func (o *ParameterInput) GetDefault() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Default
+}
+
+func (o *ParameterInput) GetDesc() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Desc
+}
+
+func (o *ParameterInput) GetName() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Name
+}
+
+func (o *ParameterInput) GetParams() []Parameter {
+	if o == nil {
+		return nil
+	}
+	return o.Params
+}
+
+func (o *ParameterInput) GetSlug() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Slug
+}
+
+func (o *ParameterInput) GetType() *Type {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}
+
+func (o *ParameterInput) GetValues() *Parameter {
 	if o == nil {
 		return nil
 	}

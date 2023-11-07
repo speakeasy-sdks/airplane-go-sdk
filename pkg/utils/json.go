@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/types"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/types"
 
 	"github.com/ericlagergren/decimal"
 )

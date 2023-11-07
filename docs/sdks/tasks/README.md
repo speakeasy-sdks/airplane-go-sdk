@@ -1,5 +1,5 @@
 # Tasks
-(*Tasks*)
+(*.Tasks*)
 
 ## Overview
 
@@ -22,8 +22,8 @@ package main
 import(
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {
@@ -35,8 +35,8 @@ func main() {
     executeTaskRequest := shared.ExecuteTaskRequest{
         ID: airplanegosdk.String("tsk20210728zxb2vxn"),
         ParamValues: map[string]string{
-            "user": "eric",
             "limit": "20",
+            "user": "eric",
         },
         Resources: map[string]string{
             "key": "string",

@@ -5,8 +5,8 @@ package airplanegosdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -65,15 +65,15 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 // Airplane API: Airplane API
 type Airplane struct {
 	// A prompt is used to gather user input during a task's execution. See Prompts to see how prompts are used.
-	Prompts *prompts
+	Prompts *Prompts
 	// A Runbook is a multi-step, human-in-the-loop workflow. Runbooks are able to take a set of top-level parameters, run one or more functions, and generate output at each step of the way.
-	Runbooks *runbooks
+	Runbooks *Runbooks
 	// A run represents an instance of a task's execution. See Tasks API for how to execute tasks.
-	Runs *runs
+	Runs *Runs
 	// A session represents an instance of a runbook's execution. See Runbooks API for how to execute runbooks.
-	Sessions *sessions
+	Sessions *Sessions
 	// A Task is a lightweight app that represents a single business operation for people at your company to execute.
-	Tasks *tasks
+	Tasks *Tasks
 
 	sdkConfiguration sdkConfiguration
 }
@@ -143,9 +143,9 @@ func New(opts ...SDKOption) *Airplane {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "1.16.0",
-			GenVersion:        "2.169.0",
-			UserAgent:         "speakeasy-sdk/go 1.16.0 2.169.0 0.0.1 github.com/speakeasy-sdks/airplane-go-sdk",
+			SDKVersion:        "2.0.0",
+			GenVersion:        "2.181.1",
+			UserAgent:         "speakeasy-sdk/go 2.0.0 2.181.1 0.0.1 github.com/speakeasy-sdks/airplane-go-sdk",
 		},
 	}
 	for _, opt := range opts {

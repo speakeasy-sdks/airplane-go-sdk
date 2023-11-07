@@ -7,34 +7,34 @@ import (
 	"fmt"
 )
 
-// PermissionRoleID - Which role is assigned to this permission.
-type PermissionRoleID string
+// RoleID - Which role is assigned to this permission.
+type RoleID string
 
 const (
-	PermissionRoleIDTeamAdmin        PermissionRoleID = "team_admin"
-	PermissionRoleIDTeamDeveloper    PermissionRoleID = "team_developer"
-	PermissionRoleIDTaskViewer       PermissionRoleID = "task_viewer"
-	PermissionRoleIDTaskRequester    PermissionRoleID = "task_requester"
-	PermissionRoleIDTaskExecuter     PermissionRoleID = "task_executer"
-	PermissionRoleIDTaskAdmin        PermissionRoleID = "task_admin"
-	PermissionRoleIDRunViewer        PermissionRoleID = "run_viewer"
-	PermissionRoleIDRunbookViewer    PermissionRoleID = "runbook_viewer"
-	PermissionRoleIDRunbookRequester PermissionRoleID = "runbook_requester"
-	PermissionRoleIDRunbookExecuter  PermissionRoleID = "runbook_executer"
-	PermissionRoleIDRunbookAdmin     PermissionRoleID = "runbook_admin"
-	PermissionRoleIDSessionViewer    PermissionRoleID = "session_viewer"
-	PermissionRoleIDSessionExecuter  PermissionRoleID = "session_executer"
-	PermissionRoleIDSessionAdmin     PermissionRoleID = "session_admin"
-	PermissionRoleIDResourceUser     PermissionRoleID = "resource_user"
-	PermissionRoleIDDeployCreator    PermissionRoleID = "deploy_creator"
-	PermissionRoleIDGroupAdmin       PermissionRoleID = "group_admin"
+	RoleIDTeamAdmin        RoleID = "team_admin"
+	RoleIDTeamDeveloper    RoleID = "team_developer"
+	RoleIDTaskViewer       RoleID = "task_viewer"
+	RoleIDTaskRequester    RoleID = "task_requester"
+	RoleIDTaskExecuter     RoleID = "task_executer"
+	RoleIDTaskAdmin        RoleID = "task_admin"
+	RoleIDRunViewer        RoleID = "run_viewer"
+	RoleIDRunbookViewer    RoleID = "runbook_viewer"
+	RoleIDRunbookRequester RoleID = "runbook_requester"
+	RoleIDRunbookExecuter  RoleID = "runbook_executer"
+	RoleIDRunbookAdmin     RoleID = "runbook_admin"
+	RoleIDSessionViewer    RoleID = "session_viewer"
+	RoleIDSessionExecuter  RoleID = "session_executer"
+	RoleIDSessionAdmin     RoleID = "session_admin"
+	RoleIDResourceUser     RoleID = "resource_user"
+	RoleIDDeployCreator    RoleID = "deploy_creator"
+	RoleIDGroupAdmin       RoleID = "group_admin"
 )
 
-func (e PermissionRoleID) ToPointer() *PermissionRoleID {
+func (e RoleID) ToPointer() *RoleID {
 	return &e
 }
 
-func (e *PermissionRoleID) UnmarshalJSON(data []byte) error {
+func (e *RoleID) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -73,10 +73,10 @@ func (e *PermissionRoleID) UnmarshalJSON(data []byte) error {
 	case "deploy_creator":
 		fallthrough
 	case "group_admin":
-		*e = PermissionRoleID(v)
+		*e = RoleID(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for PermissionRoleID: %v", v)
+		return fmt.Errorf("invalid value for RoleID: %v", v)
 	}
 }
 
@@ -84,7 +84,7 @@ type Permission struct {
 	// Which action this permission applies to.
 	Action *string `json:"action,omitempty"`
 	// Which role is assigned to this permission.
-	RoleID *PermissionRoleID `json:"roleID,omitempty"`
+	RoleID *RoleID `json:"roleID,omitempty"`
 	// ID of the group  this permission applies to if assigned to a group.
 	SubGroupID *string `json:"subGroupID,omitempty"`
 	// ID of the user this permission applies to if assigned directly to a user.
@@ -98,7 +98,7 @@ func (o *Permission) GetAction() *string {
 	return o.Action
 }
 
-func (o *Permission) GetRoleID() *PermissionRoleID {
+func (o *Permission) GetRoleID() *RoleID {
 	if o == nil {
 		return nil
 	}

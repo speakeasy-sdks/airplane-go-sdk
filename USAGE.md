@@ -6,8 +6,8 @@ package main
 
 import (
 	"context"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 	"log"
 )
 

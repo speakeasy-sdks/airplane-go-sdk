@@ -64,7 +64,7 @@ type GetSessionResponse struct {
 	// Mapping of parameter slug to value used in this session's execution.
 	ParamValues map[string]string `json:"paramValues,omitempty"`
 	// Schema for the set of values users can provide when executing this session.
-	Params []Parameter `json:"params,omitempty"`
+	Params []ParameterInput `json:"params,omitempty"`
 	// Explicit permissions of this session if it is private.
 	Permissions []Permission `json:"permissions,omitempty"`
 	// ID of the runbook this session was spawned from if triggered from a runbook.
@@ -121,7 +121,7 @@ func (o *GetSessionResponse) GetParamValues() map[string]string {
 	return o.ParamValues
 }
 
-func (o *GetSessionResponse) GetParams() []Parameter {
+func (o *GetSessionResponse) GetParams() []ParameterInput {
 	if o == nil {
 		return nil
 	}

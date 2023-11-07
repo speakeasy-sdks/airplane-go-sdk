@@ -6,29 +6,29 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-// sessions - A session represents an instance of a runbook's execution. See Runbooks API for how to execute runbooks.
-type sessions struct {
+// Sessions - A session represents an instance of a runbook's execution. See Runbooks API for how to execute runbooks.
+type Sessions struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newSessions(sdkConfig sdkConfiguration) *sessions {
-	return &sessions{
+func newSessions(sdkConfig sdkConfiguration) *Sessions {
+	return &Sessions{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Get Session
 // Get information about an existing session.
-func (s *sessions) Get(ctx context.Context, id string) (*operations.GetSessionResponse, error) {
+func (s *Sessions) Get(ctx context.Context, id string) (*operations.GetSessionResponse, error) {
 	request := operations.GetSessionRequest{
 		ID: id,
 	}
@@ -84,13 +84,17 @@ func (s *sessions) Get(ctx context.Context, id string) (*operations.GetSessionRe
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
 }
 
 // List Sessions
-func (s *sessions) List(ctx context.Context, limit *int64, page *int64, runbookID *string, updatedAfter *string, updatedBefore *string) (*operations.ListSessionsResponse, error) {
+func (s *Sessions) List(ctx context.Context, limit *int64, page *int64, runbookID *string, updatedAfter *string, updatedBefore *string) (*operations.ListSessionsResponse, error) {
 	request := operations.ListSessionsRequest{
 		Limit:         limit,
 		Page:          page,
@@ -150,6 +154,10 @@ func (s *sessions) List(ctx context.Context, limit *int64, page *int64, runbookI
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

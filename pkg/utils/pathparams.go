@@ -13,7 +13,7 @@ import (
 
 	"github.com/ericlagergren/decimal"
 
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/types"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/types"
 )
 
 func GenerateURL(ctx context.Context, serverURL, path string, pathParams interface{}, globals map[string]map[string]map[string]interface{}) (string, error) {

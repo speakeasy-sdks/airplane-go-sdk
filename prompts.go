@@ -6,29 +6,29 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-// prompts - A prompt is used to gather user input during a task's execution. See Prompts to see how prompts are used.
-type prompts struct {
+// Prompts - A prompt is used to gather user input during a task's execution. See Prompts to see how prompts are used.
+type Prompts struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newPrompts(sdkConfig sdkConfiguration) *prompts {
-	return &prompts{
+func newPrompts(sdkConfig sdkConfiguration) *Prompts {
+	return &Prompts{
 		sdkConfiguration: sdkConfig,
 	}
 }
 
 // Cancel Prompt
 // Cancel a prompt.
-func (s *prompts) Cancel(ctx context.Context, request shared.CancelPromptRequest) (*operations.CancelPromptResponse, error) {
+func (s *Prompts) Cancel(ctx context.Context, request shared.CancelPromptRequest) (*operations.CancelPromptResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/cancel"
 
@@ -86,6 +86,10 @@ func (s *prompts) Cancel(ctx context.Context, request shared.CancelPromptRequest
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -93,7 +97,7 @@ func (s *prompts) Cancel(ctx context.Context, request shared.CancelPromptRequest
 
 // Get Prompt
 // Get information about an existing prompt.
-func (s *prompts) Get(ctx context.Context, id string) (*operations.GetPromptResponse, error) {
+func (s *Prompts) Get(ctx context.Context, id string) (*operations.GetPromptResponse, error) {
 	request := operations.GetPromptRequest{
 		ID: id,
 	}
@@ -149,6 +153,10 @@ func (s *prompts) Get(ctx context.Context, id string) (*operations.GetPromptResp
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -156,7 +164,7 @@ func (s *prompts) Get(ctx context.Context, id string) (*operations.GetPromptResp
 
 // List Prompts
 // List prompts from existing runs.
-func (s *prompts) List(ctx context.Context, runID string) (*operations.ListPromptsResponse, error) {
+func (s *Prompts) List(ctx context.Context, runID string) (*operations.ListPromptsResponse, error) {
 	request := operations.ListPromptsRequest{
 		RunID: runID,
 	}
@@ -212,6 +220,10 @@ func (s *prompts) List(ctx context.Context, runID string) (*operations.ListPromp
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -219,7 +231,7 @@ func (s *prompts) List(ctx context.Context, runID string) (*operations.ListPromp
 
 // Submit Prompt
 // Submit a prompt with a set of parameter values.
-func (s *prompts) Submit(ctx context.Context, request shared.SubmitPromptRequest) (*operations.SubmitPromptResponse, error) {
+func (s *Prompts) Submit(ctx context.Context, request shared.SubmitPromptRequest) (*operations.SubmitPromptResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/prompts/submit"
 
@@ -277,6 +289,10 @@ func (s *prompts) Submit(ctx context.Context, request shared.SubmitPromptRequest
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

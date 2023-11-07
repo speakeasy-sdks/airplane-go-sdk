@@ -1,5 +1,5 @@
 # Prompts
-(*Prompts*)
+(*.Prompts*)
 
 ## Overview
 
@@ -24,8 +24,8 @@ package main
 import(
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {
@@ -72,8 +72,8 @@ package main
 import(
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {
@@ -121,8 +121,8 @@ package main
 import(
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {
@@ -170,8 +170,8 @@ package main
 import(
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {

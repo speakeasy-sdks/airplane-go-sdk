@@ -6,22 +6,22 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-// runbooks - A Runbook is a multi-step, human-in-the-loop workflow. Runbooks are able to take a set of top-level parameters, run one or more functions, and generate output at each step of the way.
-type runbooks struct {
+// Runbooks - A Runbook is a multi-step, human-in-the-loop workflow. Runbooks are able to take a set of top-level parameters, run one or more functions, and generate output at each step of the way.
+type Runbooks struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newRunbooks(sdkConfig sdkConfiguration) *runbooks {
-	return &runbooks{
+func newRunbooks(sdkConfig sdkConfiguration) *Runbooks {
+	return &Runbooks{
 		sdkConfiguration: sdkConfig,
 	}
 }
@@ -29,7 +29,7 @@ func newRunbooks(sdkConfig sdkConfiguration) *runbooks {
 // Execute Runbook
 // Execute a runbook and receive a session ID to track the runbook's execution.
 // Check on the status of your newly created session with [/sessions/get](/api/sessions#sessions-get).
-func (s *runbooks) Execute(ctx context.Context, executeRunbookRequest shared.ExecuteRunbookRequest, envSlug *string) (*operations.ExecuteRunbookResponse, error) {
+func (s *Runbooks) Execute(ctx context.Context, executeRunbookRequest shared.ExecuteRunbookRequest, envSlug *string) (*operations.ExecuteRunbookResponse, error) {
 	request := operations.ExecuteRunbookRequest{
 		ExecuteRunbookRequest: executeRunbookRequest,
 		EnvSlug:               envSlug,
@@ -96,6 +96,10 @@ func (s *runbooks) Execute(ctx context.Context, executeRunbookRequest shared.Exe
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil

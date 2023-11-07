@@ -6,22 +6,22 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/operations"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/pkg/utils"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/operations"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/utils"
 	"io"
 	"net/http"
 	"strings"
 )
 
-// tasks - A Task is a lightweight app that represents a single business operation for people at your company to execute.
-type tasks struct {
+// Tasks - A Task is a lightweight app that represents a single business operation for people at your company to execute.
+type Tasks struct {
 	sdkConfiguration sdkConfiguration
 }
 
-func newTasks(sdkConfig sdkConfiguration) *tasks {
-	return &tasks{
+func newTasks(sdkConfig sdkConfiguration) *Tasks {
+	return &Tasks{
 		sdkConfiguration: sdkConfig,
 	}
 }
@@ -29,7 +29,7 @@ func newTasks(sdkConfig sdkConfiguration) *tasks {
 // Execute Task
 // Execute a task with a set of parameter values and receive a run ID to track the task's execution.
 // Check on the status of your newly created run with [/runs/get](/api/runs#runs-get).
-func (s *tasks) Execute(ctx context.Context, executeTaskRequest shared.ExecuteTaskRequest, envSlug *string) (*operations.ExecuteTaskResponse, error) {
+func (s *Tasks) Execute(ctx context.Context, executeTaskRequest shared.ExecuteTaskRequest, envSlug *string) (*operations.ExecuteTaskResponse, error) {
 	request := operations.ExecuteTaskRequest{
 		ExecuteTaskRequest: executeTaskRequest,
 		EnvSlug:            envSlug,
@@ -96,6 +96,10 @@ func (s *tasks) Execute(ctx context.Context, executeTaskRequest shared.ExecuteTa
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
