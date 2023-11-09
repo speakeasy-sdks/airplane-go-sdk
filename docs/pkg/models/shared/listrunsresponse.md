@@ -1,8 +1,8 @@
-# GetPromptResponse
+# ListRunsResponse
 
 
 ## Fields
 
 | Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `Prompt`                                                                | [*shared.PromptsifacePrompt](../../models/shared/promptsifaceprompt.md) | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `Runs`                                                                  | [][shared.GetRunResponse](../../../pkg/models/shared/getrunresponse.md) | :heavy_minus_sign:                                                      | Retrieved runs.                                                         |

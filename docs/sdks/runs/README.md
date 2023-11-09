@@ -1,5 +1,5 @@
 # Runs
-(*.Runs*)
+(*Runs*)
 
 ## Overview
 
@@ -57,8 +57,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetRunResponse](../../models/operations/getrunresponse.md), error**
-
+**[*operations.GetRunResponse](../../pkg/models/operations/getrunresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## GetOutputs
 
@@ -106,8 +108,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetOutputsResponse](../../models/operations/getoutputsresponse.md), error**
-
+**[*operations.GetOutputsResponse](../../pkg/models/operations/getoutputsresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## List
 
@@ -170,5 +174,7 @@ func main() {
 
 ### Response
 
-**[*operations.ListRunsResponse](../../models/operations/listrunsresponse.md), error**
-
+**[*operations.ListRunsResponse](../../pkg/models/operations/listrunsresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

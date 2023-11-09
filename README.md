@@ -79,29 +79,29 @@ func main() {
 ## Available Resources and Operations
 
 
-### [.Prompts](docs/sdks/prompts/README.md)
+### [Prompts](docs/sdks/prompts/README.md)
 
 * [Cancel](docs/sdks/prompts/README.md#cancel) - Cancel Prompt
 * [Get](docs/sdks/prompts/README.md#get) - Get Prompt
 * [List](docs/sdks/prompts/README.md#list) - List Prompts
 * [Submit](docs/sdks/prompts/README.md#submit) - Submit Prompt
 
-### [.Runbooks](docs/sdks/runbooks/README.md)
+### [Runbooks](docs/sdks/runbooks/README.md)
 
 * [Execute](docs/sdks/runbooks/README.md#execute) - Execute Runbook
 
-### [.Runs](docs/sdks/runs/README.md)
+### [Runs](docs/sdks/runs/README.md)
 
 * [Get](docs/sdks/runs/README.md#get) - Cancel Run
 * [GetOutputs](docs/sdks/runs/README.md#getoutputs) - Get Run Outputs
 * [List](docs/sdks/runs/README.md#list) - List Runs
 
-### [.Sessions](docs/sdks/sessions/README.md)
+### [Sessions](docs/sdks/sessions/README.md)
 
 * [Get](docs/sdks/sessions/README.md#get) - Get Session
 * [List](docs/sdks/sessions/README.md#list) - List Sessions
 
-### [.Tasks](docs/sdks/tasks/README.md)
+### [Tasks](docs/sdks/tasks/README.md)
 
 * [Execute](docs/sdks/tasks/README.md#execute) - Execute Task
 <!-- End SDK Available Operations -->
@@ -135,9 +135,45 @@ Here's an example of one such pagination call:
 <!-- Start Error Handling -->
 # Error Handling
 
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or an error, they will never return both.  When specified by the OpenAPI spec document, the SDK will return the appropriate subclass.
+
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 
+## Example
+
+```go
+package main
+
+import (
+	"context"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	"log"
+)
+
+func main() {
+	s := airplanegosdk.New(
+		airplanegosdk.WithSecurity(""),
+	)
+
+	ctx := context.Background()
+	res, err := s.Prompts.Cancel(ctx, shared.CancelPromptRequest{
+		ID: airplanegosdk.String("pmt20221122zyydx3rho2t"),
+	})
+	if err != nil {
+
+		var e *sdkerrors.SDKError
+		if errors.As(err, &e) {
+			// handle error
+			log.Fatal(e.Error())
+		}
+	}
+}
+
+```
 <!-- End Error Handling -->
 
 
@@ -257,12 +293,11 @@ This can be a convenient way to configure timeouts, cookies, proxies, custom hea
 
 
 <!-- Start Authentication -->
-
 # Authentication
 
 ## Per-Client Security Schemes
 
-Your SDK supports the following security scheme globally:
+This SDK supports the following security scheme globally:
 
 | Name         | Type         | Scheme       |
 | ------------ | ------------ | ------------ |

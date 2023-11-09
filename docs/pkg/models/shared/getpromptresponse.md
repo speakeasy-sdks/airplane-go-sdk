@@ -1,8 +1,8 @@
-# RunConstraints
+# GetPromptResponse
 
 
 ## Fields
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `Labels`                                                                       | [][shared.AgentLabel](../../models/shared/agentlabel.md)                       | :heavy_minus_sign:                                                             | Agent run constraints. Used to control which agents a run can be scheduled on. |
+| `Prompt`                                                                       | [*shared.PromptsifacePrompt](../../../pkg/models/shared/promptsifaceprompt.md) | :heavy_minus_sign:                                                             | N/A                                                                            |

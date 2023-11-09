@@ -1,5 +1,5 @@
 # Sessions
-(*.Sessions*)
+(*Sessions*)
 
 ## Overview
 
@@ -56,8 +56,10 @@ func main() {
 
 ### Response
 
-**[*operations.GetSessionResponse](../../models/operations/getsessionresponse.md), error**
-
+**[*operations.GetSessionResponse](../../pkg/models/operations/getsessionresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
 
 ## List
 
@@ -117,5 +119,7 @@ func main() {
 
 ### Response
 
-**[*operations.ListSessionsResponse](../../models/operations/listsessionsresponse.md), error**
-
+**[*operations.ListSessionsResponse](../../pkg/models/operations/listsessionsresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

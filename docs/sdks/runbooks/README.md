@@ -1,5 +1,5 @@
 # Runbooks
-(*.Runbooks*)
+(*Runbooks*)
 
 ## Overview
 
@@ -57,14 +57,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
-| `executeRunbookRequest`                                                      | [shared.ExecuteRunbookRequest](../../models/shared/executerunbookrequest.md) | :heavy_check_mark:                                                           | ExecuteRunbookRequest                                                        |
-| `envSlug`                                                                    | **string*                                                                    | :heavy_minus_sign:                                                           | Environment to execute the runbook in.                                       |
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `ctx`                                                                               | [context.Context](https://pkg.go.dev/context#Context)                               | :heavy_check_mark:                                                                  | The context to use for the request.                                                 |
+| `executeRunbookRequest`                                                             | [shared.ExecuteRunbookRequest](../../../pkg/models/shared/executerunbookrequest.md) | :heavy_check_mark:                                                                  | ExecuteRunbookRequest                                                               |
+| `envSlug`                                                                           | **string*                                                                           | :heavy_minus_sign:                                                                  | Environment to execute the runbook in.                                              |
 
 
 ### Response
 
-**[*operations.ExecuteRunbookResponse](../../models/operations/executerunbookresponse.md), error**
-
+**[*operations.ExecuteRunbookResponse](../../pkg/models/operations/executerunbookresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |

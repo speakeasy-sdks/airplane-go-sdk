@@ -1,5 +1,5 @@
 # Tasks
-(*.Tasks*)
+(*Tasks*)
 
 ## Overview
 
@@ -60,14 +60,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `ctx`                                                                  | [context.Context](https://pkg.go.dev/context#Context)                  | :heavy_check_mark:                                                     | The context to use for the request.                                    |
-| `executeTaskRequest`                                                   | [shared.ExecuteTaskRequest](../../models/shared/executetaskrequest.md) | :heavy_check_mark:                                                     | ExecuteTaskRequest                                                     |
-| `envSlug`                                                              | **string*                                                              | :heavy_minus_sign:                                                     | Environment to execute the task in.                                    |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `ctx`                                                                         | [context.Context](https://pkg.go.dev/context#Context)                         | :heavy_check_mark:                                                            | The context to use for the request.                                           |
+| `executeTaskRequest`                                                          | [shared.ExecuteTaskRequest](../../../pkg/models/shared/executetaskrequest.md) | :heavy_check_mark:                                                            | ExecuteTaskRequest                                                            |
+| `envSlug`                                                                     | **string*                                                                     | :heavy_minus_sign:                                                            | Environment to execute the task in.                                           |
 
 
 ### Response
 
-**[*operations.ExecuteTaskResponse](../../models/operations/executetaskresponse.md), error**
-
+**[*operations.ExecuteTaskResponse](../../pkg/models/operations/executetaskresponse.md), error**
+| Error Object       | Status Code        | Content Type       |
+| ------------------ | ------------------ | ------------------ |
+| sdkerrors.SDKError | 400-600            | */*                |
