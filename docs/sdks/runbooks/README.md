@@ -20,10 +20,10 @@ Check on the status of your newly created session with [/sessions/get](/api/sess
 package main
 
 import(
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {
@@ -35,8 +35,8 @@ func main() {
     executeRunbookRequest := shared.ExecuteRunbookRequest{
         ID: "rbk20220120z15kl79",
         ParamValues: map[string]string{
-            "user": "eric",
             "limit": "20",
+            "user": "eric",
         },
         Slug: airplanegosdk.String("hello_world"),
     }

@@ -150,7 +150,9 @@ package main
 
 import (
 	"context"
+	"errors"
 	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/sdkerrors"
 	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 	"log"
 )

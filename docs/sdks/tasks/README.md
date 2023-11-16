@@ -20,10 +20,10 @@ Check on the status of your newly created run with [/runs/get](/api/runs#runs-ge
 package main
 
 import(
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {

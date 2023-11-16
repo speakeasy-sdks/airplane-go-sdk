@@ -22,10 +22,10 @@ Cancel a prompt.
 package main
 
 import(
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {
@@ -72,10 +72,10 @@ Get information about an existing prompt.
 package main
 
 import(
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {
@@ -123,10 +123,10 @@ List prompts from existing runs.
 package main
 
 import(
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {
@@ -174,10 +174,10 @@ Submit a prompt with a set of parameter values.
 package main
 
 import(
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {

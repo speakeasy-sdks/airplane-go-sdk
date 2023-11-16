@@ -20,10 +20,10 @@ Get information about an existing session.
 package main
 
 import(
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {
@@ -71,10 +71,10 @@ List Sessions
 package main
 
 import(
+	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
 	"context"
 	"log"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
 )
 
 func main() {
