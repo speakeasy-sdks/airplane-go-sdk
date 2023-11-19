@@ -189,8 +189,8 @@ func main() {
     res, err := s.Prompts.Submit(ctx, shared.SubmitPromptRequest{
         ID: airplanegosdk.String("pmt20221122zyydx3rho2t"),
         Values: map[string]string{
-            "limit": "20",
             "user": "eric",
+            "limit": "20",
         },
     })
     if err != nil {
