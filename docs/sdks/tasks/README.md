@@ -28,7 +28,7 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(""),
+        airplanegosdk.WithSecurity("<YOUR_API_KEY_HERE>"),
     )
 
 
@@ -60,11 +60,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `ctx`                                                                         | [context.Context](https://pkg.go.dev/context#Context)                         | :heavy_check_mark:                                                            | The context to use for the request.                                           |
-| `executeTaskRequest`                                                          | [shared.ExecuteTaskRequest](../../../pkg/models/shared/executetaskrequest.md) | :heavy_check_mark:                                                            | ExecuteTaskRequest                                                            |
-| `envSlug`                                                                     | **string*                                                                     | :heavy_minus_sign:                                                            | Environment to execute the task in.                                           |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `ctx`                                                                      | [context.Context](https://pkg.go.dev/context#Context)                      | :heavy_check_mark:                                                         | The context to use for the request.                                        |
+| `executeTaskRequest`                                                       | [shared.ExecuteTaskRequest](../../pkg/models/shared/executetaskrequest.md) | :heavy_check_mark:                                                         | ExecuteTaskRequest                                                         |
+| `envSlug`                                                                  | **string*                                                                  | :heavy_minus_sign:                                                         | Environment to execute the task in.                                        |
 
 
 ### Response

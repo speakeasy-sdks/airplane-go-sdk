@@ -28,15 +28,15 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(""),
+        airplanegosdk.WithSecurity("<YOUR_API_KEY_HERE>"),
     )
 
 
     executeRunbookRequest := shared.ExecuteRunbookRequest{
         ID: "rbk20220120z15kl79",
         ParamValues: map[string]string{
-            "user": "eric",
             "limit": "20",
+            "user": "eric",
         },
         Slug: airplanegosdk.String("hello_world"),
     }
@@ -57,11 +57,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `ctx`                                                                               | [context.Context](https://pkg.go.dev/context#Context)                               | :heavy_check_mark:                                                                  | The context to use for the request.                                                 |
-| `executeRunbookRequest`                                                             | [shared.ExecuteRunbookRequest](../../../pkg/models/shared/executerunbookrequest.md) | :heavy_check_mark:                                                                  | ExecuteRunbookRequest                                                               |
-| `envSlug`                                                                           | **string*                                                                           | :heavy_minus_sign:                                                                  | Environment to execute the runbook in.                                              |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
+| `executeRunbookRequest`                                                          | [shared.ExecuteRunbookRequest](../../pkg/models/shared/executerunbookrequest.md) | :heavy_check_mark:                                                               | ExecuteRunbookRequest                                                            |
+| `envSlug`                                                                        | **string*                                                                        | :heavy_minus_sign:                                                               | Environment to execute the runbook in.                                           |
 
 
 ### Response

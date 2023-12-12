@@ -61,7 +61,6 @@ pkg/utils/utils.go
 /pkg/models/shared/executetaskresponse.go
 /pkg/models/shared/executetaskrequest.go
 /pkg/models/shared/security.go
-USAGE.md
 docs/pkg/models/operations/cancelpromptresponse.md
 docs/pkg/models/operations/getpromptrequest.md
 docs/pkg/models/operations/getpromptresponse.md
@@ -123,4 +122,5 @@ docs/sdks/runbooks/README.md
 docs/sdks/runs/README.md
 docs/sdks/sessions/README.md
 docs/sdks/tasks/README.md
+USAGE.md
 .gitattributes

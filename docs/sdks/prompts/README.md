@@ -30,7 +30,7 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(""),
+        airplanegosdk.WithSecurity("<YOUR_API_KEY_HERE>"),
     )
 
     ctx := context.Background()
@@ -80,7 +80,7 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(""),
+        airplanegosdk.WithSecurity("<YOUR_API_KEY_HERE>"),
     )
 
 
@@ -131,7 +131,7 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(""),
+        airplanegosdk.WithSecurity("<YOUR_API_KEY_HERE>"),
     )
 
 
@@ -182,15 +182,15 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(""),
+        airplanegosdk.WithSecurity("<YOUR_API_KEY_HERE>"),
     )
 
     ctx := context.Background()
     res, err := s.Prompts.Submit(ctx, shared.SubmitPromptRequest{
         ID: airplanegosdk.String("pmt20221122zyydx3rho2t"),
         Values: map[string]string{
-            "user": "eric",
             "limit": "20",
+            "user": "eric",
         },
     })
     if err != nil {

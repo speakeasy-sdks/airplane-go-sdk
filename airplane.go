@@ -123,7 +123,6 @@ func withSecurity(security interface{}) func(context.Context) (interface{}, erro
 }
 
 // WithSecurity configures the SDK to use the provided security details
-
 func WithSecurity(apiKeyAuth string) SDKOption {
 	return func(sdk *Airplane) {
 		security := shared.Security{APIKeyAuth: apiKeyAuth}
@@ -143,9 +142,9 @@ func New(opts ...SDKOption) *Airplane {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "2.1.3",
-			GenVersion:        "2.194.1",
-			UserAgent:         "speakeasy-sdk/go 2.1.3 2.194.1 0.0.1 github.com/speakeasy-sdks/airplane-go-sdk",
+			SDKVersion:        "2.2.0",
+			GenVersion:        "2.213.3",
+			UserAgent:         "speakeasy-sdk/go 2.2.0 2.213.3 0.0.1 github.com/speakeasy-sdks/airplane-go-sdk",
 		},
 	}
 	for _, opt := range opts {

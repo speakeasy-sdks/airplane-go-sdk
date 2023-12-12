@@ -28,7 +28,7 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(""),
+        airplanegosdk.WithSecurity("<YOUR_API_KEY_HERE>"),
     )
 
 
@@ -79,7 +79,7 @@ import(
 
 func main() {
     s := airplanegosdk.New(
-        airplanegosdk.WithSecurity(""),
+        airplanegosdk.WithSecurity("<YOUR_API_KEY_HERE>"),
     )
 
 

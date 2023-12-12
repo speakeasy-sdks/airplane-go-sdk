@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```go
 package main
 
@@ -11,7 +11,7 @@ import (
 
 func main() {
 	s := airplanegosdk.New(
-		airplanegosdk.WithSecurity(""),
+		airplanegosdk.WithSecurity("<YOUR_API_KEY_HERE>"),
 	)
 
 	var runID string = "string"
@@ -28,4 +28,4 @@ func main() {
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
