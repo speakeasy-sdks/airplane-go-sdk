@@ -142,9 +142,9 @@ func New(opts ...SDKOption) *Airplane {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "2.2.0",
-			GenVersion:        "2.213.3",
-			UserAgent:         "speakeasy-sdk/go 2.2.0 2.213.3 0.0.1 github.com/speakeasy-sdks/airplane-go-sdk",
+			SDKVersion:        "2.3.0",
+			GenVersion:        "2.220.0",
+			UserAgent:         "speakeasy-sdk/go 2.3.0 2.220.0 0.0.1 github.com/speakeasy-sdks/airplane-go-sdk",
 		},
 	}
 	for _, opt := range opts {

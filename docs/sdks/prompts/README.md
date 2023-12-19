@@ -60,7 +60,7 @@ func main() {
 **[*operations.CancelPromptResponse](../../pkg/models/operations/cancelpromptresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Get
 
@@ -111,7 +111,7 @@ func main() {
 **[*operations.GetPromptResponse](../../pkg/models/operations/getpromptresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## List
 
@@ -162,7 +162,7 @@ func main() {
 **[*operations.ListPromptsResponse](../../pkg/models/operations/listpromptsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## Submit
 
@@ -216,4 +216,4 @@ func main() {
 **[*operations.SubmitPromptResponse](../../pkg/models/operations/submitpromptresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |

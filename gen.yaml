@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 20955385d0d71e2a0b3914e71223d7da
   docVersion: 0.0.1
-  speakeasyVersion: 1.126.0
-  generationVersion: 2.213.3
+  speakeasyVersion: 1.127.0
+  generationVersion: 2.220.0
 generation:
   comments: {}
   sdkClassName: airplane
@@ -11,17 +11,19 @@ generation:
   repoURL: https://github.com/speakeasy-sdks/airplane-go-sdk.git
   usageSnippets:
     optionalPropertyRendering: withExample
+  fixes:
+    nameResolutionDec2023: false
 features:
   go:
-    core: 3.2.0
+    core: 3.2.2
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.3
     globalServerURLs: 2.82.1
-    inputOutputModels: 2.82.0
+    inputOutputModels: 2.83.0
     nameOverrides: 2.81.1
 go:
-  version: 2.2.0
+  version: 2.3.0
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:

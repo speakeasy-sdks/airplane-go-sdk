@@ -59,7 +59,7 @@ func main() {
 **[*operations.GetSessionResponse](../../pkg/models/operations/getsessionresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
 
 ## List
 
@@ -122,4 +122,4 @@ func main() {
 **[*operations.ListSessionsResponse](../../pkg/models/operations/listsessionsresponse.md), error**
 | Error Object       | Status Code        | Content Type       |
 | ------------------ | ------------------ | ------------------ |
-| sdkerrors.SDKError | 400-600            | */*                |
+| sdkerrors.SDKError | 4xx-5xx            | */*                |
