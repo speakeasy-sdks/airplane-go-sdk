@@ -5,8 +5,8 @@ package airplanegosdk
 import (
 	"context"
 	"fmt"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/utils"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v3/pkg/models/shared"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v3/pkg/utils"
 	"net/http"
 	"time"
 )
@@ -151,9 +151,9 @@ func New(opts ...SDKOption) *Airplane {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "2.3.3",
-			GenVersion:        "2.245.1",
-			UserAgent:         "speakeasy-sdk/go 2.3.3 2.245.1 0.0.1 github.com/speakeasy-sdks/airplane-go-sdk",
+			SDKVersion:        "3.0.0",
+			GenVersion:        "2.248.1",
+			UserAgent:         "speakeasy-sdk/go 3.0.0 2.248.1 0.0.1 github.com/speakeasy-sdks/airplane-go-sdk",
 		},
 	}
 	for _, opt := range opts {

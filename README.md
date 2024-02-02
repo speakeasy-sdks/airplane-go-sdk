@@ -52,8 +52,8 @@ package main
 
 import (
 	"context"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v3"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v3/pkg/models/shared"
 	"log"
 )
 
@@ -139,9 +139,9 @@ package main
 import (
 	"context"
 	"errors"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/sdkerrors"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v3"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v3/pkg/models/sdkerrors"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v3/pkg/models/shared"
 	"log"
 )
 
@@ -187,8 +187,8 @@ package main
 
 import (
 	"context"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v3"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v3/pkg/models/shared"
 	"log"
 )
 
@@ -222,8 +222,8 @@ package main
 
 import (
 	"context"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v3"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v3/pkg/models/shared"
 	"log"
 )
 
@@ -299,8 +299,8 @@ package main
 
 import (
 	"context"
-	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v2"
-	"github.com/speakeasy-sdks/airplane-go-sdk/v2/pkg/models/shared"
+	airplanegosdk "github.com/speakeasy-sdks/airplane-go-sdk/v3"
+	"github.com/speakeasy-sdks/airplane-go-sdk/v3/pkg/models/shared"
 	"log"
 )
 

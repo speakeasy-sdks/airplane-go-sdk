@@ -1,4 +1,4 @@
-module github.com/speakeasy-sdks/airplane-go-sdk/v2
+module github.com/speakeasy-sdks/airplane-go-sdk/v3
 
 go 1.20
 
