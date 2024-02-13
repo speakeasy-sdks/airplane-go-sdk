@@ -38,13 +38,10 @@ func main() {
             "limit": "20",
             "user": "eric",
         },
-        Resources: map[string]string{
-            "key": "string",
-        },
         Slug: airplanegosdk.String("hello_world"),
     }
 
-    var envSlug *string = "string"
+    var envSlug *string = airplanegosdk.String("string")
 
     ctx := context.Background()
     res, err := s.Tasks.Execute(ctx, executeTaskRequest, envSlug)

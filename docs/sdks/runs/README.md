@@ -135,17 +135,17 @@ func main() {
     )
 
 
-    var limit *int64 = 768578
+    var limit *int64 = airplanegosdk.Int64(768578)
 
-    var page *int64 = 99895
+    var page *int64 = airplanegosdk.Int64(99895)
 
-    var since *string = "string"
+    var since *string = airplanegosdk.String("string")
 
-    var taskID *string = "string"
+    var taskID *string = airplanegosdk.String("string")
 
-    var taskSlug *string = "string"
+    var taskSlug *string = airplanegosdk.String("string")
 
-    var until *string = "string"
+    var until *string = airplanegosdk.String("string")
 
     ctx := context.Background()
     res, err := s.Runs.List(ctx, limit, page, since, taskID, taskSlug, until)

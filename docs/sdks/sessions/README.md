@@ -83,15 +83,15 @@ func main() {
     )
 
 
-    var limit *int64 = 768578
+    var limit *int64 = airplanegosdk.Int64(768578)
 
-    var page *int64 = 99895
+    var page *int64 = airplanegosdk.Int64(99895)
 
-    var runbookID *string = "string"
+    var runbookID *string = airplanegosdk.String("string")
 
-    var updatedAfter *string = "string"
+    var updatedAfter *string = airplanegosdk.String("string")
 
-    var updatedBefore *string = "string"
+    var updatedBefore *string = airplanegosdk.String("string")
 
     ctx := context.Background()
     res, err := s.Sessions.List(ctx, limit, page, runbookID, updatedAfter, updatedBefore)
