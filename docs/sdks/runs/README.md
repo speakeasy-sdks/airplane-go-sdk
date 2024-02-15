@@ -33,7 +33,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Runs.Get(ctx, id)
@@ -84,7 +84,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Runs.GetOutputs(ctx, id)
@@ -139,13 +139,13 @@ func main() {
 
     var page *int64 = airplanegosdk.Int64(99895)
 
-    var since *string = airplanegosdk.String("string")
+    var since *string = airplanegosdk.String("<value>")
 
-    var taskID *string = airplanegosdk.String("string")
+    var taskID *string = airplanegosdk.String("<value>")
 
-    var taskSlug *string = airplanegosdk.String("string")
+    var taskSlug *string = airplanegosdk.String("<value>")
 
-    var until *string = airplanegosdk.String("string")
+    var until *string = airplanegosdk.String("<value>")
 
     ctx := context.Background()
     res, err := s.Runs.List(ctx, limit, page, since, taskID, taskSlug, until)

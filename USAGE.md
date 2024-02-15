@@ -14,7 +14,7 @@ func main() {
 		airplanegosdk.WithSecurity("<YOUR_API_KEY_HERE>"),
 	)
 
-	var runID string = "string"
+	var runID string = "<value>"
 
 	ctx := context.Background()
 	res, err := s.Prompts.List(ctx, runID)

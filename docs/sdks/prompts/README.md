@@ -84,7 +84,7 @@ func main() {
     )
 
 
-    var id string = "string"
+    var id string = "<value>"
 
     ctx := context.Background()
     res, err := s.Prompts.Get(ctx, id)
@@ -135,7 +135,7 @@ func main() {
     )
 
 
-    var runID string = "string"
+    var runID string = "<value>"
 
     ctx := context.Background()
     res, err := s.Prompts.List(ctx, runID)

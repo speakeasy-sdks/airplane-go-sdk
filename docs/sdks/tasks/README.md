@@ -41,7 +41,7 @@ func main() {
         Slug: airplanegosdk.String("hello_world"),
     }
 
-    var envSlug *string = airplanegosdk.String("string")
+    var envSlug *string = airplanegosdk.String("<value>")
 
     ctx := context.Background()
     res, err := s.Tasks.Execute(ctx, executeTaskRequest, envSlug)

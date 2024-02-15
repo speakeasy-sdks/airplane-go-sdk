@@ -4,16 +4,16 @@ management:
   docChecksum: 20955385d0d71e2a0b3914e71223d7da
   docVersion: 0.0.1
   speakeasyVersion: internal
-  generationVersion: 2.253.0
-  releaseVersion: 3.0.2
-  configChecksum: 622242bbc3866fb0b5871e5193dfc6c6
+  generationVersion: 2.258.0
+  releaseVersion: 3.1.0
+  configChecksum: c6ddaefe174babdd0afad11c5dc71d2e
   repoURL: https://github.com/speakeasy-sdks/airplane-go-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/airplane-go-sdk
   published: true
 features:
   go:
-    core: 3.3.2
+    core: 3.4.0
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.6
@@ -146,3 +146,4 @@ generatedFiles:
   - docs/sdks/tasks/README.md
   - USAGE.md
   - .gitattributes
+  - internal/hooks/hooks.go
