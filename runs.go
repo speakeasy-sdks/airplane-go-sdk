@@ -30,7 +30,11 @@ func newRuns(sdkConfig sdkConfiguration) *Runs {
 // Get - Cancel Run
 // Get information about an existing run.
 func (s *Runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "getRun"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "getRun",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GetRunRequest{
 		ID: id,
@@ -53,12 +57,12 @@ func (s *Runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, 
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -68,15 +72,15 @@ func (s *Runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, 
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -121,7 +125,11 @@ func (s *Runs) Get(ctx context.Context, id string) (*operations.GetRunResponse, 
 // GetOutputs - Get Run Outputs
 // Get outputs from an existing run.
 func (s *Runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutputsResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "getOutputs"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "getOutputs",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GetOutputsRequest{
 		ID: id,
@@ -144,12 +152,12 @@ func (s *Runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutput
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -159,15 +167,15 @@ func (s *Runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutput
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -211,7 +219,11 @@ func (s *Runs) GetOutputs(ctx context.Context, id string) (*operations.GetOutput
 
 // List Runs
 func (s *Runs) List(ctx context.Context, limit *int64, page *int64, since *string, taskID *string, taskSlug *string, until *string) (*operations.ListRunsResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "listRuns"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "listRuns",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.ListRunsRequest{
 		Limit:    limit,
@@ -239,12 +251,12 @@ func (s *Runs) List(ctx context.Context, limit *int64, page *int64, since *strin
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -254,15 +266,15 @@ func (s *Runs) List(ctx context.Context, limit *int64, page *int64, since *strin
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}

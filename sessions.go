@@ -30,7 +30,11 @@ func newSessions(sdkConfig sdkConfiguration) *Sessions {
 // Get Session
 // Get information about an existing session.
 func (s *Sessions) Get(ctx context.Context, id string) (*operations.GetSessionResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "getSession"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "getSession",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.GetSessionRequest{
 		ID: id,
@@ -53,12 +57,12 @@ func (s *Sessions) Get(ctx context.Context, id string) (*operations.GetSessionRe
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -68,15 +72,15 @@ func (s *Sessions) Get(ctx context.Context, id string) (*operations.GetSessionRe
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
@@ -120,7 +124,11 @@ func (s *Sessions) Get(ctx context.Context, id string) (*operations.GetSessionRe
 
 // List Sessions
 func (s *Sessions) List(ctx context.Context, limit *int64, page *int64, runbookID *string, updatedAfter *string, updatedBefore *string) (*operations.ListSessionsResponse, error) {
-	hookCtx := hooks.HookContext{OperationID: "listSessions"}
+	hookCtx := hooks.HookContext{
+		Context:        ctx,
+		OperationID:    "listSessions",
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 
 	request := operations.ListSessionsRequest{
 		Limit:         limit,
@@ -147,12 +155,12 @@ func (s *Sessions) List(ctx context.Context, limit *int64, page *int64, runbookI
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{hookCtx}, req)
+	client := s.sdkConfiguration.SecurityClient
+
+	req, err = s.sdkConfiguration.Hooks.BeforeRequest(hooks.BeforeRequestContext{HookContext: hookCtx}, req)
 	if err != nil {
 		return nil, err
 	}
-
-	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil || httpRes == nil {
@@ -162,15 +170,15 @@ func (s *Sessions) List(ctx context.Context, limit *int64, page *int64, runbookI
 			err = fmt.Errorf("error sending request: no response")
 		}
 
-		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, nil, err)
+		_, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, nil, err)
 		return nil, err
 	} else if utils.MatchStatusCodes([]string{"4XX", "5XX"}, httpRes.StatusCode) {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{hookCtx}, httpRes, nil)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterError(hooks.AfterErrorContext{HookContext: hookCtx}, httpRes, nil)
 		if err != nil {
 			return nil, err
 		}
 	} else {
-		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{hookCtx}, httpRes)
+		httpRes, err = s.sdkConfiguration.Hooks.AfterSuccess(hooks.AfterSuccessContext{HookContext: hookCtx}, httpRes)
 		if err != nil {
 			return nil, err
 		}
