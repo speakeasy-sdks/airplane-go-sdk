@@ -40,7 +40,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetRunResponse != nil {
         // handle response
     }
@@ -91,7 +90,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetOutputsResponse != nil {
         // handle response
     }
@@ -152,7 +150,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListRunsResponse != nil {
         // handle response
     }

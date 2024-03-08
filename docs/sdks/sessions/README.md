@@ -39,7 +39,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetSessionResponse != nil {
         // handle response
     }
@@ -98,7 +97,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListSessionResponse != nil {
         // handle response
     }

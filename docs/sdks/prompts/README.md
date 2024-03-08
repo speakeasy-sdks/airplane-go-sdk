@@ -40,7 +40,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.CancelPromptResponse != nil {
         // handle response
     }
@@ -91,7 +90,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.GetPromptResponse != nil {
         // handle response
     }
@@ -142,7 +140,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.ListPromptsResponse != nil {
         // handle response
     }
@@ -196,7 +193,6 @@ func main() {
     if err != nil {
         log.Fatal(err)
     }
-
     if res.SubmitPromptResponse != nil {
         // handle response
     }
